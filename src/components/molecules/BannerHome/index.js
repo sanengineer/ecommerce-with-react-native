@@ -6,10 +6,9 @@ import {
   FlatList,
   Dimensions,
   ImageBackground,
-  Touchable,
-  TouchableOpacity,
 } from 'react-native';
 
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { ImageBannerDummy, ImageHeaderBg } from '../../../assets';
 
 const slideList = [
@@ -30,7 +29,7 @@ const slideList = [
   {
     id: 3,
     emoji: '🎊',
-    // image: ImageBannerDummy,
+    image: ImageHeaderBg,
     title: 'Order More To Get More Point!',
     subtitle: 'subtitle',
   },
@@ -138,7 +137,7 @@ function Pagination({ index }) {
             key={i}
             style={[
               styles.paginationDot,
-              index === 1
+              index === i
                 ? styles.paginationDotActive
                 : styles.paginationDotInactive,
             ]}

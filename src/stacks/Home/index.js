@@ -1,7 +1,5 @@
 import React, { useState, useRef } from 'react';
 import {
-  SafeAreaView,
-  Touchable,
   StyleSheet,
   Text,
   View,
@@ -11,16 +9,122 @@ import {
   Dimensions,
   ImageBackground,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/core';
+
 import { useScrollToTop } from '@react-navigation/native';
 
-import { ShoesImage, CoffeeCup, ImageHeaderBg } from '../../assets';
-import { TouchableOpacity } from 'react-native';
-import { BannerHome, ListText } from '../../components';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { CoffeeCup, ImageHeaderBg } from '../../assets';
+import { BannerHome, ListText, Space } from '../../components';
 
 const window = Dimensions.get('window');
 const screen = Dimensions.get('screen');
 const numColumns = 2;
+
+const data = [
+  {
+    product_id: 1,
+    name: 'Double Shoot Iced Shaken Espresso',
+    desc: 'Espresso based with 80% milk and 20% espresso coffee',
+    price: 30000,
+    stock: 20,
+    image: CoffeeCup,
+    promo: true,
+    // num_rate: 10,
+  },
+  {
+    product_id: 2,
+    name: 'Carramel Machiato - 250ml',
+    desc: 'Espresso based with 80% milk and 20% espresso coffee',
+    price: 12000,
+    stock: 10,
+    image: CoffeeCup,
+    promo: false,
+    // num_rate: 30,
+  },
+  {
+    product_id: 3,
+    name: 'Caffe Americano - 250ml',
+    desc: 'Espresso based with 80% milk and 20% espresso coffee',
+    price: 12000,
+    stock: 40,
+    image: CoffeeCup,
+    promo: false,
+    // num_rate: 20,
+  },
+  {
+    product_id: 4,
+    name: 'Arabica Whole Beans Light Roast - 100gr',
+    desc: 'Espresso based with 80% milk and 20% espresso coffee',
+    price: 12000,
+    stock: 22,
+    image: CoffeeCup,
+    promo: false,
+    // num_rate: 12,
+  },
+  {
+    product_id: 5,
+    name: 'Cold Brew - 250ml',
+    desc: 'Espresso based with 80% milk and 20% espresso coffee',
+    price: 12000,
+    stock: 16,
+    image: CoffeeCup,
+    promo: false,
+    // num_rate: 12,
+  },
+  {
+    product_id: 6,
+    name: 'Caffe Americano - 1L',
+    desc: 'Espresso based with 80% milk and 20% espresso coffee',
+    price: 12000,
+    stock: 18,
+    image: CoffeeCup,
+    promo: false,
+    // num_rate: 14,
+  },
+  {
+    product_id: 7,
+    name: 'Palm Sugar Coffee Milk - 1L',
+    desc: 'Espresso based with 80% milk and 20% espresso coffee',
+    price: 12000,
+    stock: 18,
+    image: CoffeeCup,
+    promo: false,
+    // num_rate: 16,
+  },
+  {
+    product_id: 8,
+    name: 'Palm Sugar Coffee Milk - 1L',
+    desc: 'Espresso based with 80% milk and 20% espresso coffee',
+    price: 12000,
+    stock: 18,
+    image: CoffeeCup,
+    promo: true,
+    // num_rate: 16,
+  },
+];
+
+const categories = [
+  {
+    category_id: 1,
+    category_name: '☕️  Coffee',
+    featured_image: CoffeeCup,
+  },
+  {
+    category_id: 2,
+    category_name: '🥃  Tea',
+    featured_image: CoffeeCup,
+  },
+  {
+    category_id: 3,
+    category_name: '🍵  Matcha',
+    featured_image: CoffeeCup,
+  },
+  {
+    category_id: 4,
+    category_name: '🥐  Pastry',
+    featured_image: CoffeeCup,
+  },
+];
 
 const styles = StyleSheet.create({
   container: {
@@ -298,7 +402,7 @@ const Home = () => {
     setModalVisible(!isModalVisible);
   };
 
-  const FlatListHeadeHome = () => (
+  const FlatListHeaderHome = () => (
     <View style={styles.container}>
       <ScrollView
         style={styles.foodListsContainer}
@@ -344,8 +448,56 @@ const Home = () => {
               <BannerHome />
             </View>
           </ImageBackground>
+
+          <Space height={Dimensions.get('screen').height / 40} />
+
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={{ marginTop: Dimensions.get('screen').height / 10 }}>
+            <View style={styles.categoriesGroupName}>
+              {categories.map(item => (
+                <>
+                  <View style={styles.categoriesContainer}>
+                    <TouchableOpacity style={styles.categoriesTouchable}>
+                      <View style={styles.categoriesNameContainer}>
+                        <ListText
+                          text={`${item.category_name}`}
+                          style={styles.categoriesName}
+                        />
+                      </View>
+                    </TouchableOpacity>
+                  </View>
+                  <Space width={20} />
+                </>
+              ))}
+            </View>
+          </ScrollView>
+          <Space height={10} />
         </View>
       </ScrollView>
+    </View>
+  );
+
+  const renderItem = ({ item }) => (
+    <View style={styles.itemContainer}>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        onPress={() => console.log('press')}>
+        <Image source={item.image} style={styles.itemImage} />
+
+        {item.promo ? (
+          <View style={styles.promoStickerProductContainer}>
+            <Text style={styles.promoText}>promo</Text>
+          </View>
+        ) : null}
+
+        <View style={styles.item}>
+          <Text style={styles.itemText}>{item.name}</Text>
+          <Space height={12} />
+          <Text style={styles.itemTextPrice}>Rp. {item.price}</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 
@@ -353,8 +505,13 @@ const Home = () => {
     <View style={{ backgroundColor: 'green' }}>
       <FlatList
         ref={ref}
+        data={data}
+        renderItem={renderItem}
         numColumns={numColumns}
-        ListHeaderComponent={FlatListHeadeHome}
+        keyExtractor={(item, index) => item.product_id}
+        ListHeaderComponent={FlatListHeaderHome}
+        columnWrapperStyle={styles.containerFlatlist}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
