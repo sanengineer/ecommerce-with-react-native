@@ -166,13 +166,13 @@ const styles = StyleSheet.create({
   },
 
   contentHeader: {
-    // backgroundColor: "aqua",
+    // backgroundColor: 'aqua',
     flex: 1,
     justifyContent: 'center',
     flexDirection: 'column',
     marginTop: 30,
     marginBottom: 100,
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
 
   notifContainer: {
@@ -203,12 +203,13 @@ const styles = StyleSheet.create({
 
   headerContainer: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'flex-start',
     height: Dimensions.get('screen').height / 2,
     backgroundColor: '#18DA42',
     // backgroundColor:"#2701ff",
     position: 'relative',
     resizeMode: 'cover',
+    paddingLeft: 20,
   },
 
   titleHeaderContainer: {
@@ -216,21 +217,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 20,
     // top: -Dimensions.get("screen").height / 13,
-    // backgroundColor: "red",
+    // backgroundColor: 'black',
   },
 
   iconTitleUserContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'baseline',
+    // backgroundColor: 'red',
   },
 
   iconTitle: {
-    fontSize: 36,
+    fontSize: 34,
   },
 
   textTitle: {
-    fontSize: 32,
+    fontSize: 30,
     fontFamily: 'CircularStd-Bold',
     color: '#fff',
   },
@@ -241,19 +243,19 @@ const styles = StyleSheet.create({
 
   subTitle: {
     // backgroundColor: "red",
-    fontFamily: 'CircularStd-Bold',
-    fontSize: 18,
+    fontFamily: 'CircularStd-Book',
+    fontSize: 14,
     textAlign: 'center',
     color: '#fff',
   },
 
   pointTitleContainer: {
     // backgroundColor: "red",
-    width: 90,
+    // width: 90,
     // top: -Dimensions.get("screen").height / 6,
-    backgroundColor: 'green',
-    borderRadius: 100,
-    opacity: 0.8,
+    // backgroundColor: 'green',
+    // borderRadius: 100,
+    // opacity: 0.8,
   },
 
   pointContainer: {
@@ -261,10 +263,11 @@ const styles = StyleSheet.create({
   },
 
   textPoint: {
-    fontSize: 60,
-    textAlign: 'center',
-    fontFamily: 'CircularStd-Medium',
+    fontSize: 22,
+    textAlign: 'left',
+    fontFamily: 'CircularStd-Bold',
     color: '#fff',
+    // backgroundColor: 'red',
   },
 
   homeBannerContainer: {
@@ -424,7 +427,7 @@ const Home = () => {
                 </View>
               </View>
               <View style={styles.subTitleContainer}>
-                <Text style={styles.subTitle}>Let's, Order Again!</Text>
+                <Text style={styles.subTitle}>Let's, drink again!</Text>
               </View>
               <View>
                 <TouchableOpacity
@@ -432,16 +435,30 @@ const Home = () => {
                   activeOpacity={0.6}
                   onPress={toggleModal}>
                   <ListText
-                    paddingX={10}
-                    paddingY={6}
-                    text="💰 Your Point"
-                    size={10}
+                    paddingX={0}
+                    paddingY={0}
+                    text="Points"
+                    size={16}
                     color="#fff"
+                    fontFam="CircularStd-Bold"
                   />
                 </TouchableOpacity>
+                <Space height={2} />
               </View>
               <View style={styles.pointContainer}>
-                <Text style={styles.textPoint}>2000</Text>
+                <Text style={styles.textPoint}>200.000</Text>
+              </View>
+              <Space height={20} />
+              <View
+                style={{
+                  // backgroundColor: 'red',
+                  flexDirection: 'row',
+                }}>
+                <Text style={{ color: '#fff' }}>📍 Send To</Text>
+                <Space width={5} />
+                <Text style={{ color: '#fff', fontFamily: 'CircularStd-Bold' }}>
+                  Home Address 1
+                </Text>
               </View>
             </View>
             <View style={styles.homeBannerContainer}>

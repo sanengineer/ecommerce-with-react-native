@@ -5,12 +5,13 @@ const ListText = ({
   text,
   color = 'black',
   size = 16,
+  fontFam = 'CircularStd-Book',
   paddingX = 10,
   paddingY = 6,
 }) => {
   return (
     <View style={styles.listTextContainer(paddingX, paddingY)}>
-      <Text style={styles.text(color, size)}>{text}</Text>
+      <Text style={styles.text(color, size, fontFam)}>{text}</Text>
     </View>
   );
 };
@@ -23,8 +24,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: paddingY,
     justifyContent: 'center',
   }),
-  text: (color, size) => ({
-    fontFamily: 'CircularStd-Book',
+  text: (color, size, fontFam) => ({
+    fontFamily: fontFam,
     fontSize: size,
     color: color,
     textAlign: 'center',
