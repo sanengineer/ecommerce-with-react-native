@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { ImageBannerDummy, ImageHeaderBg } from '../../../assets';
+import { ImageBannerDummy, ImageCoinBg, ImageHeaderBg } from '../../../assets';
 
 const slideList = [
   {
@@ -29,7 +29,7 @@ const slideList = [
   {
     id: 3,
     emoji: '🎊',
-    image: ImageHeaderBg,
+    image: ImageCoinBg,
     title: 'Order More To Get More Point!',
     subtitle: 'subtitle',
   },
