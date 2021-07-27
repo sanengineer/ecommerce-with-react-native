@@ -448,7 +448,7 @@ const Home = () => {
               <View style={styles.pointContainer}>
                 <Text style={styles.textPoint}>200.000</Text>
               </View>
-              <Space height={20} />
+              <Space height={30} />
               <View
                 style={{
                   // backgroundColor: 'red',

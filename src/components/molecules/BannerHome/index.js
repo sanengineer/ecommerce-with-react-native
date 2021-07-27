@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import LinearGradient from 'react-native-linear-gradient';
 import { ImageBannerDummy, ImageCoinBg, ImageHeaderBg } from '../../../assets';
 
 const slideList = [
@@ -93,35 +94,42 @@ const Slide = memo(function Slide({ data }) {
     <View style={styles.slide}>
       <TouchableOpacity activeOpacity={0.7}>
         <ImageBackground source={data.image} style={styles.slideImage}>
-          <View
+          <LinearGradient
             style={{
-              top: Dimensions.get('screen').height / 50,
-              left: Dimensions.get('screen').width / 26,
-              width: 200,
-              height: 100,
-              flex: 1,
-              flexDirection: 'column',
-              overflow: 'hidden',
-            }}>
-            <Text
+              width: '100%',
+              height: '100%',
+            }}
+            colors={['rgba(0,0,0,0.5)', 'transparent']}>
+            <View
               style={{
-                color: '#fff',
-                fontFamily: 'CircularStd-Bold',
-                fontSize: 32,
+                top: Dimensions.get('screen').height / 50,
+                left: Dimensions.get('screen').width / 26,
+                width: 200,
+                height: 100,
+                flex: 1,
+                flexDirection: 'column',
+                overflow: 'hidden',
               }}>
-              {data.emoji}
-            </Text>
-            <Text
-              style={{
-                color: '#fff',
-                fontFamily: 'CircularStd-Black',
-                fontSize: 18,
-                width: 180,
-                textTransform: 'capitalize',
-              }}>
-              {data.title}
-            </Text>
-          </View>
+              <Text
+                style={{
+                  color: '#fff',
+                  fontFamily: 'CircularStd-Bold',
+                  fontSize: 32,
+                }}>
+                {data.emoji}
+              </Text>
+              <Text
+                style={{
+                  color: '#fff',
+                  fontFamily: 'CircularStd-Black',
+                  fontSize: 18,
+                  width: 180,
+                  textTransform: 'capitalize',
+                }}>
+                {data.title}
+              </Text>
+            </View>
+          </LinearGradient>
         </ImageBackground>
       </TouchableOpacity>
     </View>
