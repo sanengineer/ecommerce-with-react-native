@@ -8,7 +8,7 @@ import {
   Register,
   SuccessLogin,
   SuccessRegister,
-  Search,
+  Menu,
   Profile,
   Cart,
 } from '../stacks';
@@ -21,7 +21,7 @@ const MainApp = () => {
   return (
     <Tab.Navigator tabBar={props => <BottomNav {...props} />}>
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Search" component={Search} />
+      <Tab.Screen name="Menu" component={Menu} />
       <Tab.Screen name="Cart" component={Cart} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>

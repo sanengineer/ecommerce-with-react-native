@@ -3,7 +3,7 @@ import Register from './Register';
 import SuccessLogin from './SuccessLogin';
 import SuccessRegister from './SuccessRegister';
 import Home from './Home';
-import Search from './Search';
+import Menu from './Menu';
 import Cart from './Cart';
 import Profile from './Profile';
 
@@ -13,7 +13,7 @@ export {
   SuccessLogin,
   SuccessRegister,
   Home,
-  Search,
+  Menu,
   Cart,
   Profile,
 };

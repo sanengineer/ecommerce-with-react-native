@@ -21,14 +21,16 @@ import {
   IconCartRoundedActive,
   IconProfileRounded,
   IconProfileRoundedActive,
+  IconMenuRounded,
+  IconMenuRoundedActive,
 } from '../../../assets';
 
 const Icon = ({ label, focus }) => {
   switch (label) {
     case 'Home':
       return focus ? <IconHomeRoundedActive /> : <IconHomeRounded />;
-    case 'Search':
-      return focus ? <IconSearchRoundedActive /> : <IconSearchRounded />;
+    case 'Menu':
+      return focus ? <IconMenuRoundedActive /> : <IconMenuRounded />;
     case 'Cart':
       return focus ? <IconCartRoundedActive /> : <IconCartRounded />;
     case 'Profile':

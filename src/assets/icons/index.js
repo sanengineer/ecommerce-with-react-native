@@ -23,6 +23,8 @@ import IconHeartDisable from './icon_heart-disable.svg';
 import IconTrashGrey from './icon_trash-grey.svg';
 import IconPlusCircle from './icon_plus-circle.svg';
 import IconMinusCircle from './icon_minus-circle.svg';
+import IconMenuRounded from './icon_menu_rounded_deactive.svg';
+import IconMenuRoundedActive from './icon_menu_rounded_active.svg';
 
 export {
   IconShipping,
@@ -46,4 +48,6 @@ export {
   IconProfileRoundedActive,
   IconCartRounded,
   IconCartRoundedActive,
+  IconMenuRounded,
+  IconMenuRoundedActive,
 };
