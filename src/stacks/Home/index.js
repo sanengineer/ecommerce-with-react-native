@@ -10,10 +10,10 @@ import {
   ImageBackground,
 } from 'react-native';
 
-import { useScrollToTop } from '@react-navigation/native';
+import { useNavigation, useScrollToTop } from '@react-navigation/native';
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { CoffeeCup, ImageHeaderBg } from '../../assets';
+import { CoffeeCup, ImageHeaderBg, ImageHeaderBgBlue } from '../../assets';
 import { BannerHome, ListText, Space } from '../../components';
 
 const window = Dimensions.get('window');
@@ -205,7 +205,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-start',
     height: Dimensions.get('screen').height / 2,
-    backgroundColor: '#18DA42',
+    // backgroundColor: '#18DA42',
+    backgroundColor: '#0030FF',
     // backgroundColor:"#2701ff",
     position: 'relative',
     resizeMode: 'cover',
@@ -399,6 +400,8 @@ const Home = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const ref = useRef();
 
+  const navigation = useNavigation();
+
   useScrollToTop(ref);
 
   const toggleModal = () => {
@@ -413,9 +416,12 @@ const Home = () => {
         <View style={styles.screen}>
           <ImageBackground
             style={styles.headerContainer}
-            source={ImageHeaderBg}>
+            source={ImageHeaderBgBlue}>
             <View style={styles.notifContainer}>
-              <TouchableOpacity style={styles.notifTouch} activeOpacity={0.7}>
+              <TouchableOpacity
+                style={styles.notifTouch}
+                activeOpacity={0.7}
+                onPress={() => navigation.navigate('Notification')}>
                 <Text style={styles.notifText}>🔔</Text>
               </TouchableOpacity>
             </View>

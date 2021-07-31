@@ -6,6 +6,7 @@ import Home from './Home';
 import Menu from './Menu';
 import Cart from './Cart';
 import Profile from './Profile';
+import Notification from './Notification';
 
 export {
   LogIn,
@@ -16,4 +17,5 @@ export {
   Menu,
   Cart,
   Profile,
+  Notification,
 };
