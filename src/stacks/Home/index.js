@@ -341,10 +341,11 @@ const styles = StyleSheet.create({
     marginVertical: 0,
     paddingHorizontal: 8,
     backgroundColor: '#fff',
+    // backgroundColor: 'red',
   },
 
   itemContainer: {
-    // backgroundColor: "grey",
+    // backgroundColor: 'grey',
     overflow: 'hidden',
     flex: 1,
     margin: 10,
@@ -355,7 +356,7 @@ const styles = StyleSheet.create({
   },
 
   item: {
-    // backgroundColor: "red",
+    // backgroundColor: 'red',
     paddingHorizontal: 10,
     paddingTop: 10,
     paddingBottom: 10,
@@ -482,7 +483,9 @@ const Home = () => {
               {categories.map(item => (
                 <>
                   <View style={styles.categoriesContainer}>
-                    <TouchableOpacity style={styles.categoriesTouchable}>
+                    <TouchableOpacity
+                      style={styles.categoriesTouchable}
+                      onPress={() => navigation.navigate('Category', item)}>
                       <View style={styles.categoriesNameContainer}>
                         <ListText
                           text={`${item.category_name}`}
@@ -525,7 +528,10 @@ const Home = () => {
   );
 
   return (
-    <View style={{ backgroundColor: 'green' }}>
+    <View
+      style={{
+        backgroundColor: '#fff',
+      }}>
       <FlatList
         ref={ref}
         data={data}

@@ -15,7 +15,7 @@ import {
   IconPlusCircle,
   IconTrashGrey,
 } from '../../assets';
-import { Space } from '../../components';
+import { Space, TextButtonRow } from '../../components';
 import { useScrollToTop } from '@react-navigation/native';
 
 const data = [
@@ -84,6 +84,15 @@ const data = [
   },
 ];
 
+const FlatListFooterCart = () => (
+  <View
+    style={{
+      bottom: 80,
+    }}>
+    <TextButtonRow title="Total Price" Subtitle="Rp 990.000" textButton="Buy" />
+  </View>
+);
+
 const Cart = ({ navigation }) => {
   const ref = useRef();
   useScrollToTop(ref);
@@ -143,14 +152,17 @@ const Cart = ({ navigation }) => {
             <Space width={30} />
           </View>
         </View>
+
         <FlatList
           ref={ref}
           data={data}
           renderItem={renderItem}
           keyExtractor={item => item.product_id}
+          // ListFooterComponent={FlatListFooterCart}
           style={styles.flatList}
           showsVerticalScrollIndicator={false}
         />
+        <FlatListFooterCart />
       </View>
     </SafeAreaView>
   );
@@ -195,7 +207,7 @@ const styles = StyleSheet.create({
     // flexDirection: 'column',
     // flex: 1,
   },
-  flatList: { paddingBottom: 100 },
+  flatList: { marginBottom: 80 },
   firstRowContainer: { flexDirection: 'row', justifyContent: 'space-between' },
   secondRowContainer: {
     flexDirection: 'row',

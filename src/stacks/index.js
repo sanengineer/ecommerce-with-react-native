@@ -7,6 +7,7 @@ import Menu from './Menu';
 import Cart from './Cart';
 import Profile from './Profile';
 import Notification from './Notification';
+import Category from './Category';
 
 export {
   LogIn,
@@ -18,4 +19,5 @@ export {
   Cart,
   Profile,
   Notification,
+  Category,
 };

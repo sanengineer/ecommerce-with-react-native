@@ -12,6 +12,7 @@ import {
   Profile,
   Cart,
   Notification,
+  Category,
 } from '../stacks';
 import { BottomNav } from '../components';
 
@@ -60,6 +61,11 @@ const Router = () => {
       <Stack.Screen
         name="Notification"
         component={Notification}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Category"
+        component={Category}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

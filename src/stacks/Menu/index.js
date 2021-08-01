@@ -12,7 +12,7 @@ import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation, useScrollToTop } from '@react-navigation/native';
 
 import { Space } from '../../components';
-import { CoffeeCup } from '../../assets';
+import { CoffeeCup, ImagePastry } from '../../assets';
 
 const data = [
   { query_id: 0, query: 'tea' },
@@ -32,6 +32,7 @@ const categories = [
   { category_id: 2, category_name: 'Coffee', featured_image: CoffeeCup },
   { category_id: 3, category_name: 'Tea', featured_image: CoffeeCup },
   { category_id: 4, category_name: 'Matcha', featured_image: CoffeeCup },
+  { category_id: 5, category_name: 'Pastry', featured_image: ImagePastry },
 ];
 
 const numColumns = 2;
@@ -52,7 +53,11 @@ const QueryMap = ({ data }) => {
               borderWidth: 1,
             }}>
             <Text
-              style={{ fontFamily: 'CircularStd-Book', textAlign: 'center' }}>
+              style={{
+                fontFamily: 'CircularStd-Book',
+                textAlign: 'center',
+                fontSize: 14,
+              }}>
               {item.query}
             </Text>
           </View>
@@ -69,7 +74,7 @@ const QueryMap = ({ data }) => {
 const FlatListHeaderMenu = () => (
   <>
     <Space height={30} />
-    <View style={styles.sectionContainer}>
+    <View style={styles.sectionSecondContainer}>
       <View style={styles.headerContainer}>
         <Text style={styles.headerTitle}>Top Search</Text>
         <Space height={14} />
@@ -118,7 +123,7 @@ const Menu = () => {
   return (
     <SafeAreaView style={styles.safeContainer}>
       <View style={styles.stackContainer}>
-        <View style={styles.sectionContainer}>
+        <View style={styles.sectionFirstContainer}>
           <View>
             <Text style={styles.headerTitle}>Search</Text>
           </View>
@@ -127,18 +132,23 @@ const Menu = () => {
             <TextInput style={styles.searchInput} placeholder="type here..." />
           </View>
         </View>
-        <FlatList
-          ref={ref}
-          numColumns={numColumns}
-          data={categories}
-          ListHeaderComponent={FlatListHeaderMenu}
-          ListFooterComponent={FlatListFooterMenu}
-          renderItem={ProductList}
-          keyExtractor={item => item.category_id}
-          columnWrapperStyle={styles.containerFlatList}
-          showsVerticalScrollIndicator={false}
-        />
       </View>
+
+      <FlatList
+        ref={ref}
+        numColumns={numColumns}
+        data={categories}
+        ListHeaderComponent={FlatListHeaderMenu}
+        ListFooterComponent={FlatListFooterMenu}
+        renderItem={ProductList}
+        keyExtractor={item => item.category_id}
+        columnWrapperStyle={styles.containerFlatList}
+        showsVerticalScrollIndicator={false}
+        style={{
+          // backgroundColor: 'red',
+          marginHorizontal: 10,
+        }}
+      />
     </SafeAreaView>
   );
 };
@@ -154,8 +164,15 @@ const styles = StyleSheet.create({
 
   stackContainer: { paddingHorizontal: 18, paddingTop: 10, paddingBottom: 10 },
 
-  sectionContainer: {
+  sectionFirstContainer: {
+    // backgroundColor: 'blue',
+  },
+
+  sectionSecondContainer: {
+    marginTop: 0,
     marginBottom: 10,
+    marginHorizontal: 10,
+    // backgroundColor: 'aqua',
   },
 
   headerTitle: { fontFamily: 'CircularStd-Bold', fontSize: 18 },
@@ -184,11 +201,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingBottom: 10,
     paddingLeft: 14,
+    margin: 0,
   },
 
   itemContainer: {
     margin: 10,
     flex: 1,
+    // backgroundColor: 'aqua',
   },
 
   item: {
