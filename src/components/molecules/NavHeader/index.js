@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { IconAngleLeftBig } from '../../../assets';
 
-const NavHeader = ({ navigation, route }) => {
+const NavHeader = ({ navigation, title = 'Nav Header' }) => {
   return (
     <View style={styles.navHeaderContainer}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -10,7 +10,7 @@ const NavHeader = ({ navigation, route }) => {
           <IconAngleLeftBig />
         </View>
       </TouchableOpacity>
-      <Text style={styles.textHeader}>{route.params.category_name}</Text>
+      <Text style={styles.textHeader}>{title}</Text>
       <View style={{ position: 'relative' }}>
         <TouchableOpacity onPress={() => console.log('item')}>
           <View style={{ zIndex: 2 }}>

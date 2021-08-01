@@ -35,7 +35,7 @@ const Profile = ({ navigation }) => {
           <View style={styles.mainContainer}>
             <View>
               <Pressable
-                onPress={() => console.log('pressable profile stack')}
+                onPress={() => navigation.navigate('Bio')}
                 style={({ pressed }) => [
                   {
                     backgroundColor: pressed

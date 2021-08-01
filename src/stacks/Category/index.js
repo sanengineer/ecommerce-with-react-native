@@ -113,7 +113,7 @@ const Category = ({ route }) => {
   return (
     <SafeAreaView style={styles.safeContainer}>
       <View style={styles.stackContainer}>
-        <NavHeader route={route} navigation={navigation} />
+        <NavHeader title={route.params.category_name} navigation={navigation} />
         <FlatList
           numColumns={numColumns}
           data={data}
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   stackContainer: {
-    paddingTop: 18,
+    paddingTop: 20,
   },
 
   flatlistContainer: {

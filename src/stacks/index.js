@@ -8,6 +8,7 @@ import Cart from './Cart';
 import Profile from './Profile';
 import Notification from './Notification';
 import Category from './Category';
+import Bio from './Bio';
 
 export {
   LogIn,
@@ -20,4 +21,5 @@ export {
   Profile,
   Notification,
   Category,
+  Bio,
 };
