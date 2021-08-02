@@ -11,6 +11,7 @@ import Category from './Category';
 import Bio from './Bio';
 import BioEdit from './BioEdit';
 import Shipping from './Shipping';
+import Security from './Security';
 
 export {
   LogIn,
@@ -26,4 +27,5 @@ export {
   Bio,
   BioEdit,
   Shipping,
+  Security,
 };

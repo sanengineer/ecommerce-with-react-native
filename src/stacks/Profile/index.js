@@ -48,7 +48,7 @@ const Profile = ({ navigation }) => {
             <IconTextNav
               icon="🔐"
               text="Security"
-              onPress={() => navigation.navigate('Bio')}
+              onPress={() => navigation.navigate('Security')}
             />
             <Space height={63} />
 

@@ -4,7 +4,7 @@ import { IconArrowRight } from '../../../assets';
 import { IconContainer, Space } from '../../atoms';
 import ListText from '../ListText';
 
-const IconTextNav = ({ onPress, icon = '👻', text = 'Text' }) => {
+const IconTextNav = ({ onPress, icon = '👻', text = 'Text', hideIcon }) => {
   return (
     <Pressable
       onPress={onPress}
@@ -15,11 +15,15 @@ const IconTextNav = ({ onPress, icon = '👻', text = 'Text' }) => {
       ]}>
       <View style={styles.iconTextNavContainer}>
         <View style={styles.iconTextContainer}>
-          <IconContainer>
-            <Text style={{ fontSize: 26 }}>{icon}</Text>
-          </IconContainer>
-          <Space width={10} />
-          <ListText text={text} paddingY={10} />
+          {hideIcon ? null : (
+            <>
+              <IconContainer>
+                <Text style={{ fontSize: 26 }}>{icon}</Text>
+              </IconContainer>
+              <Space width={20} />
+            </>
+          )}
+          <ListText text={text} />
         </View>
         <IconContainer>
           <IconArrowRight />
