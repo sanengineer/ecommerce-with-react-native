@@ -15,7 +15,7 @@ import {
   IconPlusCircle,
   IconTrashGrey,
 } from '../../assets';
-import { Space, TextButtonRow } from '../../components';
+import { NavHeader, Space, TextButtonRow } from '../../components';
 import { useScrollToTop } from '@react-navigation/native';
 
 const data = [
@@ -143,16 +143,7 @@ const Cart = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.safeAreaContainer}>
       <View style={styles.stackContainer}>
-        <View style={styles.headerContainer}>
-          <View>
-            <Space width={30} />
-          </View>
-          <Text style={styles.textHeader}>Cart</Text>
-          <View>
-            <Space width={30} />
-          </View>
-        </View>
-
+        <NavHeader navGoBack={false} title="Cart" />
         <FlatList
           ref={ref}
           data={data}
@@ -178,26 +169,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   stackContainer: {
-    // paddingHorizontal: 20,
-    paddingTop: 18,
     paddingBottom: 42,
     backgroundColor: '#fff',
   },
-  headerContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    borderBottomColor: '#e7e7e7',
-    borderBottomWidth: 1,
-    paddingTop: 4,
-    paddingBottom: 10,
-  },
-  textHeader: {
-    fontFamily: 'CircularStd-Bold',
-    fontSize: 18,
-    // textTransform: 'capitalize',
-  },
-
   listItemContainer: {
     paddingHorizontal: 20,
     paddingTop: 20,

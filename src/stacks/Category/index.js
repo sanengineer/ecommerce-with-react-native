@@ -73,6 +73,17 @@ const data = [
 
 const numColumns = 2;
 
+const CartNav = () => (
+  <TouchableOpacity onPress={() => console.log('item')}>
+    <View style={{ zIndex: 2 }}>
+      <Text style={styles.notifNumber}>16</Text>
+    </View>
+    <View>
+      <Text style={{ fontSize: 34 }}>🛒</Text>
+    </View>
+  </TouchableOpacity>
+);
+
 const Category = ({ route }) => {
   const navigation = useNavigation();
 
@@ -113,7 +124,9 @@ const Category = ({ route }) => {
   return (
     <SafeAreaView style={styles.safeContainer}>
       <View style={styles.stackContainer}>
-        <NavHeader title={route.params.category_name} navigation={navigation} />
+        <NavHeader title={route.params.category_name} navigation={navigation}>
+          <CartNav />
+        </NavHeader>
         <FlatList
           numColumns={numColumns}
           data={data}
@@ -173,5 +186,18 @@ const styles = StyleSheet.create({
     fontFamily: 'CircularStd-Book',
     textAlign: 'center',
     fontSize: 14,
+  },
+  notifNumber: {
+    backgroundColor: 'red',
+    position: 'absolute',
+    fontSize: 13,
+    top: -10,
+    right: 0,
+    fontFamily: 'CircularStd-Bold',
+    color: '#fff',
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 10,
+    overflow: 'hidden',
   },
 });

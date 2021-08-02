@@ -10,7 +10,7 @@ const data = {
   jobs: 'Gamer',
 };
 
-const ListForm = ({ title, subtitle, label }) => (
+const ListForm = ({ title, subtitle, label, onPress }) => (
   <>
     <TextPlainNav title={title} Subtitle={subtitle}>
       <Button
@@ -19,6 +19,7 @@ const ListForm = ({ title, subtitle, label }) => (
         txtDecorationLine="none"
         label={label}
         txtSize={14}
+        onPress={onPress}
       />
     </TextPlainNav>
     <Space height={10} />
@@ -35,7 +36,12 @@ const Bio = ({ navigation, route }) => {
       <View style={styles.stackContainer}>
         <NavHeader navigation={navigation} title={route.name} />
         <Space height={10} />
-        <ListForm title="Name" subtitle={data.name} label="Edit" />
+        <ListForm
+          title="Name"
+          subtitle={data.name}
+          label="Edit"
+          onPress={() => navigation.navigate('Bio Edit')}
+        />
         <ListForm title="Birthplace" subtitle={data.birthplace} label="Edit" />
         <ListForm
           title="Date Of Birth"

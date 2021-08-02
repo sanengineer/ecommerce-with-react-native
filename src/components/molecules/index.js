@@ -5,6 +5,8 @@ import BannerHome from './BannerHome';
 import NavHeader from './NavHeader';
 import TextButtonRow from './TextButtonRow';
 import TextPlainNav from './TextPlainNav';
+import IconTextNav from './IconTextNav';
+import TextSubtext from './TextSubtext';
 
 export {
   Header,
@@ -14,4 +16,6 @@ export {
   NavHeader,
   TextButtonRow,
   TextPlainNav,
+  IconTextNav,
+  TextSubtext,
 };

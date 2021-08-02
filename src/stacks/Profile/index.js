@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import { IconContainer, ListText, Space } from '../../components';
+import { IconContainer, IconTextNav, ListText, Space } from '../../components';
 import { IconArrowRight, ImageProfileSan } from '../../assets';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -33,121 +33,35 @@ const Profile = ({ navigation }) => {
           </View>
           <Space height={50} />
           <View style={styles.mainContainer}>
-            <View>
-              <Pressable
-                onPress={() => navigation.navigate('Bio')}
-                style={({ pressed }) => [
-                  {
-                    backgroundColor: pressed
-                      ? 'rgba(151, 151, 151, 0.1)'
-                      : 'white',
-                  },
-                ]}>
-                <View style={styles.listContainer}>
-                  <View style={styles.listIconNameContainer}>
-                    <IconContainer>
-                      <Text style={{ fontSize: 26 }}>🧬</Text>
-                    </IconContainer>
-                    <Space width={10} />
-                    <ListText text="Bio" />
-                  </View>
-                  <IconContainer>
-                    <IconArrowRight />
-                  </IconContainer>
-                </View>
-              </Pressable>
-              <Space height={0} />
-              <Pressable
-                onPress={() => console.log('pressable profile stack')}
-                style={({ pressed }) => [
-                  {
-                    backgroundColor: pressed
-                      ? 'rgba(151, 151, 151, 0.1)'
-                      : 'white',
-                  },
-                ]}>
-                <View style={styles.listContainer}>
-                  <View style={styles.listIconNameContainer}>
-                    <IconContainer>
-                      <Text style={{ fontSize: 26 }}>🚚</Text>
-                    </IconContainer>
-                    <Space width={10} />
-                    <ListText text="Shipping" />
-                  </View>
-                  <IconContainer>
-                    <IconArrowRight />
-                  </IconContainer>
-                </View>
-              </Pressable>
-              <Space height={0} />
-              <Pressable
-                onPress={() => console.log('pressable profile stack')}
-                style={({ pressed }) => [
-                  {
-                    backgroundColor: pressed
-                      ? 'rgba(151, 151, 151, 0.1)'
-                      : 'white',
-                  },
-                ]}>
-                <View style={styles.listContainer}>
-                  <View style={styles.listIconNameContainer}>
-                    <IconContainer>
-                      <Text style={{ fontSize: 26 }}>🔐</Text>
-                    </IconContainer>
-                    <Space width={10} />
-                    <ListText text="Security" />
-                  </View>
-                  <IconContainer>
-                    <IconArrowRight />
-                  </IconContainer>
-                </View>
-              </Pressable>
-              <Space height={63} />
-              <Pressable
-                onPress={() => console.log('pressable profile stack')}
-                style={({ pressed }) => [
-                  {
-                    backgroundColor: pressed
-                      ? 'rgba(151, 151, 151, 0.1)'
-                      : 'white',
-                  },
-                ]}>
-                <View style={styles.listContainer}>
-                  <View style={styles.listIconNameContainer}>
-                    <IconContainer>
-                      <Text style={{ fontSize: 26 }}>🤝</Text>
-                    </IconContainer>
-                    <Space width={10} />
-                    <ListText text="Helps" />
-                  </View>
-                  <IconContainer>
-                    <IconArrowRight />
-                  </IconContainer>
-                </View>
-              </Pressable>
-              <Pressable
-                onPress={() => console.log('pressable profile stack')}
-                style={({ pressed }) => [
-                  {
-                    backgroundColor: pressed
-                      ? 'rgba(151, 151, 151, 0.1)'
-                      : 'white',
-                  },
-                ]}>
-                <View style={styles.listContainer}>
-                  <View style={styles.listIconNameContainer}>
-                    <IconContainer>
-                      <Text style={{ fontSize: 26 }}>🌡</Text>
-                    </IconContainer>
-                    <Space width={10} />
-                    <ListText text="Terms & Conditions" />
-                  </View>
-                  <IconContainer>
-                    <IconArrowRight />
-                  </IconContainer>
-                </View>
-              </Pressable>
-            </View>
+            <IconTextNav
+              icon="🧬"
+              text="Bio"
+              onPress={() => navigation.navigate('Bio')}
+            />
+
+            <IconTextNav
+              icon="🚚"
+              text="Shipping"
+              onPress={() => navigation.navigate('Bio')}
+            />
+
+            <IconTextNav
+              icon="🔐"
+              text="Security"
+              onPress={() => navigation.navigate('Bio')}
+            />
+            <Space height={63} />
+
+            <IconTextNav
+              icon="🤝"
+              text="Helps"
+              onPress={() => navigation.navigate('Bio')}
+            />
+            <IconTextNav
+              icon="🌡"
+              text="Terms and Conditions"
+              onPress={() => navigation.navigate('Bio')}
+            />
 
             <Space height={30} />
 
@@ -209,15 +123,5 @@ const styles = StyleSheet.create({
   email: {
     fontFamily: 'CircularStd-Book',
     fontSize: 12,
-  },
-
-  listContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    minHeight: 66,
-    paddingHorizontal: 18,
-  },
-  listIconNameContainer: {
-    flexDirection: 'row',
   },
 });

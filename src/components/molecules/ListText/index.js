@@ -6,8 +6,8 @@ const ListText = ({
   color = 'black',
   size = 16,
   fontFam = 'CircularStd-Book',
-  paddingX = 10,
-  paddingY = 6,
+  paddingX = 0,
+  paddingY = 0,
 }) => {
   return (
     <View style={styles.listTextContainer(paddingX, paddingY)}>

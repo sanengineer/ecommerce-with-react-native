@@ -9,6 +9,7 @@ import Profile from './Profile';
 import Notification from './Notification';
 import Category from './Category';
 import Bio from './Bio';
+import BioEdit from './BioEdit';
 
 export {
   LogIn,
@@ -22,4 +23,5 @@ export {
   Notification,
   Category,
   Bio,
+  BioEdit,
 };

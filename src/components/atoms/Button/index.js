@@ -7,6 +7,7 @@ const Button = ({
   bgColor = '#000',
   padSizeX = 20,
   padSizeY = 20,
+  radius = 0,
   textColor = '#fff',
   txtSize = 20,
   fontFam = 'CircularStd-Book',
@@ -16,7 +17,7 @@ const Button = ({
 }) => {
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
-      <View style={styles.container(bgColor, padSizeX, padSizeY)}>
+      <View style={styles.container(bgColor, padSizeX, padSizeY, radius)}>
         <Text
           style={styles.title(
             textColor,
@@ -52,9 +53,10 @@ const styles = StyleSheet.compose({
     textAlign: txtAlign,
   }),
 
-  container: (color, sizeX, sizeY) => ({
+  container: (color, sizeX, sizeY, radius) => ({
     backgroundColor: color,
     paddingVertical: sizeX,
     paddingHorizontal: sizeY,
+    borderRadius: radius,
   }),
 });
