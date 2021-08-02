@@ -15,6 +15,7 @@ import {
   Category,
   Bio,
   BioEdit,
+  Shipping,
 } from '../stacks';
 import { BottomNav } from '../components';
 
@@ -78,6 +79,11 @@ const Router = () => {
       <Stack.Screen
         name="Bio Edit"
         component={BioEdit}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Shipping"
+        component={Shipping}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

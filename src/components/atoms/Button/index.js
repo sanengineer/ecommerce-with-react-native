@@ -5,6 +5,8 @@ const Button = ({
   onPress,
   label = 'Button',
   bgColor = '#000',
+  borderColor,
+  borderWidth,
   padSizeX = 20,
   padSizeY = 20,
   radius = 0,
@@ -17,7 +19,15 @@ const Button = ({
 }) => {
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
-      <View style={styles.container(bgColor, padSizeX, padSizeY, radius)}>
+      <View
+        style={styles.container(
+          bgColor,
+          padSizeX,
+          padSizeY,
+          radius,
+          borderColor,
+          borderWidth,
+        )}>
         <Text
           style={styles.title(
             textColor,
@@ -53,10 +63,12 @@ const styles = StyleSheet.compose({
     textAlign: txtAlign,
   }),
 
-  container: (color, sizeX, sizeY, radius) => ({
+  container: (color, sizeX, sizeY, radius, borderColor, borderWidth) => ({
     backgroundColor: color,
     paddingVertical: sizeX,
     paddingHorizontal: sizeY,
     borderRadius: radius,
+    borderColor: borderColor,
+    borderWidth: borderWidth,
   }),
 });

@@ -42,7 +42,7 @@ const Profile = ({ navigation }) => {
             <IconTextNav
               icon="🚚"
               text="Shipping"
-              onPress={() => navigation.navigate('Bio')}
+              onPress={() => navigation.navigate('Shipping')}
             />
 
             <IconTextNav
