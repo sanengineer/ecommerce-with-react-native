@@ -4,7 +4,7 @@ import { Space } from '../../atoms';
 
 const TextPlainNav = ({
   title = 'Title',
-  Subtitle = 'Subtitle',
+  subtitle = 'Subtitle',
   titleTextSize = 12,
   titleTextFam = 'CircularStd-Book',
   subtitleTextSize = 16,
@@ -17,7 +17,7 @@ const TextPlainNav = ({
         <Text style={styles.title(titleTextSize, titleTextFam)}>{title}</Text>
         <Space height={7} />
         <Text style={styles.subtitle(subtitleTextSize, subtitleTextFam)}>
-          {Subtitle}
+          {subtitle}
         </Text>
       </View>
       {children}

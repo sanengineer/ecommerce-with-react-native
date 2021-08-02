@@ -12,7 +12,7 @@ const data = {
 
 const ListForm = ({ title, subtitle, label, onPress }) => (
   <>
-    <TextPlainNav title={title} Subtitle={subtitle}>
+    <TextPlainNav title={title} subtitle={subtitle}>
       <Button
         bgColor="transparent"
         textColor="#bdbdbd"

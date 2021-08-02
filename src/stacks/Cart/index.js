@@ -87,7 +87,7 @@ const data = [
 const FlatListFooterCart = () => (
   <View
     style={{
-      bottom: 80,
+      bottom: 100,
     }}>
     <TextButtonRow title="Total Price" Subtitle="Rp 990.000" textButton="Buy" />
   </View>
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     // flexDirection: 'column',
     // flex: 1,
   },
-  flatList: { marginBottom: 80 },
+  flatList: { marginBottom: 100 },
   firstRowContainer: { flexDirection: 'row', justifyContent: 'space-between' },
   secondRowContainer: {
     flexDirection: 'row',

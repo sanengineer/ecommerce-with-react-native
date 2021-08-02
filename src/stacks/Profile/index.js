@@ -12,25 +12,30 @@ import {
 import { IconContainer, IconTextNav, ListText, Space } from '../../components';
 import { IconArrowRight, ImageProfileSan } from '../../assets';
 import { ScrollView } from 'react-native-gesture-handler';
+import { Touchable } from 'react-native';
 
 const Profile = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.containerStack}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.subContainerStack}>
-          <View style={styles.avaNameEmailContainer}>
-            <View style={styles.avaContainer}>
-              <Image source={ImageProfileSan} style={styles.avatar} />
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => navigation.navigate('Account')}>
+            <View style={styles.avaNameEmailContainer}>
+              <View style={styles.avaContainer}>
+                <Image source={ImageProfileSan} style={styles.avatar} />
+              </View>
+              <Space height={10} />
+              <View style={styles.nameContainer}>
+                <Text style={styles.name}>San Engineer</Text>
+              </View>
+              <Space height={6} />
+              <View style={styles.emailContainer}>
+                <Text style={styles.email}>san@email.com</Text>
+              </View>
             </View>
-            <Space height={10} />
-            <View style={styles.nameContainer}>
-              <Text style={styles.name}>San Engineer</Text>
-            </View>
-            <Space height={6} />
-            <View style={styles.emailContainer}>
-              <Text style={styles.email}>san@email.com</Text>
-            </View>
-          </View>
+          </TouchableOpacity>
           <Space height={50} />
           <View style={styles.mainContainer}>
             <IconTextNav
@@ -54,13 +59,13 @@ const Profile = ({ navigation }) => {
 
             <IconTextNav
               icon="🤝"
-              text="Helps"
-              onPress={() => navigation.navigate('Bio')}
+              text="Help"
+              onPress={() => navigation.navigate('Help')}
             />
             <IconTextNav
               icon="🌡"
               text="Terms and Conditions"
-              onPress={() => navigation.navigate('Bio')}
+              onPress={() => navigation.navigate('Term Condition')}
             />
 
             <Space height={30} />
