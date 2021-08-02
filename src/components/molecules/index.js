@@ -7,6 +7,8 @@ import TextButtonRow from './TextButtonRow';
 import TextPlainNav from './TextPlainNav';
 import IconTextNav from './IconTextNav';
 import TextSubtext from './TextSubtext';
+import ModalBottom from './ModalBottom';
+import IconText from './IconText';
 
 export {
   Header,
@@ -18,4 +20,6 @@ export {
   TextPlainNav,
   IconTextNav,
   TextSubtext,
+  ModalBottom,
+  IconText,
 };

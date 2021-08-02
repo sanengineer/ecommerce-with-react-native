@@ -63,10 +63,10 @@ const styles = StyleSheet.compose({
     textAlign: txtAlign,
   }),
 
-  container: (color, sizeX, sizeY, radius, borderColor, borderWidth) => ({
+  container: (color, sizeY, sizeX, radius, borderColor, borderWidth) => ({
     backgroundColor: color,
-    paddingVertical: sizeX,
-    paddingHorizontal: sizeY,
+    paddingVertical: sizeY,
+    paddingHorizontal: sizeX,
     borderRadius: radius,
     borderColor: borderColor,
     borderWidth: borderWidth,
