@@ -35,7 +35,7 @@ const Bio = ({ navigation, route }) => {
 
   return (
     <SafeAreaView style={styles.safeContainer}>
-      <NavHeader navigation={navigation} title={route.name} />
+      <NavHeader navigation={navigation} title={route.name} navGoBack={true} />
       <View style={styles.stackContainer}>
         <Space height={10} />
 

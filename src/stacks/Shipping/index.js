@@ -83,9 +83,12 @@ const Shipping = ({ navigation, route }) => {
           </IconContainer>
         </TouchableOpacity>
       </NavHeader>
-      <ScrollView style={styles.mainContainer}>
+      <ScrollView
+        style={styles.mainContainer}
+        showsVerticalScrollIndicator={false}>
         <Text style={styles.title}>Address</Text>
         <Addresses />
+        <Space height={80} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -94,7 +97,7 @@ const Shipping = ({ navigation, route }) => {
 export default Shipping;
 
 const styles = StyleSheet.create({
-  safeContainer: { flex: 1 },
+  safeContainer: { flex: 1, backgroundColor: '#fff' },
   mainContainer: {
     // backgroundColor: 'red',
     paddingHorizontal: 20,

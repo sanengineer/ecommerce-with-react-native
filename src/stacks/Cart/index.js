@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   stackContainer: {
-    paddingBottom: 20,
+    paddingBottom: 34,
     backgroundColor: '#fff',
   },
   listItemContainer: {

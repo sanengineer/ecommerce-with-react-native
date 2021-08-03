@@ -20,7 +20,7 @@ const NavHeader = ({
           </View>
         ) : (
           <View>
-            <Space width={30} />
+            <Space width={30} height={32} />
           </View>
         )}
       </TouchableOpacity>
