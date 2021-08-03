@@ -51,9 +51,8 @@ const BottomNav = ({ state, descriptors, navigation }) => {
       <View
         style={{
           flexDirection: 'row',
-          borderTopWidth: 1,
-          borderStyle: 'solid',
-          borderColor: '#fafafa',
+          borderTopWidth: 0.5,
+          borderTopColor: '#efefef',
           minHeight: 40,
           paddingTop: 6,
           paddingBottom: 6,

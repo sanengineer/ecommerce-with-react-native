@@ -16,6 +16,8 @@ import Help from './Help';
 import TermCondition from './TermCondition';
 import Account from './Account';
 import NewAddress from './NewAddress';
+import AddNoteOrder from './AddNoteOrder';
+import ProductDetail from './ProductDetail';
 
 export {
   LogIn,
@@ -36,4 +38,6 @@ export {
   TermCondition,
   Account,
   NewAddress,
+  AddNoteOrder,
+  ProductDetail,
 };

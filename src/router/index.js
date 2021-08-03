@@ -21,6 +21,8 @@ import {
   TermCondition,
   Account,
   NewAddress,
+  AddNoteOrder,
+  ProductDetail,
 } from '../stacks';
 import { BottomNav } from '../components';
 
@@ -114,6 +116,16 @@ const Router = () => {
       <Stack.Screen
         name="New Address"
         component={NewAddress}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Product Detail"
+        component={ProductDetail}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Add Note Order"
+        component={AddNoteOrder}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

@@ -12,7 +12,7 @@ import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import { useNavigation } from '@react-navigation/native';
 
 import { IconAngleLeftBig } from '../../assets';
-import { Space } from '../../components';
+import { NavHeader, Space } from '../../components';
 
 const FirstRoute = () => (
   <View style={[styles.scene]}>
@@ -60,19 +60,8 @@ const Notification = ({ route }) => {
 
   return (
     <SafeAreaView style={styles.safeContainer}>
-      <View style={styles.screenContainer}>
-        <View style={styles.headerContainer}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <View style={styles.iconBackContainer}>
-              <IconAngleLeftBig />
-            </View>
-          </TouchableOpacity>
-          <Text style={styles.textHeaderContainer}>{route.name}</Text>
-          <View>
-            <Space width={34} />
-          </View>
-        </View>
-      </View>
+      <NavHeader navigation={navigation} title={route.name} />
+      {/* <View style={styles.screenContainer}> */}
       <TabView
         navigationState={{ index, routes }}
         renderTabBar={renderTabBar}
@@ -80,6 +69,7 @@ const Notification = ({ route }) => {
         onIndexChange={setIndex}
         initialLayout={initialLayout}
       />
+      {/* </View> */}
     </SafeAreaView>
   );
 };
@@ -91,7 +81,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  screenContainer: { paddingTop: 18 },
+  // screenContainer: { paddingTop: 18 },
   headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -109,6 +99,8 @@ const styles = StyleSheet.create({
   iconBackContainer: { padding: 5 },
   scene: {
     flex: 1,
+    paddingVertical: 20,
+    paddingHorizontal: 20,
   },
   tabViewItem: focused => ({
     color: focused ? 'black' : 'grey',

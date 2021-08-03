@@ -70,5 +70,6 @@ const styles = StyleSheet.compose({
     borderRadius: radius,
     borderColor: borderColor,
     borderWidth: borderWidth,
+    // flexDirection: 'row',
   }),
 });

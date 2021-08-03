@@ -10,6 +10,7 @@ import TextSubtext from './TextSubtext';
 import TextSubtextInput from './TextSubtextInput';
 import ModalBottom from './ModalBottom';
 import IconText from './IconText';
+import RadioFormCustom from './RadioFormCustom';
 
 export {
   Header,
@@ -24,4 +25,5 @@ export {
   TextSubtextInput,
   ModalBottom,
   IconText,
+  RadioFormCustom,
 };
