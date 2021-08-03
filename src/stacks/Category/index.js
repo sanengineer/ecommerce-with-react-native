@@ -13,7 +13,6 @@ import {
 import { CoffeeCup, IconAngleLeftBig, IconHeartDisable } from '../../assets';
 import { NavHeader, Space } from '../../components';
 import { useNavigation } from '@react-navigation/native';
-
 const data = [
   {
     product_id: 1,
@@ -22,7 +21,8 @@ const data = [
     price: 30000,
     stock: 20,
     image: CoffeeCup,
-    num_rate: 10,
+    promo: true,
+    // num_rate: 10,
   },
   {
     product_id: 2,
@@ -31,7 +31,8 @@ const data = [
     price: 12000,
     stock: 10,
     image: CoffeeCup,
-    num_rate: 30,
+    promo: false,
+    // num_rate: 30,
   },
   {
     product_id: 3,
@@ -40,7 +41,8 @@ const data = [
     price: 12000,
     stock: 40,
     image: CoffeeCup,
-    num_rate: 20,
+    promo: false,
+    // num_rate: 20,
   },
   {
     product_id: 4,
@@ -49,7 +51,8 @@ const data = [
     price: 12000,
     stock: 22,
     image: CoffeeCup,
-    num_rate: 12,
+    promo: false,
+    // num_rate: 12,
   },
   {
     product_id: 5,
@@ -58,7 +61,8 @@ const data = [
     price: 12000,
     stock: 16,
     image: CoffeeCup,
-    num_rate: 12,
+    promo: false,
+    // num_rate: 12,
   },
   {
     product_id: 6,
@@ -67,7 +71,28 @@ const data = [
     price: 12000,
     stock: 18,
     image: CoffeeCup,
-    num_rate: 14,
+    promo: false,
+    // num_rate: 14,
+  },
+  {
+    product_id: 7,
+    name: 'Palm Sugar Coffee Milk - 1L',
+    desc: 'Espresso based with 80% milk and 20% espresso coffee',
+    price: 12000,
+    stock: 18,
+    image: CoffeeCup,
+    promo: false,
+    // num_rate: 16,
+  },
+  {
+    product_id: 8,
+    name: 'Palm Sugar Coffee Milk - 1L',
+    desc: 'Espresso based with 80% milk and 20% espresso coffee',
+    price: 12000,
+    stock: 18,
+    image: CoffeeCup,
+    promo: true,
+    // num_rate: 16,
   },
 ];
 
@@ -151,7 +176,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   stackContainer: {
-    paddingTop: 20,
+    paddingTop: 0,
   },
 
   flatlistContainer: {
@@ -162,8 +187,10 @@ const styles = StyleSheet.create({
   itemContainer: {
     flex: 1,
     margin: 10,
+    justifyContent: 'space-around',
   },
   touchContainer: {
+    flex: 1,
     overflow: 'hidden',
     borderRadius: 10,
     borderColor: '#efefef',
@@ -174,9 +201,29 @@ const styles = StyleSheet.create({
     height: 120,
     width: Dimensions.get('window').width / numColumns,
   },
-  titlePriceContainer: { flex: 1, padding: 10 },
-  title: { fontFamily: 'CircularStd-Bold' },
-  price: { fontFamily: 'CircularStd-Book' },
+  titlePriceContainer: {
+    // flex: 1,
+    paddingHorizontal: 10,
+    paddingBottom: 10,
+    paddingTop: 10,
+    // backgroundColor: 'red',
+  },
+  title: { fontFamily: 'CircularStd-Book' },
+  price: { fontFamily: 'CircularStd-Bold' },
+  promoStickerProductContainer: {
+    position: 'absolute',
+    borderBottomRightRadius: 10,
+    backgroundColor: 'green',
+    paddingRight: 6,
+    paddingBottom: 4,
+    paddingTop: 4,
+    paddingLeft: 4,
+  },
+  promoText: {
+    color: '#fff',
+    textTransform: 'capitalize',
+    fontFamily: 'CircularStd-Bold',
+  },
   buttonContainer: {
     borderRadius: 10,
     borderWidth: 1,

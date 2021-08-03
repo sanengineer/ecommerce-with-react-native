@@ -1,6 +1,12 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  SafeAreaView,
+  TouchableOpacity,
+} from 'react-native';
 import { IconPlusCircle } from '../../assets';
 import { IconContainer, ListText, NavHeader, Space } from '../../components';
 import CardTextButton from '../../components/molecules/CardTextButton';
@@ -19,6 +25,16 @@ const data = [
   {
     shipping_id: 2,
     name_shipping: 'office',
+    street: 'latte street',
+    number: '40',
+    city: 'central',
+    province: 'middle earth',
+    postal_code: '10962',
+    main_address: false,
+  },
+  {
+    shipping_id: 3,
+    name_shipping: 'mother',
     street: 'latte street',
     number: '40',
     city: 'central',
@@ -67,10 +83,10 @@ const Shipping = ({ navigation, route }) => {
           </IconContainer>
         </TouchableOpacity>
       </NavHeader>
-      <View style={styles.mainContainer}>
+      <ScrollView style={styles.mainContainer}>
         <Text style={styles.title}>Address</Text>
         <Addresses />
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

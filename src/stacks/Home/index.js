@@ -324,6 +324,7 @@ const styles = StyleSheet.create({
   categoriesTouchable: {
     // backgroundColor: "red",
     borderRadius: 6,
+    paddingVertical: 10,
   },
 
   categoriesNameContainer: {
@@ -355,7 +356,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
 
-  item: {
+  titlePriceContainer: {
     // backgroundColor: 'red',
     paddingHorizontal: 10,
     paddingTop: 10,
@@ -521,7 +522,7 @@ const Home = ({ navigation, route }) => {
           </View>
         ) : null}
 
-        <View style={styles.item}>
+        <View style={styles.titlePriceContainer}>
           <Text style={styles.itemText}>{item.name}</Text>
           <Space height={12} />
           <Text style={styles.itemTextPrice}>Rp. {item.price}</Text>

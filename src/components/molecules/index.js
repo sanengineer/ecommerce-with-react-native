@@ -7,6 +7,7 @@ import TextButtonRow from './TextButtonRow';
 import TextPlainNav from './TextPlainNav';
 import IconTextNav from './IconTextNav';
 import TextSubtext from './TextSubtext';
+import TextSubtextInput from './TextSubtextInput';
 import ModalBottom from './ModalBottom';
 import IconText from './IconText';
 
@@ -20,6 +21,7 @@ export {
   TextPlainNav,
   IconTextNav,
   TextSubtext,
+  TextSubtextInput,
   ModalBottom,
   IconText,
 };

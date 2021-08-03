@@ -60,6 +60,7 @@ const BottomNav = ({ state, descriptors, navigation }) => {
           paddingHorizontal: 30,
           justifyContent: 'space-between',
           backgroundColor: '#fff',
+          // backgroundColor: 'red',
         }}>
         {state.routes.map((route, index) => {
           const { options } = descriptors[route.key];

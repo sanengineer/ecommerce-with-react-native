@@ -9,12 +9,15 @@ const IconText = ({
   text = 'Text',
   iconSize = 18,
   paddingY = 10,
+  color = 'black',
+  textSize = 16,
+  textFam = 'CircularStd-Bold',
 }) => {
   return (
     <View style={styles.container(paddingY)}>
       {showIcon ? <Text style={styles.icon(iconSize)}>{icon}</Text> : null}
       <Space width={width} />
-      <Text style={styles.text}>{text}</Text>
+      <Text style={styles.text(color, textSize, textFam)}>{text}</Text>
     </View>
   );
 };
@@ -31,8 +34,9 @@ const styles = StyleSheet.create({
   icon: iconSize => ({
     fontSize: iconSize,
   }),
-  text: {
-    fontSize: 16,
-    fontFamily: 'CircularStd-Bold',
-  },
+  text: (color, textSize, textFam) => ({
+    color: color,
+    fontSize: textSize,
+    fontFamily: textFam,
+  }),
 });
