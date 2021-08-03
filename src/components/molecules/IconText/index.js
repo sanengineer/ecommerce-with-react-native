@@ -8,10 +8,10 @@ const IconText = ({
   width = 10,
   text = 'Text',
   iconSize = 18,
-  paddingX = 10,
+  paddingY = 10,
 }) => {
   return (
-    <View style={styles.container(paddingX)}>
+    <View style={styles.container(paddingY)}>
       {showIcon ? <Text style={styles.icon(iconSize)}>{icon}</Text> : null}
       <Space width={width} />
       <Text style={styles.text}>{text}</Text>
@@ -22,10 +22,10 @@ const IconText = ({
 export default IconText;
 
 const styles = StyleSheet.create({
-  container: paddingX => ({
+  container: paddingY => ({
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: paddingX,
+    paddingVertical: paddingY,
     // backgroundColor: 'red',
   }),
   icon: iconSize => ({

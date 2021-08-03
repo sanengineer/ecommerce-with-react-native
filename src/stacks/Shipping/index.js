@@ -61,7 +61,7 @@ const Shipping = ({ navigation, route }) => {
   return (
     <SafeAreaView style={styles.safeContainer}>
       <NavHeader navigation={navigation} title={route.name}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('New Address')}>
           <IconContainer>
             <IconPlusCircle />
           </IconContainer>

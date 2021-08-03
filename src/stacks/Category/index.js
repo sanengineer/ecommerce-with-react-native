@@ -84,8 +84,10 @@ const CartNav = () => (
   </TouchableOpacity>
 );
 
-const Category = ({ route }) => {
-  const navigation = useNavigation();
+const Category = ({ route, navigation }) => {
+  // const navigation = useNavigation();
+
+  console.log(route);
 
   const renderItem = ({ item }) => (
     <View style={styles.itemContainer}>

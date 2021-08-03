@@ -8,9 +8,11 @@ const NavHeader = ({
   navGoBack = true,
   title = 'Nav Header',
   children,
+  borderWidth = 1,
+  borderColor = '#e7e7e7',
 }) => {
   return (
-    <View style={styles.navHeaderContainer}>
+    <View style={styles.navHeaderContainer(borderWidth, borderColor)}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
         {navGoBack ? (
           <View style={styles.iconBackContainer}>
@@ -31,16 +33,16 @@ const NavHeader = ({
 export default NavHeader;
 
 const styles = StyleSheet.create({
-  navHeaderContainer: {
+  navHeaderContainer: (borderWidth, borderColor) => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderBottomColor: '#e7e7e7',
-    borderBottomWidth: 1,
-    paddingBottom: 20,
-    paddingTop: 20,
+    borderBottomWidth: borderWidth,
+    borderBottomColor: borderColor,
+    paddingBottom: 10,
+    paddingTop: 10,
     paddingHorizontal: 20,
-  },
+  }),
   iconBackContainer: {
     //   backgroundColor: 'red',
     left: -10,

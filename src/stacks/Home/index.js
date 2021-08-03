@@ -397,11 +397,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const Home = () => {
+const Home = ({ navigation, route }) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const ref = useRef();
 
-  const navigation = useNavigation();
+  //debug
+  console.log(route);
+
+  // const navigation = useNavigation();
 
   useScrollToTop(ref);
 

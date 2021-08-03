@@ -3,23 +3,26 @@ import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { Button, NavHeader, Space, TextPlainNav } from '../../components';
 
 const data = {
-  name: 'San Engineer',
-  birthplace: 'Liverpool',
-  date_of_birth: 'January 1st, 1980',
+  fullname: 'San Engineer',
   gender: 'Male',
+  date_of_birth: 'January 1st, 1980',
   jobs: 'Gamer',
 };
+
+const data_to_array = Object.entries(data);
 
 const ListForm = ({ title, subtitle, label, onPress }) => (
   <>
     <TextPlainNav title={title} subtitle={subtitle}>
       <Button
         bgColor="transparent"
-        textColor="#bdbdbd"
+        textColor="#BCBCBC"
         txtDecorationLine="none"
         label={label}
         txtSize={14}
         onPress={onPress}
+        padSizeX={8}
+        padSizeY={8}
       />
     </TextPlainNav>
     <Space height={10} />
@@ -29,26 +32,40 @@ const ListForm = ({ title, subtitle, label, onPress }) => (
 const Bio = ({ navigation, route }) => {
   //debug
   console.log(navigation);
-  console.log(route);
 
   return (
     <SafeAreaView style={styles.safeContainer}>
+      <NavHeader navigation={navigation} title={route.name} />
       <View style={styles.stackContainer}>
-        <NavHeader navigation={navigation} title={route.name} />
         <Space height={10} />
+
         <ListForm
-          title="Name"
-          subtitle={data.name}
+          title="Fullname"
+          subtitle={data.fullname}
           label="Edit"
-          onPress={() => navigation.navigate('Bio Edit')}
+          onPress={() => navigation.navigate('Bio Edit', data_to_array[0])}
         />
-        <ListForm title="Birthplace" subtitle={data.birthplace} label="Edit" />
+
+        <ListForm
+          title="Gender"
+          subtitle={data.gender}
+          label="Edit"
+          onPress={() => navigation.navigate('Bio Edit', data_to_array[1])}
+        />
+
         <ListForm
           title="Date Of Birth"
           subtitle={data.date_of_birth}
           label="Edit"
+          onPress={() => navigation.navigate('Bio Edit', data_to_array[2])}
         />
-        <ListForm title="Jobs" subtitle={data.jobs} label="Edit" />
+
+        <ListForm
+          title="Jobs"
+          subtitle={data.jobs}
+          label="Edit"
+          onPress={() => navigation.navigate('Bio Edit', data_to_array[3])}
+        />
       </View>
     </SafeAreaView>
   );

@@ -15,6 +15,7 @@ import Security from './Security';
 import Help from './Help';
 import TermCondition from './TermCondition';
 import Account from './Account';
+import NewAddress from './NewAddress';
 
 export {
   LogIn,
@@ -34,4 +35,5 @@ export {
   Help,
   TermCondition,
   Account,
+  NewAddress,
 };

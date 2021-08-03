@@ -2,18 +2,21 @@ import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { Button, NavHeader, Space, TextSubtext } from '../../components';
 
-const data = { fullname: 'San Engineer' };
-
 const BioEdit = ({ navigation, route }) => {
+  console.log(route.params);
+  console.log(route);
+
+  const replaced = route.params[0].replace(/_/g, ' ');
+
   return (
     <SafeAreaView style={styles.safeContainer}>
       <NavHeader navigation={navigation} title={route.name} />
       <View style={styles.textSubtextContainer}>
         <Space height={20} />
         <TextSubtext
-          text="Fullname"
+          text={replaced}
           textSize={14}
-          subtext={data.fullname}
+          subtext={route.params[1]}
           bottomHeight={5}
         />
       </View>
@@ -36,7 +39,7 @@ const BioEdit = ({ navigation, route }) => {
 export default BioEdit;
 
 const styles = StyleSheet.create({
-  safeContainer: { flex: 1 },
+  safeContainer: { flex: 1, backgroundColor: '#fff' },
   textSubtextContainer: {
     marginHorizontal: 20,
     borderBottomColor: '#1440FF',

@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
   text: (textSize, textFam) => ({
     fontSize: textSize,
     fontFamily: textFam,
+    textTransform: 'capitalize',
   }),
   subtext: (subtextSize, subtextFam) => ({
     fontSize: subtextSize,

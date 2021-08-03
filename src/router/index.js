@@ -20,6 +20,7 @@ import {
   Help,
   TermCondition,
   Account,
+  NewAddress,
 } from '../stacks';
 import { BottomNav } from '../components';
 
@@ -108,6 +109,11 @@ const Router = () => {
       <Stack.Screen
         name="Account"
         component={Account}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="New Address"
+        component={NewAddress}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
