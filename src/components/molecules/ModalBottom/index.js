@@ -19,7 +19,7 @@ const ModalBottom = ({
         <View style={styles.subcontainer}>
           <View style={styles.touchContainer}>{children}</View>
           <Button
-            radius={5}
+            radius={10}
             borderColor="red"
             borderWidth={1}
             bgColor="transparent"

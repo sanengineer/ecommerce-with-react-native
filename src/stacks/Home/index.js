@@ -14,7 +14,13 @@ import { useNavigation, useScrollToTop } from '@react-navigation/native';
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { CoffeeCup, ImageHeaderBg, ImageHeaderBgBlue } from '../../assets';
-import { BannerHome, ListText, Space } from '../../components';
+import {
+  BannerHome,
+  IconText,
+  ListText,
+  ModalBottom,
+  Space,
+} from '../../components';
 
 const window = Dimensions.get('window');
 const screen = Dimensions.get('screen');
@@ -493,7 +499,7 @@ const Home = ({ navigation, route }) => {
                 <TouchableOpacity
                   style={styles.pointTitleContainer}
                   activeOpacity={0.6}
-                  onPress={toggleModal}>
+                  onPress={() => console.log('POINT')}>
                   <ListText
                     paddingX={0}
                     paddingY={0}
@@ -514,11 +520,17 @@ const Home = ({ navigation, route }) => {
                   // backgroundColor: 'red',
                   flexDirection: 'row',
                 }}>
-                <Text style={{ color: '#fff' }}>📍 Send To</Text>
-                <Space width={5} />
-                <Text style={{ color: '#fff', fontFamily: 'CircularStd-Bold' }}>
-                  Home Address 1
-                </Text>
+                <Text>📍</Text>
+                <TouchableOpacity
+                  style={{ flexDirection: 'row' }}
+                  onPress={toggleModal}>
+                  <Text style={{ color: '#fff' }}>Send To</Text>
+                  <Space width={5} />
+                  <Text
+                    style={{ color: '#fff', fontFamily: 'CircularStd-Bold' }}>
+                    Home Address 1
+                  </Text>
+                </TouchableOpacity>
               </View>
             </View>
             <View style={styles.homeBannerContainer}>
@@ -595,6 +607,30 @@ const Home = ({ navigation, route }) => {
         columnWrapperStyle={styles.containerFlatlist}
         showsVerticalScrollIndicator={false}
       />
+      <ModalBottom
+        onBackdropPress={toggleModal}
+        isVisible={isModalVisible}
+        onPress={toggleModal}
+        label="Close">
+        <TouchableOpacity>
+          <IconText
+            icon="📦"
+            text="Send To Home"
+            iconSize={30}
+            textFam="CircularStd-Book"
+          />
+        </TouchableOpacity>
+        <Space height={10} />
+        <TouchableOpacity>
+          <IconText
+            icon="🤚"
+            text="Pickup At Store"
+            iconSize={30}
+            textFam="CircularStd-Book"
+          />
+        </TouchableOpacity>
+        <Space height={20} />
+      </ModalBottom>
     </View>
   );
 };
