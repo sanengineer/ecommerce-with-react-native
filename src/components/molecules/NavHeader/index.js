@@ -10,20 +10,23 @@ const NavHeader = ({
   children,
   borderWidth = 1,
   borderColor = '#e7e7e7',
+  showSpaceLeft = true,
 }) => {
   return (
     <View style={styles.navHeaderContainer(borderWidth, borderColor)}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        {navGoBack ? (
+      {navGoBack ? (
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <View style={styles.iconBackContainer}>
             <IconAngleLeftBig />
           </View>
-        ) : (
-          <View>
-            <Space width={30} height={32} />
-          </View>
-        )}
-      </TouchableOpacity>
+        </TouchableOpacity>
+      ) : showSpaceLeft ? (
+        <View>
+          <Space width={30} height={32} />
+        </View>
+      ) : (
+        <></>
+      )}
       <Text style={styles.textHeader}>{title}</Text>
       <View>{children ? children : <Space width={30} />}</View>
     </View>
@@ -51,5 +54,6 @@ const styles = StyleSheet.create({
     fontFamily: 'CircularStd-Bold',
     fontSize: 18,
     textTransform: 'capitalize',
+    paddingVertical: 6,
   },
 });

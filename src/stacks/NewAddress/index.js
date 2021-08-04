@@ -84,6 +84,6 @@ export default NewAddress;
 
 const styles = StyleSheet.create({
   safeContainer: { flex: 1, backgroundColor: '#fff' },
-  mainContainer: { paddingHorizontal: 20, marginBottom: 100 },
+  mainContainer: { paddingHorizontal: 20, paddingBottom: 20 },
   formContainer: { borderBottomColor: '#cecece', borderBottomWidth: 1 },
 });

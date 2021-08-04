@@ -7,16 +7,20 @@ import {
   TouchableOpacity,
   FlatList,
   ImageBackground,
+  Touchable,
 } from 'react-native';
 
 import {
   CoffeeCup,
+  IconHeartDisable,
+  IconHeartEnable,
   IconMinusCircle,
   IconPlusCircle,
   IconTrashGrey,
 } from '../../assets';
 import {
   Button,
+  IconContainer,
   ModalCenter,
   ModalCenterTwoButton,
   NavHeader,
@@ -222,7 +226,13 @@ const Cart = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.safeAreaContainer}>
       <View style={styles.stackContainer}>
-        <NavHeader navGoBack={false} title="Cart" />
+        <NavHeader navGoBack={false} title="Cart" showSpaceLeft={false}>
+          <TouchableOpacity onPress={() => navigation.navigate('Wishlist')}>
+            <IconContainer>
+              <IconHeartDisable />
+            </IconContainer>
+          </TouchableOpacity>
+        </NavHeader>
         <FlatList
           ref={ref}
           data={data}

@@ -13,6 +13,7 @@ import IconText from './IconText';
 import RadioFormCustom from './RadioFormCustom';
 import ModalCenter from './ModalCenter';
 import ModalCenterTwoButton from './ModalCenterTwoButton';
+import CardImageTextButton from './CardImageTextButton';
 
 export {
   Header,
@@ -30,4 +31,5 @@ export {
   RadioFormCustom,
   ModalCenter,
   ModalCenterTwoButton,
+  CardImageTextButton,
 };

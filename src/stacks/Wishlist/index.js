@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
+  SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   View,
-  SafeAreaView,
   FlatList,
-  Image,
-  Dimensions,
-  TouchableOpacity,
 } from 'react-native';
-
-import { CoffeeCup, IconAngleLeftBig, IconHeartDisable } from '../../assets';
-import { CardImageTextButton, NavHeader, Space } from '../../components';
-import { useNavigation } from '@react-navigation/native';
+import {
+  CardImageTextButton,
+  ModalCenterTwoButton,
+  NavHeader,
+} from '../../components';
+import { CoffeeCup } from '../../assets';
 
 const data = [
   {
@@ -146,86 +146,61 @@ const data = [
   },
 ];
 
-const numColumns = 2;
+const Wishlist = ({ navigation, route }) => {
+  const [isModalVisible, setModalVisible] = useState(false);
 
-const CartNav = () => (
-  <TouchableOpacity onPress={() => console.log('item')}>
-    <View style={{ zIndex: 2 }}>
-      <Text style={styles.notifNumber}>16</Text>
-    </View>
-    <View>
-      <Text style={{ fontSize: 34 }}>🛒</Text>
-    </View>
-  </TouchableOpacity>
-);
-
-const Category = ({ route, navigation }) => {
-  // const navigation = useNavigation();
-
-  console.log(route);
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
 
   const renderItem = ({ item }) => (
     <CardImageTextButton
-      numColumns={2}
       item={item}
       onPressDetailProduct={() => navigation.navigate('Product Detail', item)}
-      onPressAddCart={() => console.log('Add Item')}
+      onPressAddCart={() => console.log('ADD ITEM')}
+      onPressDeleteItem={toggleModal}
     />
-  );
-
-  const FlatListFooterCategory = () => (
-    <View>
-      <Space height={100} />
-    </View>
   );
 
   return (
     <SafeAreaView style={styles.safeContainer}>
-      <View style={styles.stackContainer}>
-        <NavHeader title={route.params.category_name} navigation={navigation}>
-          <CartNav />
-        </NavHeader>
+      <NavHeader navigation={navigation} title={route.name} />
+      <ScrollView>
         <FlatList
-          numColumns={numColumns}
+          numColumns={2}
           data={data}
           renderItem={renderItem}
           keyExtractor={item => item.product_id}
           style={styles.flatlistContainer}
-          ListFooterComponent={FlatListFooterCategory}
           showsVerticalScrollIndicator={false}
         />
-      </View>
+      </ScrollView>
+      <ModalCenterTwoButton isVisible={isModalVisible} onPressNo={toggleModal}>
+        <Text
+          style={{
+            textAlign: 'center',
+            lineHeight: 20,
+            fontSize: 16,
+            fontFamily: 'CircularStd-Book',
+          }}>
+          Are you sure delete this item from wishlist ?
+        </Text>
+      </ModalCenterTwoButton>
     </SafeAreaView>
   );
 };
 
-export default Category;
+export default Wishlist;
 
 const styles = StyleSheet.create({
   safeContainer: {
     flex: 1,
     backgroundColor: '#fff',
   },
-  stackContainer: {
-    paddingTop: 0,
-  },
 
   flatlistContainer: {
     paddingTop: 10,
     paddingBottom: 100,
     marginHorizontal: 10,
-  },
-  notifNumber: {
-    backgroundColor: 'red',
-    position: 'absolute',
-    fontSize: 13,
-    top: -10,
-    right: 0,
-    fontFamily: 'CircularStd-Bold',
-    color: '#fff',
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 10,
-    overflow: 'hidden',
   },
 });
