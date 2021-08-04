@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -9,12 +9,23 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import { IconContainer, IconTextNav, ListText, Space } from '../../components';
+import {
+  IconContainer,
+  IconTextNav,
+  ListText,
+  ModalCenterTwoButton,
+  Space,
+} from '../../components';
 import { IconArrowRight, ImageProfileSan } from '../../assets';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Touchable } from 'react-native';
 
 const Profile = ({ navigation }) => {
+  const [isModalVisible, setModalVisible] = useState(false);
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
   return (
     <SafeAreaView style={styles.containerStack}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -71,7 +82,7 @@ const Profile = ({ navigation }) => {
             <Space height={30} />
 
             <View style={{ justifyContent: 'center', flexDirection: 'row' }}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={toggleModal}>
                 <View style={{ alignItems: 'center', padding: 20 }}>
                   <Text
                     style={{
@@ -87,6 +98,14 @@ const Profile = ({ navigation }) => {
           </View>
         </View>
       </ScrollView>
+      <ModalCenterTwoButton
+        isVisible={isModalVisible}
+        onPressYes={() => console.log('YES')}
+        onPressNo={toggleModal}>
+        <Text style={styles.modalTitle}>
+          Are you sure for out from this account?
+        </Text>
+      </ModalCenterTwoButton>
     </SafeAreaView>
   );
 };
@@ -128,5 +147,10 @@ const styles = StyleSheet.create({
   email: {
     fontFamily: 'CircularStd-Book',
     fontSize: 12,
+  },
+  modalTitle: {
+    fontFamily: 'CircularStd-Book',
+    fontSize: 18,
+    textAlign: 'center',
   },
 });

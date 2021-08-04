@@ -12,6 +12,7 @@ import ModalBottom from './ModalBottom';
 import IconText from './IconText';
 import RadioFormCustom from './RadioFormCustom';
 import ModalCenter from './ModalCenter';
+import ModalCenterTwoButton from './ModalCenterTwoButton';
 
 export {
   Header,
@@ -28,4 +29,5 @@ export {
   IconText,
   RadioFormCustom,
   ModalCenter,
+  ModalCenterTwoButton,
 };

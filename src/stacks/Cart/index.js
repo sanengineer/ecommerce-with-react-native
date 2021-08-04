@@ -18,6 +18,7 @@ import {
 import {
   Button,
   ModalCenter,
+  ModalCenterTwoButton,
   NavHeader,
   Space,
   TextButtonRow,
@@ -233,43 +234,12 @@ const Cart = ({ navigation }) => {
         />
         <FlatListFooterCart />
       </View>
-      <ModalCenter isVisible={isModalVisible} style={{ padding: 40 }}>
-        <View style={styles.modalContent}>
-          <View style={styles.modalTitleContainer}>
-            <Text style={styles.modalTitle}>
-              Are you sure delete this item ?
-            </Text>
-          </View>
-          <View style={styles.buttonYesNoContainer}>
-            <Button
-              onPress={() => console.log('YES')}
-              padSizeY={36}
-              padSizeX={6}
-              txtSize={14}
-              radius={4}
-              txtDecorationLine="none"
-              bgColor="#fff"
-              textColor="#000"
-              borderColor="#000"
-              borderWidth={1}
-              label="Yes"
-            />
-            <Button
-              onPress={toggleModal}
-              padSizeY={38}
-              padSizeX={6}
-              txtSize={14}
-              radius={4}
-              txtDecorationLine="none"
-              bgColor="#fff"
-              textColor="red"
-              borderColor="red"
-              borderWidth={1}
-              label="No"
-            />
-          </View>
-        </View>
-      </ModalCenter>
+      <ModalCenterTwoButton
+        onPressYes={() => console.log('YES')}
+        onPressNo={toggleModal}
+        isVisible={isModalVisible}>
+        <Text style={styles.modalTitle}>Are you sure delete this item ?</Text>
+      </ModalCenterTwoButton>
     </SafeAreaView>
   );
 };
@@ -338,25 +308,10 @@ const styles = StyleSheet.create({
   },
 
   iconPlusCircle: { marginLeft: 4 },
-  modalContent: {
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    backgroundColor: '#fff',
-    height: 148,
-    padding: 20,
-    borderRadius: 10,
-  },
-  modalTitleContainer: {
-    // backgroundColor: 'aqua',
-  },
+
   modalTitle: {
     fontFamily: 'CircularStd-Medium',
     fontSize: 18,
     textAlign: 'center',
-  },
-  buttonYesNoContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 20,
   },
 });
