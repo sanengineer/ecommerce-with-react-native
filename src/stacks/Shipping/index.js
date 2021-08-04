@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,7 +8,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { IconPlusCircle } from '../../assets';
-import { IconContainer, ListText, NavHeader, Space } from '../../components';
+import {
+  IconContainer,
+  ListText,
+  ModalBottom,
+  NavHeader,
+  Space,
+} from '../../components';
 import CardTextButton from '../../components/molecules/CardTextButton';
 
 const data = [
@@ -44,7 +50,7 @@ const data = [
   },
 ];
 
-const Addresses = () => {
+const Addresses = ({ onPress }) => {
   return (
     <>
       {data.map(item => (
@@ -66,6 +72,7 @@ const Addresses = () => {
             borderColor={item.main_address ? '#A6B7FF' : '#cecece'}
             default_label={item.main_address}
             label="Edit Address"
+            onPress={onPress}
           />
         </>
       ))}
@@ -74,6 +81,12 @@ const Addresses = () => {
 };
 
 const Shipping = ({ navigation, route }) => {
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
   return (
     <SafeAreaView style={styles.safeContainer}>
       <NavHeader navigation={navigation} title={route.name}>
@@ -87,9 +100,48 @@ const Shipping = ({ navigation, route }) => {
         style={styles.mainContainer}
         showsVerticalScrollIndicator={false}>
         <Text style={styles.title}>Address</Text>
-        <Addresses />
+        <Addresses onPress={toggleModal} />
         <Space height={80} />
       </ScrollView>
+      <ModalBottom
+        isVisible={isModalVisible}
+        showButton={false}
+        // onSwipeCancel={toggleModal}
+        onBackdropPress={toggleModal}
+        onSwipeComplete={toggleModal}
+        showSwipeCloseButton={true}
+        useNativeDriverForBackdrop
+        swipeDirection={['down']}>
+        <View>
+          <TouchableOpacity>
+            <View
+              style={{
+                paddingHorizontal: 10,
+                paddingVertical: 14,
+              }}>
+              <Text style={{ fontSize: 18, fontFamily: 'CircularStd-Book' }}>
+                Set as default address
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View
+              style={{
+                paddingHorizontal: 10,
+                paddingVertical: 14,
+              }}>
+              <Text
+                style={{
+                  fontSize: 18,
+                  fontFamily: 'CircularStd-Book',
+                  color: 'red',
+                }}>
+                Remove address
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </ModalBottom>
     </SafeAreaView>
   );
 };

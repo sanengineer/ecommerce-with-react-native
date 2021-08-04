@@ -12,20 +12,28 @@ const CardTextButton = ({
   radius = 10,
   borderColor,
   label = 'Button',
+  onPress,
 }) => {
   return (
     <View style={styles.card(padding, radius, borderColor)}>
       <View style={styles.firstRow}>
         <View style={styles.textContainer}>
-          <Text style={styles.text}>{text}</Text>
-          <Space width={8} />
           {default_label ? (
-            <View style={styles.defaultContainer}>
-              <Text style={styles.default}>default</Text>
-            </View>
-          ) : null}
+            <>
+              <Text style={styles.text}>{text}</Text>
+              <Space width={8} />
+              <View style={styles.defaultContainer}>
+                <Text style={styles.default}>default</Text>
+              </View>
+            </>
+          ) : (
+            <>
+              <Text style={styles.text}>{text}</Text>
+              <Space width={8} />
+            </>
+          )}
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onPress} activeOpacity={0.7}>
           <IconContainer>
             <IconMoreHorizontal />
           </IconContainer>
