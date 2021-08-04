@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -15,7 +15,13 @@ import {
   IconPlusCircle,
   IconTrashGrey,
 } from '../../assets';
-import { NavHeader, Space, TextButtonRow } from '../../components';
+import {
+  Button,
+  ModalCenter,
+  NavHeader,
+  Space,
+  TextButtonRow,
+} from '../../components';
 import { useScrollToTop } from '@react-navigation/native';
 
 const data = [
@@ -160,7 +166,12 @@ const FlatListFooterCart = () => (
 );
 
 const Cart = ({ navigation }) => {
+  const [isModalVisible, setModalVisible] = useState(false);
   const ref = useRef();
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
   useScrollToTop(ref);
 
   const renderItem = ({ item }) => (
@@ -183,7 +194,7 @@ const Cart = ({ navigation }) => {
       <Space height={20} />
 
       <View style={styles.secondRowContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={toggleModal}>
           <View style={styles.iconTrash}>
             <IconTrashGrey />
           </View>
@@ -222,6 +233,43 @@ const Cart = ({ navigation }) => {
         />
         <FlatListFooterCart />
       </View>
+      <ModalCenter isVisible={isModalVisible} style={{ padding: 40 }}>
+        <View style={styles.modalContent}>
+          <View style={styles.modalTitleContainer}>
+            <Text style={styles.modalTitle}>
+              Are you sure delete this item ?
+            </Text>
+          </View>
+          <View style={styles.buttonYesNoContainer}>
+            <Button
+              onPress={() => console.log('YES')}
+              padSizeY={36}
+              padSizeX={6}
+              txtSize={14}
+              radius={4}
+              txtDecorationLine="none"
+              bgColor="#fff"
+              textColor="#000"
+              borderColor="#000"
+              borderWidth={1}
+              label="Yes"
+            />
+            <Button
+              onPress={toggleModal}
+              padSizeY={38}
+              padSizeX={6}
+              txtSize={14}
+              radius={4}
+              txtDecorationLine="none"
+              bgColor="#fff"
+              textColor="red"
+              borderColor="red"
+              borderWidth={1}
+              label="No"
+            />
+          </View>
+        </View>
+      </ModalCenter>
     </SafeAreaView>
   );
 };
@@ -290,4 +338,25 @@ const styles = StyleSheet.create({
   },
 
   iconPlusCircle: { marginLeft: 4 },
+  modalContent: {
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    backgroundColor: '#fff',
+    height: 148,
+    padding: 20,
+    borderRadius: 10,
+  },
+  modalTitleContainer: {
+    // backgroundColor: 'aqua',
+  },
+  modalTitle: {
+    fontFamily: 'CircularStd-Medium',
+    fontSize: 18,
+    textAlign: 'center',
+  },
+  buttonYesNoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 20,
+  },
 });
