@@ -9,7 +9,7 @@ const ModalCenterTwoButton = ({
   onPressNo,
   children,
 }) => (
-  <ModalCenter isVisible={isVisible} style={{ padding: 40 }}>
+  <ModalCenter isVisible={isVisible} style={{ padding: 20 }}>
     <View style={styles.modalContent}>
       <View style={styles.modalTitleContainer}>{children}</View>
       <View style={styles.buttonYesNoContainer}>

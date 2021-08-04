@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, SafeAreaView } from 'react-native';
+import { StyleSheet, View, ScrollView, SafeAreaView } from 'react-native';
 import {
   Button,
   IconText,
@@ -26,6 +26,7 @@ const Form = ({ text, ...props }) => (
       <TextSubtextInput
         bottomHeight={6}
         text={text}
+        subtextFam="CircularStd-Book"
         textSize={12}
         subtext="..."
         subtextSize={16}

@@ -16,6 +16,7 @@ const CardImageTextButton = ({
   onPressDetailProduct,
   onPressAddCart,
   onPressDeleteItem,
+  showIconBottom = false,
 }) => {
   if (item !== undefined)
     return (
@@ -36,13 +37,17 @@ const CardImageTextButton = ({
               <Text style={styles.price}>Rp. {item.price}</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={{ position: 'absolute', right: 10, bottom: 10 }}
-            onPress={onPressDeleteItem}>
-            <IconContainer>
-              <IconTrashGrey />
-            </IconContainer>
-          </TouchableOpacity>
+          {showIconBottom ? (
+            <TouchableOpacity
+              style={{ position: 'absolute', right: 10, bottom: 10 }}
+              onPress={onPressDeleteItem}>
+              <IconContainer>
+                <IconTrashGrey />
+              </IconContainer>
+            </TouchableOpacity>
+          ) : (
+            <></>
+          )}
         </View>
         <Space height={10} />
         <View style={styles.buttonContainer}>

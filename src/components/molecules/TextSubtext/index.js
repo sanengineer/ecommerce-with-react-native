@@ -33,5 +33,6 @@ const styles = StyleSheet.create({
   subtext: (subtextSize, subtextFam) => ({
     fontSize: subtextSize,
     fontFamily: subtextFam,
+    textTransform: 'capitalize',
   }),
 });

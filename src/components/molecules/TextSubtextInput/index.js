@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     fontSize: subtextSize,
     fontFamily: subtextFam,
     paddingVertical: 8,
-    // backgroundColor: 'red',
+    // textTransform: 'capitalize',
+    // backgroundColor: 'aqua',
   }),
 });

@@ -159,22 +159,23 @@ const Wishlist = ({ navigation, route }) => {
       onPressDetailProduct={() => navigation.navigate('Product Detail', item)}
       onPressAddCart={() => console.log('ADD ITEM')}
       onPressDeleteItem={toggleModal}
+      showIconBottom={true}
     />
   );
 
   return (
     <SafeAreaView style={styles.safeContainer}>
       <NavHeader navigation={navigation} title={route.name} />
-      <ScrollView>
-        <FlatList
-          numColumns={2}
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={item => item.product_id}
-          style={styles.flatlistContainer}
-          showsVerticalScrollIndicator={false}
-        />
-      </ScrollView>
+
+      <FlatList
+        numColumns={2}
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={item => item.product_id}
+        style={styles.flatlistContainer}
+        showsVerticalScrollIndicator={false}
+      />
+
       <ModalCenterTwoButton isVisible={isModalVisible} onPressNo={toggleModal}>
         <Text
           style={{

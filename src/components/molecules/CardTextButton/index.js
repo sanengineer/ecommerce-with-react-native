@@ -13,6 +13,7 @@ const CardTextButton = ({
   borderColor,
   label = 'Button',
   onPress,
+  onPressEdit,
 }) => {
   return (
     <View style={styles.card(padding, radius, borderColor)}>
@@ -55,6 +56,7 @@ const CardTextButton = ({
         borderWidth={1}
         borderColor="#cecece"
         label={label}
+        onPress={onPressEdit}
       />
     </View>
   );

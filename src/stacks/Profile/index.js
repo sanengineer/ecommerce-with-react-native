@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
   },
   modalTitle: {
     fontFamily: 'CircularStd-Book',
-    fontSize: 18,
+    fontSize: 16,
     textAlign: 'center',
   },
 });

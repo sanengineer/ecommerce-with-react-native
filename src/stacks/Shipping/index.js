@@ -21,6 +21,7 @@ const data = [
   {
     shipping_id: 1,
     name_shipping: 'home',
+    receiver_name: 'san home',
     street: 'espresso street',
     number: '20',
     city: 'gotham',
@@ -31,6 +32,7 @@ const data = [
   {
     shipping_id: 2,
     name_shipping: 'office',
+    receiver_name: 'san office',
     street: 'latte street',
     number: '40',
     city: 'central',
@@ -41,6 +43,7 @@ const data = [
   {
     shipping_id: 3,
     name_shipping: 'mother',
+    receiver_name: 'san mother',
     street: 'latte street',
     number: '40',
     city: 'central',
@@ -50,7 +53,7 @@ const data = [
   },
 ];
 
-const Addresses = ({ onPress }) => {
+const Addresses = ({ onPress, navigation }) => {
   return (
     <>
       {data.map(item => (
@@ -73,6 +76,7 @@ const Addresses = ({ onPress }) => {
             default_label={item.main_address}
             label="Edit Address"
             onPress={onPress}
+            onPressEdit={() => navigation.navigate('Edit Address', item)}
           />
         </>
       ))}
@@ -100,7 +104,7 @@ const Shipping = ({ navigation, route }) => {
         style={styles.mainContainer}
         showsVerticalScrollIndicator={false}>
         <Text style={styles.title}>Address</Text>
-        <Addresses onPress={toggleModal} />
+        <Addresses onPress={toggleModal} navigation={navigation} />
         <Space height={80} />
       </ScrollView>
       <ModalBottom
