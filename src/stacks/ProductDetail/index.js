@@ -120,6 +120,7 @@ const ProductDetail = ({ navigation, route }) => {
             txtDecorationLine="none"
             padSizeX={10}
             txtSize={16}
+            label="Add Notes"
             fontFam="CircularStd-Bold"
             onPress={() => navigation.navigate('Add Note Order')}
           />

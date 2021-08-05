@@ -15,7 +15,9 @@ const IconTextNav = ({ onPress, icon = '👻', text = 'Text', hideIcon }) => {
       ]}>
       <View style={styles.iconTextNavContainer}>
         <View style={styles.iconTextContainer}>
-          {hideIcon ? null : (
+          {hideIcon ? (
+            <></>
+          ) : (
             <>
               <IconContainer>
                 <Text style={{ fontSize: 26 }}>{icon}</Text>

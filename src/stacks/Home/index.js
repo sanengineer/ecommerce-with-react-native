@@ -581,7 +581,9 @@ const Home = ({ navigation, route }) => {
           <View style={styles.promoStickerProductContainer}>
             <Text style={styles.promoText}>promo</Text>
           </View>
-        ) : null}
+        ) : (
+          <></>
+        )}
 
         <View style={styles.titlePriceContainer}>
           <Text style={styles.itemText}>{item.name}</Text>

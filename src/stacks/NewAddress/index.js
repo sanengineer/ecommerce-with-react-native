@@ -73,9 +73,10 @@ const NewAddress = ({ navigation, route }) => {
           borderWidth={1}
           txtDecorationLine="none"
           txtSize={14}
-          padSizeX={10}
+          padSizeX={16}
           radius={8}
         />
+        <Space height={60} />
       </ScrollView>
     </SafeAreaView>
   );

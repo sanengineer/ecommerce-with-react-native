@@ -21,7 +21,9 @@ const TextSubtextInput = ({
         {text}
         {boldOn ? (
           <Text style={{ fontFamily: `${boldFamily}` }}>{bold_text}</Text>
-        ) : null}
+        ) : (
+          <></>
+        )}
       </Text>
       <Space height={midHeight} />
       <TextInput

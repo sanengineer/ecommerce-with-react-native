@@ -15,7 +15,7 @@ const IconText = ({
 }) => {
   return (
     <View style={styles.container(paddingY)}>
-      {showIcon ? <Text style={styles.icon(iconSize)}>{icon}</Text> : null}
+      {showIcon ? <Text style={styles.icon(iconSize)}>{icon}</Text> : <></>}
       <Space width={width} />
       <Text style={styles.text(color, textSize, textFam)}>{text}</Text>
     </View>
