@@ -29,6 +29,7 @@ const EditAddress = ({ navigation, route }) => {
           width={0}
           color="#000"
           textSize={18}
+          paddingX={0}
         />
         <Space height={20} />
         <FormTextSubtext text="Receiver Name" subtext={address.receiver_name} />

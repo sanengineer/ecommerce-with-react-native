@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput } from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { Space } from '../../atoms';
 
 const TextSubtextInput = ({
@@ -12,12 +12,13 @@ const TextSubtextInput = ({
   subtext = 'Subtext',
   bottomHeight = 0,
   boldOn = false,
+  textColor = '#fff',
   boldFamily,
   bold_text,
 }) => {
   return (
-    <>
-      <Text style={styles.text(textSize, textFam)}>
+    <View style={styles.container}>
+      <Text style={styles.text(textSize, textFam, textColor)}>
         {text}
         {boldOn ? (
           <Text style={{ fontFamily: `${boldFamily}` }}>{bold_text}</Text>
@@ -31,17 +32,21 @@ const TextSubtextInput = ({
         placeholder={subtext}
       />
       <Space height={bottomHeight} />
-    </>
+    </View>
   );
 };
 
 export default TextSubtextInput;
 
 const styles = StyleSheet.create({
-  text: (textSize, textFam) => ({
+  container: {
+    flexDirection: 'column',
+  },
+  text: (textSize, textFam, textColor) => ({
     fontSize: textSize,
     fontFamily: textFam,
     textTransform: 'capitalize',
+    color: textColor,
   }),
   subtext: (subtextSize, subtextFam) => ({
     fontSize: subtextSize,

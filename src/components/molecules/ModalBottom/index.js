@@ -9,8 +9,11 @@ const ModalBottom = ({
   children,
   label,
   onPress,
+  paddingButtonContainer = 20,
+  paddingModal,
   showButton = true,
   showSwipeCloseButton = false,
+  textButtonSize = 14,
   ...props
 }) => {
   return (
@@ -40,22 +43,24 @@ const ModalBottom = ({
           <></>
         )}
 
-        <View style={styles.subcontainer}>
+        <View style={styles.subcontainer(paddingModal)}>
           {showButton ? (
             <>
               <View style={styles.touchContainer}>{children}</View>
-              <Button
-                radius={10}
-                borderColor="red"
-                borderWidth={1}
-                bgColor="transparent"
-                textColor="red"
-                padSizeX={16}
-                txtDecorationLine="none"
-                label={label}
-                txtSize={16}
-                onPress={onPress}
-              />
+              <View style={styles.buttonContainer(paddingButtonContainer)}>
+                <Button
+                  radius={10}
+                  borderColor="red"
+                  borderWidth={1}
+                  bgColor="transparent"
+                  textColor="red"
+                  padSizeX={16}
+                  txtDecorationLine="none"
+                  label={label}
+                  txtSize={textButtonSize}
+                  onPress={onPress}
+                />
+              </View>
               <Space height={10} />
             </>
           ) : (
@@ -74,16 +79,19 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     margin: 0,
   },
-  subcontainer: {
+  subcontainer: paddingModal => ({
     backgroundColor: '#fff',
     // height: 180,
-    paddingHorizontal: 20,
+    paddingHorizontal: paddingModal,
     paddingTop: 20,
     paddingBottom: 20,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-  },
+  }),
   touchContainer: {
     paddingBottom: 10,
   },
+  buttonContainer: paddingButtonContainer => ({
+    paddingHorizontal: paddingButtonContainer,
+  }),
 });

@@ -45,12 +45,14 @@ const NewAddress = ({ navigation, route }) => {
       <ScrollView
         style={styles.mainContainer}
         showsVerticalScrollIndicator={false}>
+        <Space height={20} />
         <IconText
           showIcon={false}
           text={route.name}
           width={0}
           color="#0030FF"
           textSize={18}
+          paddingX={0}
         />
         <Space height={20} />
         <Form text="Receiver Name" />

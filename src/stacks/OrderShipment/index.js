@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -13,14 +13,17 @@ import {
 } from 'react-native';
 import {
   Border,
+  Button,
   IconContainer,
+  IconText,
   IconTextNav,
+  ModalBottom,
   NavHeader,
   Space,
   TextButtonRow,
   TextSubtext,
 } from '../../components';
-import { CoffeeCup, IconChevronDown } from '../../assets';
+import { CoffeeCup, IconChevronDown, LogoGojek, LogoGrab } from '../../assets';
 
 const data_address = [
   {
@@ -114,6 +117,17 @@ const CardProduct = () => (
 );
 
 const OrderShipment = ({ navigation, route }) => {
+  const [isShipmentModalVisible, setShipmentModalVisible] = useState(false);
+
+  const shipmentToggleModal = () => {
+    setShipmentModalVisible(!isShipmentModalVisible);
+  };
+
+  const [isModalVisible, setModalVisible] = useState(false);
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
   return (
     <SafeAreaView style={styles.safeContainer}>
       <NavHeader navigation={navigation} title="Shipment" />
@@ -149,14 +163,84 @@ const OrderShipment = ({ navigation, route }) => {
         <Border />
         <CardProduct />
         <Border />
-        <IconTextNav />
+        <IconTextNav
+          icon="🚛"
+          text="Shipment Option"
+          size={14}
+          width={10}
+          fontFam="CircularStd-Bold"
+          onPress={shipmentToggleModal}
+        />
         <Border />
-        <IconTextNav />
+        <IconTextNav
+          icon="✂️"
+          text="Coupon"
+          size={14}
+          width={10}
+          fontFam="CircularStd-Bold"
+          onPress={() => navigation.navigate('Coupon')}
+        />
         <Border />
-        <TextSubtext />
+
+        <View style={styles.cartResumeContainer}>
+          <Text style={styles.cartResumeText}>Cart Resume</Text>
+          <Space height={6} />
+          <View style={styles.detailTotalPriceContainer}>
+            <Text style={styles.detailTotalPriceText}>
+              Total Price (6 items)
+            </Text>
+            <Text style={styles.detailTotalPriceNumber}>Rp 900.000</Text>
+          </View>
+        </View>
+
         <Border />
-        <TextButtonRow />
+        <TextButtonRow
+          borderBottomWidth={0}
+          title="Total Billing"
+          Subtitle="Rp. 900.000"
+          textButton="Select Payment"
+          buttonPaddingX={10}
+        />
       </ScrollView>
+      <ModalBottom
+        isVisible={isShipmentModalVisible}
+        onBackdropPress={shipmentToggleModal}
+        label="Close"
+        onPress={shipmentToggleModal}
+        textButtonSize={14}>
+        <TouchableOpacity style={styles.touchModalShipment}>
+          <IconContainer>
+            <LogoGojek />
+          </IconContainer>
+          <View style={styles.rowModalContainer}>
+            <IconText
+              showIcon={false}
+              text="Same Day"
+              width={0}
+              textSize={14}
+              paddingX={0}
+            />
+            <Text style={styles.textShipmentPrice}>Rp 30.000</Text>
+          </View>
+        </TouchableOpacity>
+
+        <Border height={1} />
+        <TouchableOpacity style={styles.touchModalShipment}>
+          <IconContainer>
+            <LogoGrab />
+          </IconContainer>
+          <View style={styles.rowModalContainer}>
+            <IconText
+              showIcon={false}
+              text="Same Day"
+              width={0}
+              textSize={14}
+              paddingX={0}
+            />
+            <Text style={styles.textShipmentPrice}>Rp 30.000</Text>
+          </View>
+        </TouchableOpacity>
+      </ModalBottom>
     </SafeAreaView>
   );
 };
@@ -237,6 +321,43 @@ const styles = StyleSheet.create({
   },
   subtotalPrice: {
     fontSize: 14,
+    fontFamily: 'CircularStd-Bold',
+  },
+  touchModalShipment: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+  },
+  cartResumeContainer: {
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+    flexDirection: 'column',
+  },
+  detailTotalPriceContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  cartResumeText: {
+    fontFamily: 'CircularStd-Bold',
+    lineHeight: 20,
+  },
+  detailTotalPriceText: {
+    fontFamily: 'CircularStd-Book',
+    lineHeight: 20,
+    fontSize: 12,
+  },
+  detailTotalPriceNumber: {
+    fontSize: 12,
+    fontFamily: 'CircularStd-Bold',
+    lineHeight: 20,
+  },
+  rowModalContainer: {
+    // backgroundColor: 'red',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  textShipmentPrice: {
+    fontSize: 16,
     fontFamily: 'CircularStd-Bold',
   },
 });

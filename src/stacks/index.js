@@ -21,6 +21,7 @@ import ProductDetail from './ProductDetail';
 import Wishlist from './Wishlist';
 import EditAddress from './EditAdddress';
 import OrderShipment from './OrderShipment';
+import Coupon from './Coupon';
 
 export {
   LogIn,
@@ -46,4 +47,5 @@ export {
   Wishlist,
   EditAddress,
   OrderShipment,
+  Coupon,
 };

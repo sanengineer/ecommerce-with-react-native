@@ -26,6 +26,7 @@ import {
   Wishlist,
   EditAddress,
   OrderShipment,
+  Coupon,
 } from '../stacks';
 import { BottomNav } from '../components';
 
@@ -144,6 +145,11 @@ const Router = () => {
       <Stack.Screen
         name="Order Shipment"
         component={OrderShipment}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Coupon"
+        component={Coupon}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

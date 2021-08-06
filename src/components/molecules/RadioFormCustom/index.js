@@ -1,10 +1,17 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import RadioForm, {
   RadioButton as RadioButtonRN,
   RadioButtonInput,
 } from 'react-native-simple-radio-button';
 
-const RadioFormCustom = ({ radio_props }) => {
+const RadioFormCustom = ({
+  radio_props,
+  alignItems = 'center',
+  justifyContent = 'center',
+  marginRight = 10,
+  width = 50,
+}) => {
   //
   //debug
   console.log('RADIO_PROPS:', radio_props);
@@ -14,16 +21,12 @@ const RadioFormCustom = ({ radio_props }) => {
         <RadioButtonRN
           labelHorizontal={true}
           key={i}
-          style={{
-            // paddingHorizontal: 30,
-            // paddingBottom: 20,
-            // paddingTop: 10,
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginRight: 10,
-            // backgroundColor: 'red',
-            width: 50,
-          }}>
+          style={styles.radioButton(
+            marginRight,
+            width,
+            justifyContent,
+            alignItems,
+          )}>
           <RadioButtonInput
             obj={obj}
             index={i}
@@ -44,3 +47,12 @@ const RadioFormCustom = ({ radio_props }) => {
 };
 
 export default RadioFormCustom;
+
+const styles = StyleSheet.create({
+  radioButton: (marginRight, width, justifyContent, alignItems) => ({
+    marginRight: marginRight,
+    width: width,
+    justifyContent: justifyContent,
+    alignItems: alignItems,
+  }),
+});

@@ -9,12 +9,13 @@ const IconText = ({
   text = 'Text',
   iconSize = 18,
   paddingY = 10,
+  paddingX = 20,
   color = 'black',
   textSize = 16,
   textFam = 'CircularStd-Bold',
 }) => {
   return (
-    <View style={styles.container(paddingY)}>
+    <View style={styles.container(paddingY, paddingX)}>
       {showIcon ? <Text style={styles.icon(iconSize)}>{icon}</Text> : <></>}
       <Space width={width} />
       <Text style={styles.text(color, textSize, textFam)}>{text}</Text>
@@ -25,18 +26,21 @@ const IconText = ({
 export default IconText;
 
 const styles = StyleSheet.create({
-  container: paddingY => ({
+  container: (paddingY, paddingX) => ({
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: paddingY,
+    marginHorizontal: paddingX,
     // backgroundColor: 'red',
   }),
   icon: iconSize => ({
     fontSize: iconSize,
+    // backgroundColor: 'grey',
   }),
   text: (color, textSize, textFam) => ({
     color: color,
     fontSize: textSize,
     fontFamily: textFam,
+    // backgroundColor: 'aqua',
   }),
 });

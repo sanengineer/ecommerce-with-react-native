@@ -26,6 +26,7 @@ import IconMinusCircle from './icon_minus-circle.svg';
 import IconMenuRounded from './icon_menu_rounded_deactive.svg';
 import IconMenuRoundedActive from './icon_menu_rounded_active.svg';
 import IconChevronDown from './icon_chevron_down.svg';
+import IconInfoCircle from './icon_info-circle.svg';
 
 export {
   IconShipping,
@@ -52,4 +53,5 @@ export {
   IconMenuRounded,
   IconMenuRoundedActive,
   IconChevronDown,
+  IconInfoCircle,
 };

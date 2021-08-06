@@ -14,6 +14,7 @@ import {
   ModalBottom,
   NavHeader,
   Space,
+  Border,
 } from '../../components';
 import CardTextButton from '../../components/molecules/CardTextButton';
 
@@ -61,7 +62,7 @@ const Addresses = ({ onPress, navigation }) => {
           <Space height={30} />
           <CardTextButton
             text={item.name_shipping}
-            subtext={`${data.street} No ${data.number}, ${data.city}, ${data.province} ${data.postal_code}`}
+            subtext={`${item.street} No ${item.number}, ${item.city}, ${item.province} ${item.postal_code}`}
             borderColor={item.main_address ? '#A6B7FF' : '#cecece'}
             default_label={item.main_address}
             label="Edit Address"
@@ -110,23 +111,24 @@ const Shipping = ({ navigation, route }) => {
           <TouchableOpacity>
             <View
               style={{
-                paddingHorizontal: 10,
+                paddingHorizontal: 20,
                 paddingVertical: 14,
               }}>
-              <Text style={{ fontSize: 18, fontFamily: 'CircularStd-Book' }}>
+              <Text style={{ fontSize: 16, fontFamily: 'CircularStd-Book' }}>
                 Set as default address
               </Text>
             </View>
           </TouchableOpacity>
+          <Border height={1} />
           <TouchableOpacity>
             <View
               style={{
-                paddingHorizontal: 10,
+                paddingHorizontal: 20,
                 paddingVertical: 14,
               }}>
               <Text
                 style={{
-                  fontSize: 18,
+                  fontSize: 16,
                   fontFamily: 'CircularStd-Book',
                   color: 'red',
                 }}>
