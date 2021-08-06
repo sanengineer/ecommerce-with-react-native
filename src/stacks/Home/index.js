@@ -374,6 +374,7 @@ const styles = StyleSheet.create({
     borderColor: '#efefef',
     borderWidth: 1,
     borderRadius: 6,
+    marginRight: 20,
   },
 
   categoriesTouchable: {
@@ -546,21 +547,18 @@ const Home = ({ navigation, route }) => {
             style={{ marginTop: Dimensions.get('screen').height / 10 }}>
             <View style={styles.categoriesGroupName}>
               {categories.map(item => (
-                <>
-                  <View style={styles.categoriesContainer}>
-                    <TouchableOpacity
-                      style={styles.categoriesTouchable}
-                      onPress={() => navigation.navigate('Category', item)}>
-                      <View style={styles.categoriesNameContainer}>
-                        <ListText
-                          text={`${item.category_name}`}
-                          style={styles.categoriesName}
-                        />
-                      </View>
-                    </TouchableOpacity>
-                  </View>
-                  <Space width={20} />
-                </>
+                <View style={styles.categoriesContainer} key={item.category_id}>
+                  <TouchableOpacity
+                    style={styles.categoriesTouchable}
+                    onPress={() => navigation.navigate('Category', item)}>
+                    <View style={styles.categoriesNameContainer}>
+                      <ListText
+                        text={`${item.category_name}`}
+                        style={styles.categoriesName}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                </View>
               ))}
             </View>
           </ScrollView>
@@ -606,6 +604,7 @@ const Home = ({ navigation, route }) => {
         numColumns={numColumns}
         keyExtractor={(item, index) => item.product_id}
         ListHeaderComponent={FlatListHeaderHome}
+        ListFooterComponent={() => <Space height={20} />}
         columnWrapperStyle={styles.containerFlatlist}
         showsVerticalScrollIndicator={false}
       />

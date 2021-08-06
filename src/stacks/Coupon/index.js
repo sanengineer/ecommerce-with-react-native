@@ -123,7 +123,7 @@ const Coupon = ({ navigation, route }) => {
           </Text>
           <Space height={20} />
           {data_coupon.map(item => (
-            <CardCouponList item={item} />
+            <CardCouponList item={item} key={item.title} />
           ))}
           <Space height={20} />
         </View>

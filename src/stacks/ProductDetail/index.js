@@ -81,7 +81,7 @@ const ProductDetail = ({ navigation, route }) => {
           <Text style={styles.rowTitle}>Custom Request</Text>
           <View style={styles.labelGroupContainer}>
             {radio_props.map(item => (
-              <View style={styles.labelContainer}>
+              <View style={styles.labelContainer} key={item.value}>
                 <Text style={styles.label}>{item.label}</Text>
               </View>
             ))}

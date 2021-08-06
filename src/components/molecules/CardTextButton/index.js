@@ -14,9 +14,18 @@ const CardTextButton = ({
   label = 'Button',
   onPress,
   onPressEdit,
+  marginTop = 0,
+  marginBottom = 0,
 }) => {
   return (
-    <View style={styles.card(padding, radius, borderColor)}>
+    <View
+      style={styles.card(
+        padding,
+        radius,
+        borderColor,
+        marginTop,
+        marginBottom,
+      )}>
       <View style={styles.firstRow}>
         <View style={styles.textContainer}>
           {default_label ? (
@@ -65,11 +74,13 @@ const CardTextButton = ({
 export default CardTextButton;
 
 const styles = StyleSheet.create({
-  card: (padding, radius, borderColor) => ({
+  card: (padding, radius, borderColor, marginTop, marginBottom) => ({
     borderWidth: 1,
     borderColor: borderColor,
     padding: padding,
     borderRadius: radius,
+    marginTop: marginTop,
+    marginBottom: marginBottom,
   }),
   firstRow: {
     alignItems: 'center',

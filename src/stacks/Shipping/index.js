@@ -58,18 +58,17 @@ const Addresses = ({ onPress, navigation }) => {
   return (
     <>
       {data.map(item => (
-        <>
-          <Space height={30} />
-          <CardTextButton
-            text={item.name_shipping}
-            subtext={`${item.street} No ${item.number}, ${item.city}, ${item.province} ${item.postal_code}`}
-            borderColor={item.main_address ? '#A6B7FF' : '#cecece'}
-            default_label={item.main_address}
-            label="Edit Address"
-            onPress={onPress}
-            onPressEdit={() => navigation.navigate('Edit Address', item)}
-          />
-        </>
+        <CardTextButton
+          key={item.shipping_id}
+          text={item.name_shipping}
+          subtext={`${item.street} No ${item.number}, ${item.city}, ${item.province} ${item.postal_code}`}
+          borderColor={item.main_address ? '#A6B7FF' : '#cecece'}
+          default_label={item.main_address}
+          label="Edit Address"
+          onPress={onPress}
+          marginTop={30}
+          onPressEdit={() => navigation.navigate('Edit Address', item)}
+        />
       ))}
     </>
   );

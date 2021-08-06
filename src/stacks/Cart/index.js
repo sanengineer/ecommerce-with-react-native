@@ -253,7 +253,9 @@ const Cart = ({ navigation }) => {
         onPressYes={() => console.log('YES')}
         onPressNo={toggleModal}
         isVisible={isModalVisible}>
-        <Text style={styles.modalTitle}>Are you sure delete this item ?</Text>
+        <Text style={styles.modalTitle}>
+          Are you sure delete this item from cart?
+        </Text>
       </ModalCenterTwoButton>
     </SafeAreaView>
   );
