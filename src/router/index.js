@@ -25,6 +25,7 @@ import {
   ProductDetail,
   Wishlist,
   EditAddress,
+  OrderShipment,
 } from '../stacks';
 import { BottomNav } from '../components';
 
@@ -138,6 +139,11 @@ const Router = () => {
       <Stack.Screen
         name="Edit Address"
         component={EditAddress}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Order Shipment"
+        component={OrderShipment}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

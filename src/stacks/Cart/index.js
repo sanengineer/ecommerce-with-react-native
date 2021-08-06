@@ -161,12 +161,17 @@ const data = [
   },
 ];
 
-const FlatListFooterCart = () => (
+const FlatListFooterCart = ({ navigation }) => (
   <View
     style={{
       bottom: 100,
     }}>
-    <TextButtonRow title="Total Price" Subtitle="Rp 990.000" textButton="Buy" />
+    <TextButtonRow
+      title="Total Price"
+      Subtitle="Rp 990.000"
+      textButton="Buy"
+      onPressButton={() => navigation.navigate('Order Shipment')}
+    />
   </View>
 );
 
@@ -242,7 +247,7 @@ const Cart = ({ navigation }) => {
           style={styles.flatList}
           showsVerticalScrollIndicator={false}
         />
-        <FlatListFooterCart />
+        <FlatListFooterCart navigation={navigation} />
       </View>
       <ModalCenterTwoButton
         onPressYes={() => console.log('YES')}

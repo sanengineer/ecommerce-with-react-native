@@ -20,6 +20,7 @@ import AddNoteOrder from './AddNoteOrder';
 import ProductDetail from './ProductDetail';
 import Wishlist from './Wishlist';
 import EditAddress from './EditAdddress';
+import OrderShipment from './OrderShipment';
 
 export {
   LogIn,
@@ -44,4 +45,5 @@ export {
   ProductDetail,
   Wishlist,
   EditAddress,
+  OrderShipment,
 };

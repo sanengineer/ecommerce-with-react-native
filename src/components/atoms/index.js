@@ -5,5 +5,6 @@ import TextInput from './TextInput';
 import IconContainer from './IconContainer';
 import Row from './Row';
 import Dot from './Dot';
+import Border from './Border';
 
-export { Space, Button, TextField, TextInput, IconContainer, Row, Dot };
+export { Space, Button, TextField, TextInput, IconContainer, Row, Dot, Border };

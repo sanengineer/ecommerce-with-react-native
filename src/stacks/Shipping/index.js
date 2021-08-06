@@ -61,17 +61,7 @@ const Addresses = ({ onPress, navigation }) => {
           <Space height={30} />
           <CardTextButton
             text={item.name_shipping}
-            subtext={
-              `${item.street}` +
-              `, ` +
-              `${item.number}` +
-              `, ` +
-              `${item.city}` +
-              `, ` +
-              `${item.province}` +
-              `, ` +
-              `${item.postal_code}`
-            }
+            subtext={`${data.street} No ${data.number}, ${data.city}, ${data.province} ${data.postal_code}`}
             borderColor={item.main_address ? '#A6B7FF' : '#cecece'}
             default_label={item.main_address}
             label="Edit Address"
