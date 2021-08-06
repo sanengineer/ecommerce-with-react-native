@@ -10,7 +10,7 @@ const FormTextSubtext = ({
   borderBottomWidth = 1,
   textFam = 'CircularStd-Book',
   color = '#747474',
-  textColor,
+  textColor = '#000',
   ...props
 }) => (
   <>

@@ -226,6 +226,7 @@ const OrderShipment = ({ navigation, route }) => {
 
         <Border height={1} />
         <TouchableOpacity style={styles.touchModalShipment}>
+          <Space height={10} />
           <IconContainer>
             <LogoGrab />
           </IconContainer>
@@ -323,10 +324,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: 'CircularStd-Bold',
   },
-  touchModalShipment: {
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-  },
+
   cartResumeContainer: {
     paddingHorizontal: 20,
     paddingVertical: 20,
@@ -349,6 +347,14 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: 'CircularStd-Bold',
     lineHeight: 20,
+  },
+  touchModalShipment: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    // backgroundColor: 'red',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // flexDirection: 'column',
   },
   rowModalContainer: {
     // backgroundColor: 'red',

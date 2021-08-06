@@ -28,6 +28,7 @@ const Form = ({ text, ...props }) => (
         text={text}
         subtextFam="CircularStd-Book"
         textSize={12}
+        textColor="#000"
         subtext="..."
         subtextSize={16}
         {...props}

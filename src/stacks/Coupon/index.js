@@ -76,9 +76,9 @@ const NavBottom = () => (
   <View
     style={{
       bottom: 0,
-      shadowColor: '#ccc',
+      shadowColor: '#cecece',
       shadowOffset: { width: 0, height: -6 },
-      shadowOpacity: 0.1,
+      shadowOpacity: 0.2,
     }}>
     <TextButtonRow
       title="You Can Save"

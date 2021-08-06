@@ -11,6 +11,7 @@ import {
   CardImageTextButton,
   ModalCenterTwoButton,
   NavHeader,
+  Space,
 } from '../../components';
 import { CoffeeCup } from '../../assets';
 
@@ -146,6 +147,8 @@ const data = [
   },
 ];
 
+const FlatListFooter = () => <Space height={40} />;
+
 const Wishlist = ({ navigation, route }) => {
   const [isModalVisible, setModalVisible] = useState(false);
 
@@ -174,6 +177,7 @@ const Wishlist = ({ navigation, route }) => {
         keyExtractor={item => item.product_id}
         style={styles.flatlistContainer}
         showsVerticalScrollIndicator={false}
+        ListFooterComponent={FlatListFooter}
       />
 
       <ModalCenterTwoButton isVisible={isModalVisible} onPressNo={toggleModal}>
