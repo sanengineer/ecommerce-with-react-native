@@ -1,6 +1,20 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, ScrollView, Platform } from 'react-native';
-import { Space, Header, Button, TextField, TextInput } from '../../components';
+import {
+  StyleSheet,
+  View,
+  ScrollView,
+  Platform,
+  TouchableOpacity,
+} from 'react-native';
+import { IconCrossBig } from '../../assets';
+import {
+  Space,
+  Header,
+  Button,
+  TextField,
+  TextInput,
+  NavHeader,
+} from '../../components';
 
 import { DismissKeyboard, KeyboardScrollUpForms, useForm } from '../../utils';
 
@@ -19,12 +33,22 @@ const LogIn = ({ navigation }) => {
         <KeyboardScrollUpForms
           enabled
           behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
-          <Space height={20} />
-          <Header
-            title="Login"
-            desc="For buying drinks and beverages, login first."
-          />
+          <Space height={30} />
+          <NavHeader
+            borderWidth={0}
+            showSpaceLeft={true}
+            navGoBack={false}
+            title="">
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Start Screen')}>
+              <IconCrossBig />
+            </TouchableOpacity>
+          </NavHeader>
           <ScrollView contentInsetAdjustmentBehavior="automatic">
+            <Header
+              title="Login"
+              desc="For buying drinks and beverages, login first. 🤝"
+            />
             <View style={styles.container}>
               <TextInput
                 label="Email"
@@ -40,17 +64,24 @@ const LogIn = ({ navigation }) => {
               />
               <Space height={50} />
               <Button
-                label="Login"
+                label="Log In"
+                radius={6}
+                txtSize={14}
+                bgColor="#0030FF"
+                padSizeX={16}
+                borderWidth={0}
                 fontFam="CircularStd-Bold"
                 txtDecorationLine="none"
                 onPress={() => navigation.replace('SuccessLogin')}
               />
-              <Space height={30} />
+              <Space height={40} />
               <Button
-                label="Create Account"
+                label="Forgot Password"
                 txtSize={12}
+                radius={0}
+                borderWidth={0}
                 bgColor="#fff"
-                textColor="#000"
+                textColor="#0030FF"
                 fontFam="CircularStd-Bold"
                 onPress={() => navigation.navigate('Register')}
               />

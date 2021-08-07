@@ -32,9 +32,11 @@ const styles = StyleSheet.compose({
     fontFamily: 'CircularStd-Book',
     fontSize: 14,
     color: '#000',
-    padding: 10,
+    paddingVertical: 14,
+    paddingHorizontal: 10,
     borderWidth: 1,
+    borderRadius: 6,
     borderStyle: 'solid',
-    borderColor: '#dddddd',
+    borderColor: '#0030FF',
   },
 });

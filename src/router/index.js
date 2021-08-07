@@ -27,6 +27,7 @@ import {
   EditAddress,
   OrderShipment,
   Coupon,
+  StartScreen,
 } from '../stacks';
 import { BottomNav } from '../components';
 
@@ -48,7 +49,12 @@ const Router = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="LogIn"
+        name="Start Screen"
+        component={StartScreen}
+        options={{ headerShown: false, gestureEnabled: false }}
+      />
+      <Stack.Screen
+        name="Log In"
         component={LogIn}
         options={{ headerShown: false, gestureEnabled: false }}
       />

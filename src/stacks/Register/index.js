@@ -1,6 +1,21 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Platform } from 'react-native';
-import { Button, Header, Space, TextField, TextInput } from '../../components';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Platform,
+  TouchableOpacity,
+} from 'react-native';
+import { IconCrossBig } from '../../assets';
+import {
+  Button,
+  Header,
+  NavHeader,
+  Space,
+  TextField,
+  TextInput,
+} from '../../components';
 
 const Register = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -13,14 +28,19 @@ const Register = ({ navigation }) => {
 
   return (
     <View style={styles.page}>
-      <Space height={20} />
-      <Header title="Register" />
+      <Space height={40} />
+      <NavHeader title="" navGoBack={false} borderWidth={0}>
+        <TouchableOpacity onPress={() => navigation.navigate('Start Screen')}>
+          <IconCrossBig />
+        </TouchableOpacity>
+      </NavHeader>
+      <Header title="Register" showDesc={false} />
       <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <View style={styles.container}>
-          <View style={styles.avatar}>
+        <View style={styles.mainContainer}>
+          <View style={styles.avaForm}>
             <View style={styles.avaBorder}>
-              <View style={styles.avaContainer}>
-                <Text style={styles.addAva}>Add Avatar</Text>
+              <View style={styles.addAvaTextContainer}>
+                <Text style={styles.addAvaText}>Add Avatar</Text>
               </View>
             </View>
           </View>
@@ -48,20 +68,15 @@ const Register = ({ navigation }) => {
           <Space height={50} />
           <Button
             label="Register"
-            txtDecorationLine="none"
+            radius={6}
+            txtSize={14}
+            bgColor="#0030FF"
+            padSizeX={16}
+            borderWidth={0}
             fontFam="CircularStd-Bold"
-            onPress={() => onSubmit()}
+            txtDecorationLine="none"
           />
           <Space height={50} />
-          <TextField textField="Have An Account?" />
-          <Button
-            label="Login Please"
-            txtSize={12}
-            bgColor="#fff"
-            textColor="#000"
-            fontFam="CircularStd-Bold"
-            onPress={() => navigation.navigate('LogIn')}
-          />
         </View>
       </ScrollView>
       <Text></Text>
@@ -72,25 +87,22 @@ const Register = ({ navigation }) => {
 export default Register;
 
 const styles = StyleSheet.compose({
-  container: {
-    backgroundColor: '#fff',
-    paddingHorizontal: 24,
-    paddingVertical: 24,
-    marginTop: 0,
-    flex: 1,
-  },
-
   page: {
     flex: 1,
     backgroundColor: '#fff',
   },
-
-  addAva: {
-    fontSize: 16,
-    fontFamily: 'CircularStd-Bold',
-    color: '#fff',
-    textAlign: 'center',
-    top: 12,
+  mainContainer: {
+    backgroundColor: '#fff',
+    paddingHorizontal: 24,
+    paddingBottom: 24,
+    paddingTop: 24,
+    marginTop: 0,
+    flex: 1,
+  },
+  avaForm: {
+    alignItems: 'center',
+    marginTop: 0,
+    marginBottom: 30,
   },
   avaBorder: {
     borderRadius: 110,
@@ -102,8 +114,7 @@ const styles = StyleSheet.compose({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
-  avaContainer: {
+  addAvaTextContainer: {
     borderRadius: 90,
     height: 90,
     width: 90,
@@ -111,9 +122,11 @@ const styles = StyleSheet.compose({
     padding: 10,
     justofyContent: 'center',
   },
-  avatar: {
-    alignItems: 'center',
-    marginTop: 20,
-    marginBottom: 50,
+  addAvaText: {
+    fontSize: 16,
+    fontFamily: 'CircularStd-Bold',
+    color: '#fff',
+    textAlign: 'center',
+    top: 12,
   },
 });

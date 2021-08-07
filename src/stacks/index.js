@@ -22,6 +22,7 @@ import Wishlist from './Wishlist';
 import EditAddress from './EditAdddress';
 import OrderShipment from './OrderShipment';
 import Coupon from './Coupon';
+import StartScreen from './StartScreen';
 
 export {
   LogIn,
@@ -48,4 +49,5 @@ export {
   EditAddress,
   OrderShipment,
   Coupon,
+  StartScreen,
 };
