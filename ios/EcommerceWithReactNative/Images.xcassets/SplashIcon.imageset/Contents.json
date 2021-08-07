@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "splash_icon_coffeeshop_app.png",
+      "idiom" : "iphone",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "splash_icon_coffeeshop_app@2x.png",
+      "idiom" : "iphone",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "splash_icon_coffeeshop_app@3x.png",
+      "idiom" : "iphone",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

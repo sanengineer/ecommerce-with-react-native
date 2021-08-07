@@ -94,7 +94,7 @@ const Coupon = ({ navigation, route }) => {
   return (
     <SafeAreaView style={styles.safeContainer}>
       <NavHeader navigation={navigation} title={route.name} />
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Space height={30} />
         <View style={styles.formCouponInputButtonContainer}>
           <FormTextSubtext
