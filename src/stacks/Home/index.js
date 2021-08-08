@@ -490,9 +490,11 @@ const Home = ({ navigation, route }) => {
               <View style={styles.titleHeaderContainer}>
                 <View style={styles.iconTitleUserContainer}>
                   <Text style={styles.iconTitle}>👋</Text>
+                  <Space width={4} />
                   <Text style={styles.textTitle}>Hai, San!</Text>
                 </View>
               </View>
+              <Space height={3} />
               <View style={styles.subTitleContainer}>
                 <Text style={styles.subTitle}>Let's, drink again!</Text>
               </View>
@@ -520,15 +522,24 @@ const Home = ({ navigation, route }) => {
                 style={{
                   // backgroundColor: 'red',
                   flexDirection: 'row',
+                  alignItems: 'center',
                 }}>
                 <Text>📍</Text>
+                <Space width={6} />
                 <TouchableOpacity
-                  style={{ flexDirection: 'row' }}
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    // justifyContent: 'center',
+                  }}
                   onPress={toggleModal}>
-                  <Text style={{ color: '#fff' }}>Send To</Text>
-                  <Space width={5} />
                   <Text
-                    style={{ color: '#fff', fontFamily: 'CircularStd-Bold' }}>
+                    style={{ color: '#fff', fontFamily: 'CircularStd-Book' }}>
+                    Send To
+                  </Text>
+                  <Space width={4} />
+                  <Text
+                    style={{ color: '#fff', fontFamily: 'CircularStd-Black' }}>
                     Home Address 1
                   </Text>
                 </TouchableOpacity>
