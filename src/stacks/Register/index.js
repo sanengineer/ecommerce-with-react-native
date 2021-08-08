@@ -34,8 +34,10 @@ const Register = ({ navigation }) => {
           <IconCrossBig />
         </TouchableOpacity>
       </NavHeader>
-      <Header title="Register" showDesc={false} />
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        showsVerticalScrollIndicator={false}>
+        <Header title="Register" showDesc={false} />
         <View style={styles.mainContainer}>
           <View style={styles.avaForm}>
             <View style={styles.avaBorder}>
@@ -71,7 +73,7 @@ const Register = ({ navigation }) => {
             radius={6}
             txtSize={14}
             bgColor="#0030FF"
-            padSizeX={16}
+            padSizeX={20}
             borderWidth={0}
             fontFam="CircularStd-Bold"
             txtDecorationLine="none"

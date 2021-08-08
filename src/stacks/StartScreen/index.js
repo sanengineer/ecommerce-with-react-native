@@ -23,7 +23,7 @@ const StartScreen = ({ navigation }) => {
             txtSize={14}
             textColor="#0030FF"
             bgColor="#fff"
-            padSizeX={16}
+            padSizeX={20}
             borderWidth={0}
             fontFam="CircularStd-Bold"
             txtDecorationLine="none"
@@ -35,11 +35,11 @@ const StartScreen = ({ navigation }) => {
             radius={6}
             txtSize={14}
             bgColor="transparent"
-            padSizeX={16}
+            padSizeX={20}
             borderWidth={0}
             fontFam="CircularStd-Bold"
             txtDecorationLine="none"
-            onPress={() => navigation.navigate('Log In')}
+            onPress={() => navigation.navigate('Register')}
           />
           <Space height={40} />
         </View>

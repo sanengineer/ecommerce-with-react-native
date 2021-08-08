@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
     position: 'absolute',
     fontSize: 13,
-    top: -10,
+    top: -4,
     right: 0,
     fontFamily: 'CircularStd-Bold',
     color: '#fff',

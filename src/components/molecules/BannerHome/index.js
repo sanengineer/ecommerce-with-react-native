@@ -124,6 +124,7 @@ const Slide = memo(function Slide({ data }) {
                   fontFamily: 'CircularStd-Black',
                   fontSize: 18,
                   width: 180,
+                  lineHeight: 22,
                   textTransform: 'capitalize',
                 }}>
                 {data.title}

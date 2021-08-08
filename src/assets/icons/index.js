@@ -28,6 +28,7 @@ import IconMenuRoundedActive from './icon_menu_rounded_active.svg';
 import IconChevronDown from './icon_chevron_down.svg';
 import IconInfoCircle from './icon_info-circle.svg';
 import IconCrossBig from './icon_cross_big.svg';
+import IconChevronUp from './icon_chevron_up.svg';
 
 export {
   IconShipping,
@@ -56,4 +57,5 @@ export {
   IconChevronDown,
   IconInfoCircle,
   IconCrossBig,
+  IconChevronUp,
 };

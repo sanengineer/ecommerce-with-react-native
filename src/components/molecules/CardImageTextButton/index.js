@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     // backgroundColor: 'red',
   },
-  title: { fontFamily: 'CircularStd-Book' },
+  title: { fontFamily: 'CircularStd-Book', lineHeight: 20 },
   price: { fontFamily: 'CircularStd-Bold' },
   buttonContainer: {
     borderRadius: 10,

@@ -50,7 +50,7 @@ const Profile = ({ navigation }) => {
           <Space height={50} />
           <View style={styles.mainContainer}>
             <IconTextNav
-              icon="🧬"
+              icon="🍃"
               text="Bio"
               onPress={() => navigation.navigate('Bio')}
             />
@@ -100,7 +100,7 @@ const Profile = ({ navigation }) => {
       </ScrollView>
       <ModalCenterTwoButton
         isVisible={isModalVisible}
-        onPressYes={() => console.log('YES')}
+        onPressYes={() => navigation.replace('Start Screen')}
         onPressNo={toggleModal}>
         <Text style={styles.modalTitle}>
           Are you sure for out from this account?

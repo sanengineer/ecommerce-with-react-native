@@ -23,7 +23,14 @@ import {
   TextButtonRow,
   TextSubtext,
 } from '../../components';
-import { CoffeeCup, IconChevronDown, LogoGojek, LogoGrab } from '../../assets';
+import {
+  CoffeeCup,
+  IconAngleLeftBig,
+  IconChevronDown,
+  IconChevronUp,
+  LogoGojek,
+  LogoGrab,
+} from '../../assets';
 
 const data_address = [
   {
@@ -76,6 +83,100 @@ const data_product = [
 
 const data = data_address[0];
 
+const NavHeaderOrder = ({ expandableOption, expand, selectPickup, pickup }) => {
+  return (
+    <View
+      style={{
+        flexDirection: 'column',
+        paddingBottom: 10,
+        paddingTop: 10,
+        paddingHorizontal: 20,
+        borderBottomWidth: 1,
+        borderBottomColor: '#e7e7e7',
+      }}>
+      {/*
+    /*
+    /* First Row
+    /*
+    */}
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <View style={styles.iconBackNavContainer}>
+            <IconAngleLeftBig />
+          </View>
+        </TouchableOpacity>
+        <View
+          style={
+            {
+              // backgroundColor: 'orange'
+            }
+          }>
+          <Text
+            style={{
+              fontFamily: 'CircularStd-Bold',
+              fontSize: 18,
+              textTransform: 'capitalize',
+              paddingVertical: 10,
+              textAlign: 'center',
+            }}>
+            {pickup ? 'Pickup At Store' : 'Shipment'}
+          </Text>
+        </View>
+
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: null,
+          }}>
+          <TouchableOpacity
+            onPress={expand}
+            style={{
+              // backgroundColor: 'orange',
+              paddingHorizontal: 6,
+              paddingVertical: 5,
+            }}>
+            {expandableOption ? <IconChevronUp /> : <IconChevronDown />}
+          </TouchableOpacity>
+        </View>
+      </View>
+      <Space height={expandableOption ? 10 : 0} />
+
+      {/*
+    /*
+    /* Second Row
+    /*
+    */}
+      <View
+        style={{
+          paddingVertical: expandableOption ? 10 : 0,
+          height: expandableOption ? null : 0,
+        }}>
+        <TouchableOpacity onPress={selectPickup}>
+          <Text
+            style={{
+              fontFamily: 'CircularStd-Bold',
+              fontSize: 18,
+              textTransform: 'capitalize',
+              paddingVertical: expandableOption ? 16 : 0,
+              textAlign: 'center',
+              // backgroundColor: 'grey',
+              opacity: 0.4,
+            }}>
+            {pickup ? 'Shipment' : 'Pickup At Store'}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
 const CardProduct = () => (
   <View style={styles.cardOrderItemContainer}>
     <View style={styles.firstRowCardOrderItem}>
@@ -116,8 +217,176 @@ const CardProduct = () => (
   </View>
 );
 
+const ModalBottomOrder = ({ isVisible, onBackdropPress, onPress }) => (
+  <ModalBottom
+    isVisible={isVisible}
+    onBackdropPress={onBackdropPress}
+    label="Close"
+    onPress={onPress}
+    textButtonSize={14}>
+    <TouchableOpacity style={styles.touchModalShipment}>
+      <IconContainer>
+        <LogoGojek />
+      </IconContainer>
+      <View style={styles.rowModalContainer}>
+        <IconText
+          showIcon={false}
+          text="Same Day"
+          width={0}
+          textSize={14}
+          paddingX={0}
+        />
+        <Text style={styles.textShipmentPrice}>Rp 30.000</Text>
+      </View>
+    </TouchableOpacity>
+
+    <Border height={1} />
+    <TouchableOpacity style={styles.touchModalShipment}>
+      <Space height={10} />
+      <IconContainer>
+        <LogoGrab />
+      </IconContainer>
+      <View style={styles.rowModalContainer}>
+        <IconText
+          showIcon={false}
+          text="Same Day"
+          width={0}
+          textSize={14}
+          paddingX={0}
+        />
+        <Text style={styles.textShipmentPrice}>Rp 30.000</Text>
+      </View>
+    </TouchableOpacity>
+  </ModalBottom>
+);
+
+const OrderPickup = ({ navigation }) => {
+  //debug
+  console.log('ONPRESSCOUPON:', navigation);
+
+  return (
+    <>
+      <CardProduct />
+      <Border />
+      <CardProduct />
+      <Border />
+      <IconTextNav
+        icon="✂️"
+        text="Coupon"
+        size={14}
+        width={10}
+        fontFam="CircularStd-Bold"
+        onPress={() => navigation.navigate('Coupon')}
+      />
+      <Border />
+
+      <View style={styles.cartResumeContainer}>
+        <Text style={styles.cartResumeText}>Cart Resume</Text>
+        <Space height={6} />
+        <View style={styles.detailTotalPriceContainer}>
+          <Text style={styles.detailTotalPriceText}>Total Price (6 items)</Text>
+          <Text style={styles.detailTotalPriceNumber}>Rp 900.000</Text>
+        </View>
+      </View>
+
+      <Border />
+      <TextButtonRow
+        borderBottomWidth={0}
+        title="Total Billing"
+        Subtitle="Rp. 900.000"
+        textButton="Select Payment"
+        buttonPaddingX={10}
+      />
+    </>
+  );
+};
+
+const OrderShipmentSelf = ({ data, shipmentToggleModal, navigation }) => {
+  console.log('ONPRESSCOUPON:', navigation);
+  return (
+    <>
+      <View style={styles.addressContainer}>
+        <TextButtonRow
+          showSubtitle={false}
+          bgButton="transparent"
+          buttonTextColor="#1440FF"
+          title="Shipment Address"
+          titleTextSize={14}
+          titleTextFam="CircularStd-Bold"
+          buttonPaddingX={0}
+          buttonPaddingY={0}
+          textButton="Change"
+          borderBottomColor={0}
+          paddingHorizontal={0}
+        />
+        <Text style={styles.titleAddress}>{data.name_shipping}</Text>
+        <Space height={10} />
+        <Text style={styles.descAddress}>
+          {`${data.street} No ${data.number}, ${data.city}`}
+        </Text>
+        <Text style={styles.footAddress}>
+          {`${data.province} ${data.postal_code}`}
+        </Text>
+        <Space height={20} />
+      </View>
+      <Border />
+      <CardProduct />
+      <Border />
+      <CardProduct />
+      <Border />
+      <IconTextNav
+        icon="🚛"
+        text="Shipment Option"
+        size={14}
+        width={10}
+        fontFam="CircularStd-Bold"
+        onPress={shipmentToggleModal}
+      />
+      <Border />
+      <IconTextNav
+        icon="✂️"
+        text="Coupon"
+        size={14}
+        width={10}
+        fontFam="CircularStd-Bold"
+        onPress={() => navigation.navigate('Coupon')}
+      />
+      <Border />
+
+      <View style={styles.cartResumeContainer}>
+        <Text style={styles.cartResumeText}>Cart Resume</Text>
+        <Space height={6} />
+        <View style={styles.detailTotalPriceContainer}>
+          <Text style={styles.detailTotalPriceText}>Total Price (6 items)</Text>
+          <Text style={styles.detailTotalPriceNumber}>Rp 900.000</Text>
+        </View>
+      </View>
+
+      <Border />
+      <TextButtonRow
+        borderBottomWidth={0}
+        title="Total Billing"
+        Subtitle="Rp. 900.000"
+        textButton="Select Payment"
+        buttonPaddingX={10}
+      />
+    </>
+  );
+};
+
 const OrderShipment = ({ navigation, route }) => {
   const [isShipmentModalVisible, setShipmentModalVisible] = useState(false);
+
+  const [expandableOption, setexpandableOption] = useState(false);
+  const [pickup, setpickup] = useState(false);
+
+  const expand = () => {
+    setexpandableOption(!expandableOption);
+  };
+
+  const selectPickup = () => {
+    setpickup(!pickup);
+  };
 
   const shipmentToggleModal = () => {
     setShipmentModalVisible(!isShipmentModalVisible);
@@ -128,120 +397,37 @@ const OrderShipment = ({ navigation, route }) => {
     setModalVisible(!isModalVisible);
   };
 
+  console.log(expandableOption);
+  console.log('PICKUP:', pickup);
+
   return (
     <SafeAreaView style={styles.safeContainer}>
-      <NavHeader navigation={navigation} title="Shipment" />
+      <NavHeaderOrder
+        pickup={pickup}
+        expandableOption={expandableOption}
+        selectPickup={selectPickup}
+        pickup={pickup}
+        expand={expand}
+      />
+
       <ScrollView
         style={styles.mainContainer}
         showsVerticalScrollIndicator={false}>
-        <View style={styles.addressContainer}>
-          <TextButtonRow
-            showSubtitle={false}
-            bgButton="transparent"
-            buttonTextColor="#1440FF"
-            title="Shipment Address"
-            titleTextSize={14}
-            titleTextFam="CircularStd-Bold"
-            buttonPaddingX={0}
-            buttonPaddingY={0}
-            textButton="Change"
-            borderBottomColor={0}
-            paddingHorizontal={0}
+        {pickup ? (
+          <OrderPickup navigation={navigation} />
+        ) : (
+          <OrderShipmentSelf
+            data={data}
+            shipmentToggleModal={shipmentToggleModal}
+            navigation={navigation}
           />
-          <Text style={styles.titleAddress}>{data.name_shipping}</Text>
-          <Space height={10} />
-          <Text style={styles.descAddress}>
-            {`${data.street} No ${data.number}, ${data.city}`}
-          </Text>
-          <Text style={styles.footAddress}>
-            {`${data.province} ${data.postal_code}`}
-          </Text>
-          <Space height={20} />
-        </View>
-        <Border />
-        <CardProduct />
-        <Border />
-        <CardProduct />
-        <Border />
-        <IconTextNav
-          icon="🚛"
-          text="Shipment Option"
-          size={14}
-          width={10}
-          fontFam="CircularStd-Bold"
-          onPress={shipmentToggleModal}
-        />
-        <Border />
-        <IconTextNav
-          icon="✂️"
-          text="Coupon"
-          size={14}
-          width={10}
-          fontFam="CircularStd-Bold"
-          onPress={() => navigation.navigate('Coupon')}
-        />
-        <Border />
-
-        <View style={styles.cartResumeContainer}>
-          <Text style={styles.cartResumeText}>Cart Resume</Text>
-          <Space height={6} />
-          <View style={styles.detailTotalPriceContainer}>
-            <Text style={styles.detailTotalPriceText}>
-              Total Price (6 items)
-            </Text>
-            <Text style={styles.detailTotalPriceNumber}>Rp 900.000</Text>
-          </View>
-        </View>
-
-        <Border />
-        <TextButtonRow
-          borderBottomWidth={0}
-          title="Total Billing"
-          Subtitle="Rp. 900.000"
-          textButton="Select Payment"
-          buttonPaddingX={10}
-        />
+        )}
       </ScrollView>
-      <ModalBottom
+      <ModalBottomOrder
         isVisible={isShipmentModalVisible}
         onBackdropPress={shipmentToggleModal}
-        label="Close"
         onPress={shipmentToggleModal}
-        textButtonSize={14}>
-        <TouchableOpacity style={styles.touchModalShipment}>
-          <IconContainer>
-            <LogoGojek />
-          </IconContainer>
-          <View style={styles.rowModalContainer}>
-            <IconText
-              showIcon={false}
-              text="Same Day"
-              width={0}
-              textSize={14}
-              paddingX={0}
-            />
-            <Text style={styles.textShipmentPrice}>Rp 30.000</Text>
-          </View>
-        </TouchableOpacity>
-
-        <Border height={1} />
-        <TouchableOpacity style={styles.touchModalShipment}>
-          <Space height={10} />
-          <IconContainer>
-            <LogoGrab />
-          </IconContainer>
-          <View style={styles.rowModalContainer}>
-            <IconText
-              showIcon={false}
-              text="Same Day"
-              width={0}
-              textSize={14}
-              paddingX={0}
-            />
-            <Text style={styles.textShipmentPrice}>Rp 30.000</Text>
-          </View>
-        </TouchableOpacity>
-      </ModalBottom>
+      />
     </SafeAreaView>
   );
 };
@@ -252,6 +438,27 @@ const styles = StyleSheet.create({
   safeContainer: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  navHeaderContainer: {
+    // flexDirection: 'row',
+    // justifyContent: 'space-between',
+    // alignItems: 'center',
+    // borderBottomWidth: 1,
+    // borderBottomColor: '#e7e7e7',
+    // paddingBottom: 10,
+    // paddingTop: 10,
+    // paddingHorizontal: 20,
+    // backgroundColor: 'aqua',
+  },
+  iconBackNavContainer: {
+    // backgroundColor: 'red',
+    left: -10,
+  },
+  textNavHeader: {
+    // fontFamily: 'CircularStd-Bold',
+    // fontSize: 18,
+    // textTransform: 'capitalize',
+    // paddingVertical: 6,
   },
   mainContainer: {
     // backgroundColor: 'red',

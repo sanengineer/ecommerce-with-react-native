@@ -44,7 +44,9 @@ const LogIn = ({ navigation }) => {
               <IconCrossBig />
             </TouchableOpacity>
           </NavHeader>
-          <ScrollView contentInsetAdjustmentBehavior="automatic">
+          <ScrollView
+            contentInsetAdjustmentBehavior="automatic"
+            showsVerticalScrollIndicator={false}>
             <Header
               title="Login"
               desc="For buying drinks and beverages, login first. 🤝"
@@ -68,11 +70,11 @@ const LogIn = ({ navigation }) => {
                 radius={6}
                 txtSize={14}
                 bgColor="#0030FF"
-                padSizeX={16}
+                padSizeX={20}
                 borderWidth={0}
                 fontFam="CircularStd-Bold"
                 txtDecorationLine="none"
-                onPress={() => navigation.replace('SuccessLogin')}
+                onPress={() => navigation.replace('MainApp')}
               />
               <Space height={40} />
               <Button
