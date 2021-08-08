@@ -6,31 +6,222 @@ import {
   TouchableOpacity,
   Dimensions,
   SafeAreaView,
+  ScrollView,
+  ImageBackground,
 } from 'react-native';
 
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import { useNavigation } from '@react-navigation/native';
 
-import { IconAngleLeftBig } from '../../assets';
-import { NavHeader, Space } from '../../components';
+import { ImageHeaderBg, ImageCoinBg, ImageBannerDummy } from '../../assets';
+import { Border, NavHeader, Space } from '../../components';
 
-const FirstRoute = () => (
-  <View style={[styles.scene]}>
-    <Text>Notification</Text>
-  </View>
-);
+const data_message = [
+  {
+    id: 1,
+    emoji: '🔖',
+    image: ImageHeaderBg,
+    title: 'Lets Create Account For More Benefit',
+    subtitle: 'subtitle',
+  },
+  {
+    id: 2,
+    emoji: '🤝',
+    image: ImageBannerDummy,
+    title: 'Buy 1 Get 1. Buy 10 Get 10.',
+    subtitle: 'subtitle',
+  },
+  {
+    id: 3,
+    emoji: '🎊',
+    image: ImageCoinBg,
+    title: 'Order More To Get More Point!',
+    subtitle: 'subtitle',
+  },
+];
 
-const SecondRoute = () => (
-  <View style={[styles.scene]}>
-    <Text>Inbox</Text>
-  </View>
-);
+const CardNotifMessage = () => {
+  return (
+    <TouchableOpacity style={stylesSecondRoute.section}>
+      <View style={stylesSecondRoute.imageTextContainer}>
+        <ImageBackground
+          source={data_message[1].image}
+          style={stylesSecondRoute.imageMessage}
+        />
+        <View style={stylesSecondRoute.titleMessageContainer}>
+          <Text style={stylesSecondRoute.titleMessage}>
+            {data_message[0].title}
+          </Text>
+        </View>
+      </View>
+      <Border height={2} />
+    </TouchableOpacity>
+  );
+};
+
+const FirstRoute = () => {
+  return (
+    <ScrollView
+      style={stylesFirstRoute.mainContainer}
+      showsVerticalScrollIndicator={false}>
+      <View style={stylesFirstRoute.section}>
+        <View style={stylesFirstRoute.firstRow}>
+          <Text style={stylesFirstRoute.date}>August 21st, 2021</Text>
+        </View>
+        <View style={stylesFirstRoute.secondRow}>
+          <TouchableOpacity style={stylesFirstRoute.textNotifContainer}>
+            <Text style={stylesFirstRoute.textNotif}>You receive 30.000</Text>
+          </TouchableOpacity>
+          <Border height={1} />
+          <TouchableOpacity style={stylesFirstRoute.textNotifContainer}>
+            <Text style={stylesFirstRoute.textNotif}>
+              Your order has been received
+            </Text>
+          </TouchableOpacity>
+          <Border height={1} />
+          <TouchableOpacity style={stylesFirstRoute.textNotifContainer}>
+            <Text style={stylesFirstRoute.textNotif}>You receive 30.000</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={stylesFirstRoute.textNotifContainer}>
+            <Text style={stylesFirstRoute.textNotif}>
+              Your order has been received
+            </Text>
+          </TouchableOpacity>
+          <Border height={1} />
+          <TouchableOpacity style={stylesFirstRoute.textNotifContainer}>
+            <Text style={stylesFirstRoute.textNotif}>You receive 30.000</Text>
+          </TouchableOpacity>
+          <Border height={1} />
+          <TouchableOpacity style={stylesFirstRoute.textNotifContainer}>
+            <Text style={stylesFirstRoute.textNotif}>
+              Your order has been received
+            </Text>
+          </TouchableOpacity>
+          <Border height={1} />
+        </View>
+      </View>
+      <View style={stylesFirstRoute.section}>
+        <View style={stylesFirstRoute.firstRow}>
+          <Text style={stylesFirstRoute.date}>August 21st, 2021</Text>
+        </View>
+        <View style={stylesFirstRoute.secondRow}>
+          <TouchableOpacity style={stylesFirstRoute.textNotifContainer}>
+            <Text style={stylesFirstRoute.textNotif}>You receive 30.000</Text>
+          </TouchableOpacity>
+          <Border height={1} />
+          <TouchableOpacity style={stylesFirstRoute.textNotifContainer}>
+            <Text style={stylesFirstRoute.textNotif}>
+              Your order has been received
+            </Text>
+          </TouchableOpacity>
+          <Border height={1} />
+          <TouchableOpacity style={stylesFirstRoute.textNotifContainer}>
+            <Text style={stylesFirstRoute.textNotif}>You receive 30.000</Text>
+          </TouchableOpacity>
+          <Border height={1} />
+          <TouchableOpacity style={stylesFirstRoute.textNotifContainer}>
+            <Text style={stylesFirstRoute.textNotif}>
+              Your order has been received
+            </Text>
+          </TouchableOpacity>
+          <Border height={1} />
+          <TouchableOpacity style={stylesFirstRoute.textNotifContainer}>
+            <Text style={stylesFirstRoute.textNotif}>You receive 30.000</Text>
+          </TouchableOpacity>
+          <Border height={1} />
+          <TouchableOpacity style={stylesFirstRoute.textNotifContainer}>
+            <Text style={stylesFirstRoute.textNotif}>
+              Your order has been received
+            </Text>
+          </TouchableOpacity>
+          <Border height={1} />
+        </View>
+      </View>
+    </ScrollView>
+  );
+};
+
+const stylesFirstRoute = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+  },
+  firstRow: {
+    backgroundColor: '#efefef',
+    paddingHorizontal: 20,
+  },
+  date: {
+    fontFamily: 'CircularStd-Book',
+    fontSize: 12,
+    textTransform: 'uppercase',
+    paddingVertical: 8,
+    color: '#888',
+  },
+  secondRow: {
+    // backgroundColor: 'aqua',
+  },
+  textNotifContainer: {
+    paddingHorizontal: 20,
+    paddingVertical: 18,
+  },
+  textNotif: {
+    // backgroundColor: 'grey',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    fontFamily: 'CircularStd-Bold',
+    fontSize: 14,
+  },
+});
+
+const SecondRoute = () => {
+  return (
+    <ScrollView
+      style={stylesSecondRoute.mainContainer}
+      showsVerticalScrollIndicator={false}>
+      <CardNotifMessage />
+      <CardNotifMessage />
+      <CardNotifMessage />
+      <CardNotifMessage />
+    </ScrollView>
+  );
+};
+
+const stylesSecondRoute = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    // backgroundColor: 'red',
+  },
+  section: {
+    // flex: 1,
+    // backgroundColor: 'grey',
+  },
+  imageTextContainer: {
+    // backgroundColor: 'blue',
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+  },
+  imageMessage: {
+    height: 140,
+    overflow: 'hidden',
+    borderRadius: 10,
+  },
+  titleMessageContainer: {
+    marginTop: 20,
+
+    // backgroundColor: 'orange',
+  },
+  titleMessage: {
+    fontSize: 16,
+    fontFamily: 'CircularStd-Bold',
+    // backgroundColor: 'aqua',
+    color: '#000',
+  },
+});
 
 const initialLayout = { width: Dimensions.get('window').width };
 
 const renderScene = SceneMap({
-  first: FirstRoute,
-  second: SecondRoute,
+  1: FirstRoute,
+  2: SecondRoute,
 });
 
 const renderTabBar = props => (
@@ -50,8 +241,8 @@ const Notification = ({ route }) => {
   const navigation = useNavigation();
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    { key: 'first', title: 'Notfiication', emoji: '🔔' },
-    { key: 'second', title: 'Message', emoji: '📨' },
+    { key: 1, title: 'Notification', emoji: '🔔' },
+    { key: 2, title: 'Message', emoji: '📨' },
   ]);
 
   //debug
