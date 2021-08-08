@@ -22,7 +22,9 @@ const EditAddress = ({ navigation, route }) => {
         borderColor="#fff"
         title=""
       />
-      <ScrollView style={styles.mainContainer}>
+      <ScrollView
+        style={styles.mainContainer}
+        showsVerticalScrollIndicator={false}>
         <IconText
           showIcon={false}
           text={route.name}
