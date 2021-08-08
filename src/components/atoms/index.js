@@ -6,5 +6,16 @@ import IconContainer from './IconContainer';
 import Row from './Row';
 import Dot from './Dot';
 import Border from './Border';
+import LogoCoffeeCustom from './LogoCoffeeCustom';
 
-export { Space, Button, TextField, TextInput, IconContainer, Row, Dot, Border };
+export {
+  Space,
+  Button,
+  TextField,
+  TextInput,
+  IconContainer,
+  Row,
+  Dot,
+  Border,
+  LogoCoffeeCustom,
+};

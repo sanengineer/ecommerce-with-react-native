@@ -11,7 +11,7 @@ import {
   Menu,
   Profile,
   Cart,
-  Notification,
+  Inbox,
   Category,
   Bio,
   BioEdit,
@@ -28,6 +28,8 @@ import {
   OrderShipmentOrPickup,
   Coupon,
   StartScreen,
+  MessageDetail,
+  NotificationDetail,
 } from '../stacks';
 import { BottomNav } from '../components';
 
@@ -79,8 +81,8 @@ const Router = () => {
         options={{ headerShown: false, gestureEnabled: false }}
       />
       <Stack.Screen
-        name="Notification"
-        component={Notification}
+        name="Inbox"
+        component={Inbox}
         options={{ headerShown: false }}
       />
       <Stack.Screen
@@ -156,6 +158,16 @@ const Router = () => {
       <Stack.Screen
         name="Coupon"
         component={Coupon}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Message Detail"
+        component={MessageDetail}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Notification Detail"
+        component={NotificationDetail}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useCallback, memo, useRef, useState } from 'react';
 import {
   StyleSheet,
@@ -90,9 +91,13 @@ const styles = StyleSheet.create({
 });
 
 const Slide = memo(function Slide({ data }) {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.slide}>
-      <TouchableOpacity activeOpacity={0.7}>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        onPress={() => navigation.navigate('Message Detail', data)}>
         <ImageBackground source={data.image} style={styles.slideImage}>
           <LinearGradient
             style={{
@@ -157,7 +162,7 @@ function Pagination({ index }) {
   );
 }
 
-const BannerHome = () => {
+const BannerHome = ({ navigation }) => {
   const [index, setIndex] = useState(0);
   const indexRef = useRef(index);
 

@@ -482,7 +482,7 @@ const Home = ({ navigation, route }) => {
               <TouchableOpacity
                 style={styles.notifTouch}
                 activeOpacity={0.7}
-                onPress={() => navigation.navigate('Notification')}>
+                onPress={() => navigation.navigate('Inbox')}>
                 <Text style={styles.notifText}>🔔</Text>
               </TouchableOpacity>
             </View>

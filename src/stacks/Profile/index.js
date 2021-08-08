@@ -25,6 +25,10 @@ const Profile = ({ navigation }) => {
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
+  const logout = async () => {
+    toggleModal();
+    await navigation.replace('Start Screen');
+  };
 
   return (
     <SafeAreaView style={styles.containerStack}>
@@ -95,12 +99,29 @@ const Profile = ({ navigation }) => {
                 </View>
               </TouchableOpacity>
             </View>
+            <Space height={30} />
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Text
+                style={{
+                  fontFamily: 'CircularStd-Book',
+                  fontSize: 12,
+                  color: '#888',
+                }}>
+                Version Alpha 1.0.0
+              </Text>
+            </View>
+            <Space height={30} />
           </View>
         </View>
       </ScrollView>
       <ModalCenterTwoButton
         isVisible={isModalVisible}
-        onPressYes={() => navigation.replace('Start Screen')}
+        onPressYes={logout}
         onPressNo={toggleModal}>
         <Text style={styles.modalTitle}>
           Are you sure for out from this account?

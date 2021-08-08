@@ -41,8 +41,11 @@ const data_message = [
 ];
 
 const CardNotifMessage = () => {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity style={stylesSecondRoute.section}>
+    <TouchableOpacity
+      style={stylesSecondRoute.section}
+      onPress={() => navigation.navigate('Message Detail', data_message[1])}>
       <View style={stylesSecondRoute.imageTextContainer}>
         <ImageBackground
           source={data_message[1].image}
@@ -60,6 +63,8 @@ const CardNotifMessage = () => {
 };
 
 const FirstRoute = () => {
+  const navigation = useNavigation();
+
   return (
     <ScrollView
       style={stylesFirstRoute.mainContainer}
@@ -73,7 +78,9 @@ const FirstRoute = () => {
             <Text style={stylesFirstRoute.textNotif}>You receive 30.000</Text>
           </TouchableOpacity>
           <Border height={1} />
-          <TouchableOpacity style={stylesFirstRoute.textNotifContainer}>
+          <TouchableOpacity
+            style={stylesFirstRoute.textNotifContainer}
+            onPress={() => navigation.navigate('Notification Detail')}>
             <Text style={stylesFirstRoute.textNotif}>
               Your order has been received
             </Text>
@@ -82,6 +89,7 @@ const FirstRoute = () => {
           <TouchableOpacity style={stylesFirstRoute.textNotifContainer}>
             <Text style={stylesFirstRoute.textNotif}>You receive 30.000</Text>
           </TouchableOpacity>
+          <Border height={1} />
           <TouchableOpacity style={stylesFirstRoute.textNotifContainer}>
             <Text style={stylesFirstRoute.textNotif}>
               Your order has been received
@@ -200,7 +208,7 @@ const stylesSecondRoute = StyleSheet.create({
     paddingVertical: 20,
   },
   imageMessage: {
-    height: 140,
+    height: Dimensions.get('screen').width / 3,
     overflow: 'hidden',
     borderRadius: 10,
   },
@@ -237,7 +245,7 @@ const renderTabBar = props => (
   />
 );
 
-const Notification = ({ route }) => {
+const Inbox = ({ route }) => {
   const navigation = useNavigation();
   const [index, setIndex] = useState(0);
   const [routes] = useState([
@@ -265,7 +273,7 @@ const Notification = ({ route }) => {
   );
 };
 
-export default Notification;
+export default Inbox;
 
 const styles = StyleSheet.create({
   safeContainer: {

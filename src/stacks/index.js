@@ -6,7 +6,7 @@ import Home from './Home';
 import Menu from './Menu';
 import Cart from './Cart';
 import Profile from './Profile';
-import Notification from './Notification';
+import Inbox from './Inbox';
 import Category from './Category';
 import Bio from './Bio';
 import BioEdit from './BioEdit';
@@ -23,6 +23,8 @@ import EditAddress from './EditAdddress';
 import OrderShipmentOrPickup from './OrderShipmentOrPickup';
 import Coupon from './Coupon';
 import StartScreen from './StartScreen';
+import MessageDetail from './MessageDetail';
+import NotificationDetail from './NotificationDetail';
 
 export {
   LogIn,
@@ -33,7 +35,7 @@ export {
   Menu,
   Cart,
   Profile,
-  Notification,
+  Inbox,
   Category,
   Bio,
   BioEdit,
@@ -50,4 +52,6 @@ export {
   OrderShipmentOrPickup,
   Coupon,
   StartScreen,
+  MessageDetail,
+  NotificationDetail,
 };
