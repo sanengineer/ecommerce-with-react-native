@@ -81,6 +81,14 @@ const data_product = [
   },
 ];
 
+const store_address = {
+  name_store: 'HQ Store',
+  street: 'Becker Street',
+  number: 222,
+  city: 'Liverpool',
+  province: 'North Uk',
+  postal_code: '482908',
+};
 const data = data_address[0];
 
 const NavHeaderOrder = ({
@@ -266,12 +274,25 @@ const ModalBottomOrder = ({ isVisible, onBackdropPress, onPress }) => (
   </ModalBottom>
 );
 
-const OrderPickup = ({ navigation }) => {
+const OrderPickup = ({ navigation, store_address }) => {
   //debug
   console.log('ONPRESSCOUPON:', navigation);
 
   return (
     <>
+      <View style={styles.addressContainer}>
+        <Space height={20} />
+        <Text style={styles.titleAddress}>Pickup At Store:</Text>
+        <Space height={10} />
+        <Text style={styles.descAddress}>
+          {`${store_address.street} No ${store_address.number}, ${store_address.city}`}
+        </Text>
+        <Text style={styles.footAddress}>
+          {`${store_address.province} ${store_address.postal_code}`}
+        </Text>
+        <Space height={20} />
+      </View>
+      <Border />
       <CardProduct />
       <Border />
       <CardProduct />
@@ -421,7 +442,7 @@ const OrderShipment = ({ navigation, route }) => {
         style={styles.mainContainer}
         showsVerticalScrollIndicator={false}>
         {pickup ? (
-          <OrderPickup navigation={navigation} />
+          <OrderPickup navigation={navigation} store_address={store_address} />
         ) : (
           <OrderShipmentSelf
             data={data}
