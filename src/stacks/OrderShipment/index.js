@@ -83,7 +83,13 @@ const data_product = [
 
 const data = data_address[0];
 
-const NavHeaderOrder = ({ expandableOption, expand, selectPickup, pickup }) => {
+const NavHeaderOrder = ({
+  expandableOption,
+  expand,
+  selectPickup,
+  pickup,
+  navigation,
+}) => {
   return (
     <View
       style={{
@@ -408,6 +414,7 @@ const OrderShipment = ({ navigation, route }) => {
         selectPickup={selectPickup}
         pickup={pickup}
         expand={expand}
+        navigation={navigation}
       />
 
       <ScrollView
