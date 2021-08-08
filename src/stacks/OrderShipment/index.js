@@ -138,7 +138,7 @@ const NavHeaderOrder = ({
               paddingVertical: 10,
               textAlign: 'center',
             }}>
-            {pickup ? 'Pickup At Store' : 'Shipment'}
+            {pickup ? 'Pickup' : 'Shipment'}
           </Text>
         </View>
 
@@ -183,7 +183,7 @@ const NavHeaderOrder = ({
               // backgroundColor: 'grey',
               opacity: 0.4,
             }}>
-            {pickup ? 'Shipment' : 'Pickup At Store'}
+            {pickup ? 'Shipment' : 'Pickup'}
           </Text>
         </TouchableOpacity>
       </View>
