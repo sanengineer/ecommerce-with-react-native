@@ -20,7 +20,7 @@ import AddNoteOrder from './AddNoteOrder';
 import ProductDetail from './ProductDetail';
 import Wishlist from './Wishlist';
 import EditAddress from './EditAdddress';
-import OrderShipment from './OrderShipment';
+import OrderShipmentOrPickup from './OrderShipmentOrPickup';
 import Coupon from './Coupon';
 import StartScreen from './StartScreen';
 
@@ -47,7 +47,7 @@ export {
   ProductDetail,
   Wishlist,
   EditAddress,
-  OrderShipment,
+  OrderShipmentOrPickup,
   Coupon,
   StartScreen,
 };

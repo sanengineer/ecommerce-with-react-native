@@ -30,6 +30,8 @@ import IconInfoCircle from './icon_info-circle.svg';
 import IconCrossBig from './icon_cross_big.svg';
 import IconChevronUp from './icon_chevron_up.svg';
 
+import IconPercentBig from './icon_percent_big_blue.svg';
+
 export {
   IconShipping,
   IconBio,
@@ -58,4 +60,5 @@ export {
   IconInfoCircle,
   IconCrossBig,
   IconChevronUp,
+  IconPercentBig,
 };

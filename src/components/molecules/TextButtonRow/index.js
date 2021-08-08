@@ -4,6 +4,7 @@ import { Space } from '../../atoms';
 
 const TextButtonRow = ({
   paddingHorizontal = 20,
+  paddingVertical = 20,
   borderBottomWidth = 1,
   borderBottomColor = '#efefef',
   title = 'Title',
@@ -20,11 +21,14 @@ const TextButtonRow = ({
   buttonPaddingX = 50,
   buttonPaddingY = 12,
   buttonTextColor = '#fff',
+  showIcon = false,
+  children,
 }) => {
   return (
     <View
       style={styles.textButtonRowContainer(
         paddingHorizontal,
+        paddingVertical,
         borderBottomWidth,
         borderBottomColor,
       )}>
@@ -47,14 +51,18 @@ const TextButtonRow = ({
         <TouchableOpacity
           style={styles.buttonContainer(buttonRadius, bgButton)}
           onPress={onPressButton}>
-          <Text
-            style={styles.button(
-              buttonPaddingX,
-              buttonPaddingY,
-              buttonTextColor,
-            )}>
-            {textButton}
-          </Text>
+          {showIcon ? (
+            children
+          ) : (
+            <Text
+              style={styles.button(
+                buttonPaddingX,
+                buttonPaddingY,
+                buttonTextColor,
+              )}>
+              {textButton}
+            </Text>
+          )}
         </TouchableOpacity>
       </View>
     </View>
@@ -66,10 +74,11 @@ export default TextButtonRow;
 const styles = StyleSheet.create({
   textButtonRowContainer: (
     paddingHorizontal,
+    paddingVertical,
     borderContainerBottomWidth,
     borderContainerBottomColor,
   ) => ({
-    paddingVertical: 20,
+    paddingVertical: paddingVertical,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

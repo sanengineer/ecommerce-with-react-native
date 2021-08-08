@@ -170,7 +170,7 @@ const FlatListFooterCart = ({ navigation }) => (
       title="Total Price"
       Subtitle="Rp 990.000"
       textButton="Buy"
-      onPressButton={() => navigation.navigate('Order Shipment')}
+      onPressButton={() => navigation.navigate('Order Shipment Or Pickup')}
     />
   </View>
 );

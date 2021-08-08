@@ -25,7 +25,7 @@ import {
   ProductDetail,
   Wishlist,
   EditAddress,
-  OrderShipment,
+  OrderShipmentOrPickup,
   Coupon,
   StartScreen,
 } from '../stacks';
@@ -149,8 +149,8 @@ const Router = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Order Shipment"
-        component={OrderShipment}
+        name="Order Shipment Or Pickup"
+        component={OrderShipmentOrPickup}
         options={{ headerShown: false }}
       />
       <Stack.Screen
