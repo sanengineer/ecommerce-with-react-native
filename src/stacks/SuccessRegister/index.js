@@ -38,6 +38,7 @@ const SuccessRegister = ({ navigation }) => {
           label="Login"
           padSizeX={20}
           padSizeY={60}
+          onPress={() => navigation.replace('Log In', 'success_register')}
         />
       </View>
     </View>

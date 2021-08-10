@@ -18,7 +18,7 @@ import {
 
 import { DismissKeyboard, KeyboardScrollUpForms, useForm } from '../../utils';
 
-const LogIn = ({ navigation }) => {
+const LogIn = ({ navigation, route }) => {
   const [form, setForm] = useForm({
     email: '',
     password: '',
@@ -27,6 +27,9 @@ const LogIn = ({ navigation }) => {
   const onSubmit = () => {
     console.log('form:', form);
   };
+
+  //debug
+  console.log('ROUTE:', route);
   return (
     <DismissKeyboard>
       <View style={styles.page}>
@@ -39,10 +42,14 @@ const LogIn = ({ navigation }) => {
             showSpaceLeft={true}
             navGoBack={false}
             title="">
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Start Screen')}>
-              <IconCrossBig />
-            </TouchableOpacity>
+            {route.params === 'success_register' ? (
+              <></>
+            ) : (
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Start Screen')}>
+                <IconCrossBig />
+              </TouchableOpacity>
+            )}
           </NavHeader>
           <ScrollView
             contentInsetAdjustmentBehavior="automatic"

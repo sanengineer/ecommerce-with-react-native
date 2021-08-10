@@ -66,12 +66,12 @@ const Router = () => {
         options={{ headerShown: false, gestureEnabled: false }}
       />
       <Stack.Screen
-        name="SuccessLogin"
+        name="Success Login"
         component={SuccessLogin}
         options={{ headerShown: false, gestureEnabled: false }}
       />
       <Stack.Screen
-        name="SuccessRegister"
+        name="Success Register"
         component={SuccessRegister}
         options={{ headerShown: false, gestureEnabled: false }}
       />

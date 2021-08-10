@@ -15,6 +15,7 @@
     "@react-navigation/bottom-tabs": "^5.11.11",
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.5",
+    "axios": "^0.21.1",
     "react": "17.0.1",
     "react-native": "0.64.2",
     "react-native-elements": "^3.4.2",
@@ -27,7 +28,10 @@
     "react-native-screens": "^3.4.0",
     "react-native-simple-radio-button": "^2.7.4",
     "react-native-svg": "^12.1.1",
-    "react-native-tab-view": "^3.1.1"
+    "react-native-tab-view": "^3.1.1",
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.1",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -37,8 +41,10 @@
     "eslint": "7.14.0",
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.64.0",
+    "react-native-dotenv": "^3.1.1",
     "react-native-svg-transformer": "^0.14.3",
-    "react-test-renderer": "17.0.1"
+    "react-test-renderer": "17.0.1",
+    "redux-devtools-extension": "^2.13.9"
   },
   "jest": {
     "preset": "react-native"

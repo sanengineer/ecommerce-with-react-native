@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,6 +7,7 @@ import {
   Platform,
   TouchableOpacity,
 } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { IconCrossBig } from '../../assets';
 import {
   Button,
@@ -17,13 +18,23 @@ import {
   TextInput,
 } from '../../components';
 
+import { authRegisterAction } from '../../redux';
+
+import { useForm } from '../../utils';
+
 const Register = ({ navigation }) => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+
+  const [form, setForm] = useForm({
+    name: '',
+    username: '',
+    email: '',
+    password: '',
+  });
 
   const onSubmit = () => {
-    console.log(username);
+    dispatch(authRegisterAction(form, navigation));
+    console.log(form);
   };
 
   return (
@@ -47,24 +58,31 @@ const Register = ({ navigation }) => {
             </View>
           </View>
           <TextInput
+            label="Name"
+            placeholder="name"
+            value={form.name}
+            onChangeText={e => setForm('name', e)}
+          />
+          <Space height={30} />
+          <TextInput
             label="Username"
             placeholder="yourusername"
-            value={username}
-            onChangeText={e => setUsername(e)}
+            value={form.username}
+            onChangeText={e => setForm('username', e)}
           />
           <Space height={30} />
           <TextInput
             label="Email"
             placeholder="yourcoffee@email.com"
-            value={email}
-            onChangeText={e => setEmail(e)}
+            value={form.email}
+            onChangeText={e => setForm('email', e)}
           />
           <Space height={30} />
           <TextInput
             label="Password"
             placeholder="********"
-            value={password}
-            onChangeText={e => setPassword(e)}
+            value={form.password}
+            onChangeText={e => setForm('password', e)}
             secureTextEntry
           />
           <Space height={50} />
@@ -77,6 +95,7 @@ const Register = ({ navigation }) => {
             borderWidth={0}
             fontFam="CircularStd-Bold"
             txtDecorationLine="none"
+            onPress={onSubmit}
           />
           <Space height={50} />
         </View>
