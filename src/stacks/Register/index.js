@@ -18,7 +18,7 @@ import {
   TextInput,
 } from '../../components';
 
-import { authRegisterAction } from '../../redux';
+import { authRegisterAction } from '../../redux/actions/auth';
 
 import { useForm } from '../../utils';
 

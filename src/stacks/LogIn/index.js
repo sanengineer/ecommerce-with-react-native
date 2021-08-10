@@ -6,6 +6,7 @@ import {
   Platform,
   TouchableOpacity,
 } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { IconCrossBig } from '../../assets';
 import {
   Space,
@@ -16,16 +17,30 @@ import {
   NavHeader,
 } from '../../components';
 
+import { authLoginAction } from '../../redux/actions/auth';
+
 import { DismissKeyboard, KeyboardScrollUpForms, useForm } from '../../utils';
 
+import base64 from 'base-64';
+
 const LogIn = ({ navigation, route }) => {
+  const dispatch = useDispatch();
+
   const [form, setForm] = useForm({
-    email: '',
+    username: '',
     password: '',
   });
 
+  const token = `${form.username}:${form.password}`;
+  const encodedToken = base64.encode(token);
+
   const onSubmit = () => {
+    dispatch(authLoginAction(encodedToken, navigation));
+
+    //debug
     console.log('form:', form);
+    console.log('token:', token);
+    console.log('encoded', encodedToken);
   };
 
   //debug
@@ -60,9 +75,9 @@ const LogIn = ({ navigation, route }) => {
             />
             <View style={styles.container}>
               <TextInput
-                label="Email"
-                placeholder="mylatte@coffee.com"
-                onChangeText={value => setForm('email', value)}
+                label="Username"
+                placeholder="mylattecoffee"
+                onChangeText={value => setForm('username', value)}
               />
               <Space height={30} />
               <TextInput
@@ -81,7 +96,8 @@ const LogIn = ({ navigation, route }) => {
                 borderWidth={0}
                 fontFam="CircularStd-Bold"
                 txtDecorationLine="none"
-                onPress={() => navigation.replace('MainApp')}
+                onPress={onSubmit}
+                // onPress={() => navigation.replace('MainApp')}
               />
               <Space height={40} />
               <Button

@@ -1,5 +1,6 @@
-import { actionTypes } from '..';
+import * as actionTypes from './actionTypes';
 import { UserServices } from '../../services';
+import { storeData } from '../../utils';
 
 export const authRegisterAction =
   (auth_data_register, navigation) => dispatch => {
@@ -7,6 +8,7 @@ export const authRegisterAction =
     //debug
     console.log('auth_data:', auth_data_register);
     console.log('navigation:', navigation);
+
     UserServices.authRegister(auth_data_register)
       .then(res => {
         //
@@ -34,4 +36,38 @@ export const authRegisterActionSuccess = auth_register_success => ({
 export const authRegisterActionFail = auth_register_fail => ({
   type: actionTypes.AUTH_REGISTER_FAIL,
   payload: { auth_register_fail },
+});
+
+export const authLoginAction = (auth_data_login, navigation) => dispatch => {
+  //debug
+  console.log('auth_data_login:', auth_data_login);
+  console.log('navigation:', navigation);
+
+  UserServices.authLogin(auth_data_login)
+    .then(res => {
+      //debug
+      console.log('res', res.data);
+      storeData('user', res.data);
+      navigation.replace('Success Login');
+    })
+    .catch(err => {
+      //debug
+      console.log('err', err);
+
+      dispatch(authLoginActionFail(err));
+    });
+};
+
+export const authLoginActionStart = () => ({
+  type: actionTypes.AUTH_LOGIN_START,
+});
+
+export const authLoginActionSuccess = auth_login_success => ({
+  type: actionTypes.AUTH_LOGIN_SUCCESS,
+  payload: { auth_login_success },
+});
+
+export const authLoginActionFail = auth_login_fail => ({
+  type: actionTypes.AUTH_LOGIN_FAIL,
+  payload: { auth_login_fail },
 });
