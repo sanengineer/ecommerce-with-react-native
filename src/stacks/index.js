@@ -25,6 +25,7 @@ import Coupon from './Coupon';
 import StartScreen from './StartScreen';
 import MessageDetail from './MessageDetail';
 import NotificationDetail from './NotificationDetail';
+import SplashScreen from './SplashScreen';
 
 export {
   LogIn,
@@ -54,4 +55,5 @@ export {
   StartScreen,
   MessageDetail,
   NotificationDetail,
+  SplashScreen,
 };

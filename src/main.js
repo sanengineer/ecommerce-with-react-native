@@ -11,8 +11,7 @@ function App(props) {
   useEffect(() => {
     getData('user').then(user => {
       //debug
-      console.log('token_home_stack:', user.tokenString);
-
+      console.log('token_home_stack:', user);
       setData(user);
     });
   }, []);

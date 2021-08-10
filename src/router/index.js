@@ -30,6 +30,7 @@ import {
   StartScreen,
   MessageDetail,
   NotificationDetail,
+  SplashScreen,
 } from '../stacks';
 import { BottomNav } from '../components';
 
@@ -47,13 +48,30 @@ const MainApp = () => {
   );
 };
 
+const forFade = ({ current }) => ({
+  cardStyle: {
+    opacity: current.progress,
+  },
+});
+
 const Router = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
+        name="Splash Screen"
+        component={SplashScreen}
+        options={{
+          headerShown: false,
+          // gestureEnabled: false,
+        }}
+      />
+      <Stack.Screen
         name="Start Screen"
         component={StartScreen}
-        options={{ headerShown: false, gestureEnabled: false }}
+        options={{
+          cardStyleInterpolator: forFade,
+          headerShown: false,
+        }}
       />
       <Stack.Screen
         name="Log In"
@@ -78,7 +96,11 @@ const Router = () => {
       <Stack.Screen
         name="MainApp"
         component={MainApp}
-        options={{ headerShown: false, gestureEnabled: false }}
+        options={{
+          cardStyleInterpolator: forFade,
+          headerShown: false,
+          gestureEnabled: false,
+        }}
       />
       <Stack.Screen
         name="Inbox"

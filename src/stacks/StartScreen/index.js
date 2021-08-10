@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, SafeAreaView, Dimensions } from 'react-native';
-import { LogoCoffeeShop } from '../../assets';
+import React from 'react';
+import { StyleSheet, View, Dimensions, ImageBackground } from 'react-native';
+import { ImageHeaderBgBlue, LogoCoffeeShop } from '../../assets';
 import { Button, Space } from '../../components';
 
 const StartScreen = ({ navigation }) => {
   return (
-    <SafeAreaView style={styles.safeContainer}>
-      <View style={styles.mainContainer}>
+    <View style={styles.safeContainer}>
+      <ImageBackground
+        style={styles.mainContainer}
+        source={ImageHeaderBgBlue}
+        resizeMode="cover">
         <View
           style={{
             alignItems: 'center',
@@ -43,8 +46,8 @@ const StartScreen = ({ navigation }) => {
           />
           <Space height={40} />
         </View>
-      </View>
-    </SafeAreaView>
+      </ImageBackground>
+    </View>
   );
 };
 
@@ -60,5 +63,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     // backgroundColor: 'red',
     flex: 1,
+    paddingVertical: 20,
   },
 });

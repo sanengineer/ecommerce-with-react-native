@@ -48,7 +48,7 @@ export const authLoginAction = (auth_data_login, navigation) => dispatch => {
       //debug
       console.log('res', res.data);
       storeData('user', res.data);
-      navigation.replace('Success Login');
+      navigation.reset({ index: 0, routes: [{ name: 'MainApp' }] });
     })
     .catch(err => {
       //debug

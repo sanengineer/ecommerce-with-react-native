@@ -19,15 +19,21 @@ import {
 import { IconArrowRight, ImageProfileSan } from '../../assets';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Touchable } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Profile = ({ navigation }) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
-  const logout = async () => {
-    toggleModal();
-    await navigation.replace('Start Screen');
+  const logout = () => {
+    AsyncStorage.multiRemove(['user'])
+      .then(() => {
+        toggleModal();
+      })
+      .then(() => {
+        navigation.reset({ index: 0, routes: [{ name: 'Start Screen' }] });
+      });
   };
 
   return (
