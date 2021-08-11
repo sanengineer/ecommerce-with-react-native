@@ -183,12 +183,13 @@ const categories = [
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    // backgroundColor: 'transparent',
+    // backgroundColor: 'red',
     flex: 1,
   },
 
   screen: {
-    // backgroundColor: "red",
+    // backgroundColor: 'red',
     flex: 1,
   },
 
@@ -202,14 +203,14 @@ const styles = StyleSheet.create({
   },
 
   subContainerProduct: {
-    // backgroundColor: "#fff",
+    // backgroundColor: '#fff',
     paddingHorizontal: 12,
     flex: 1,
     flexWrap: 'wrap',
   },
 
   containerList: {
-    // backgroundColor: "yellow",
+    // backgroundColor: 'yellow',
     // flex: 1,
     flexDirection: 'column',
   },
@@ -261,7 +262,8 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     height: Dimensions.get('screen').height / 2,
     // backgroundColor: '#18DA42',
-    backgroundColor: '#0030FF',
+    // backgroundColor: '#0030FF',
+    backgroundColor: 'transparent',
     // backgroundColor:"#2701ff",
     position: 'relative',
     resizeMode: 'cover',
@@ -474,10 +476,20 @@ const Home = ({ navigation, route }) => {
       <ScrollView
         style={styles.foodListsContainer}
         showsVerticalScrollIndicator={false}>
+        <View
+          style={{
+            position: 'absolute',
+            backgroundColor: '#fff',
+            height: Dimensions.get('screen').height / 5,
+            width: Dimensions.get('screen').width,
+            bottom: 0,
+          }}
+        />
         <View style={styles.screen}>
           <ImageBackground
             style={styles.headerContainer}
-            source={ImageHeaderBgBlue}>
+            // source={ImageHeaderBgBlue}
+          >
             <View style={styles.notifContainer}>
               <TouchableOpacity
                 style={styles.notifTouch}
@@ -604,10 +616,29 @@ const Home = ({ navigation, route }) => {
   );
 
   return (
-    <View
-      style={{
-        backgroundColor: '#fff',
-      }}>
+    <>
+      <View
+        style={{
+          backgroundColor: '#fff',
+          width: Dimensions.get('screen').width,
+          height: Dimensions.get('screen').height / 4,
+          position: 'absolute',
+          bottom: 0,
+          zIndex: -1,
+        }}
+      />
+      <Image
+        source={ImageHeaderBgBlue}
+        style={{
+          width: Dimensions.get('screen').width,
+          height: Dimensions.get('screen').height / 1.25,
+          backgroundColor: '#0030FF',
+          top: 0,
+          position: 'absolute',
+          zIndex: -4,
+        }}
+      />
+
       <FlatList
         ref={ref}
         data={data}
@@ -618,6 +649,7 @@ const Home = ({ navigation, route }) => {
         ListFooterComponent={() => <Space height={20} />}
         columnWrapperStyle={styles.containerFlatlist}
         showsVerticalScrollIndicator={false}
+        scrollsToTop={true}
       />
       <ModalBottom
         onBackdropPress={toggleModal}
@@ -643,7 +675,7 @@ const Home = ({ navigation, route }) => {
         </TouchableOpacity>
         <Space height={20} />
       </ModalBottom>
-    </View>
+    </>
   );
 };
 

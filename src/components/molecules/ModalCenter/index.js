@@ -8,12 +8,12 @@ const ModalCenter = ({ isVisible, backdropColor, children, ...props }) => {
       <Modal
         isVisible={isVisible}
         backdropColor={backdropColor}
-        animationIn="zoomInDown"
-        animationOut="zoomOutUp"
-        animationInTiming={600}
-        animationOutTiming={600}
-        backdropTransitionInTiming={600}
-        backdropTransitionOutTiming={600}
+        animationIn="fadeIn"
+        animationOut="fadeOut"
+        animationInTiming={10}
+        animationOutTiming={1}
+        backdropTransitionInTiming={10}
+        backdropTransitionOutTiming={1}
         {...props}>
         {children}
       </Modal>
