@@ -1,8 +1,9 @@
 import axios from 'axios';
 import envConfig from '../../env-config';
+import hostname from './hostnameServerApi';
 
 const api = axios.create({
-  baseURL: `http://${envConfig.LOCAL_API_HOSTNAME}:${envConfig.LOCAL_API_PORT}/${envConfig.LOCAL_API_VERSION}`,
+  baseURL: `http://${hostname}:${envConfig.LOCAL_API_PORT}/${envConfig.LOCAL_API_VERSION}`,
   headers: {
     'content-type': 'application/json',
   },
@@ -11,7 +12,7 @@ const api = axios.create({
 //
 //debug
 console.log(
-  `http://${envConfig.LOCAL_API_HOSTNAME}:${envConfig.LOCAL_API_PORT}/${envConfig.LOCAL_API_VERSION}`,
+  `http://${hostname}:${envConfig.LOCAL_API_PORT}/${envConfig.LOCAL_API_VERSION}`,
 );
 
 export default api;

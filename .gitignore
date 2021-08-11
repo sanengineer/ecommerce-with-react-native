@@ -60,5 +60,5 @@ buck-out/
 
 # Environment
 .env
-./src/services/httpService.js
-src/services/httpService.js
+./src/services/hostnameServerApi.js
+src/services/hostnameServerApi.js
