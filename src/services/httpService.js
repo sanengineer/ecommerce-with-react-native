@@ -8,4 +8,9 @@ const api = axios.create({
   },
 });
 
+//debug
+console.log(
+  `http://${envConfig.LOCAL_API_HOSTNAME}:${envConfig.LOCAL_API_PORT}/${envConfig.LOCAL_API_VERSION}`,
+);
+
 export default api;
