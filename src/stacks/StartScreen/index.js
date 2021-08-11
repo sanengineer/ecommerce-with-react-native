@@ -63,6 +63,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     // backgroundColor: 'red',
     flex: 1,
-    paddingVertical: 20,
+    paddingVertical: Dimensions.get('screen').height / 100,
   },
 });

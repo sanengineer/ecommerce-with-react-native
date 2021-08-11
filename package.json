@@ -19,6 +19,7 @@
     "base-64": "^1.0.0",
     "react": "17.0.1",
     "react-native": "0.64.2",
+    "react-native-dotenv": "^3.1.1",
     "react-native-elements": "^3.4.2",
     "react-native-extra-dimensions-android": "^1.2.5",
     "react-native-gesture-handler": "^1.10.3",
@@ -42,7 +43,6 @@
     "eslint": "7.14.0",
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.64.0",
-    "react-native-dotenv": "^3.1.1",
     "react-native-svg-transformer": "^0.14.3",
     "react-test-renderer": "17.0.1",
     "redux-devtools-extension": "^2.13.9"
