@@ -57,6 +57,13 @@ const ProductDetail = ({ navigation, route }) => {
       <NavHeader navigation={navigation} title={product.category} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <ImageBackground style={styles.featImage} source={product.image} />
+        {product.promo ? (
+          <View style={styles.promoStickerProductContainer}>
+            <Text style={styles.promoText}>🎉 promo</Text>
+          </View>
+        ) : (
+          <></>
+        )}
         <Row>
           <View style={styles.priceWeightLove}>
             <View style={styles.priceWeight}>
@@ -160,6 +167,22 @@ const styles = StyleSheet.create({
   },
   featImage: {
     height: Dimensions.get('window').height / 3,
+  },
+  promoStickerProductContainer: {
+    position: 'absolute',
+    borderBottomLeftRadius: 10,
+    backgroundColor: '#03CC3085',
+    paddingLeft: 6,
+    paddingTop: 4,
+    paddingBottom: 4,
+    paddingRight: 4,
+    right: 0,
+  },
+  promoText: {
+    color: '#fff',
+    fontSize: 18,
+    textTransform: 'capitalize',
+    fontFamily: 'CircularStd-Bold',
   },
   priceWeightLove: {
     flexDirection: 'row',
