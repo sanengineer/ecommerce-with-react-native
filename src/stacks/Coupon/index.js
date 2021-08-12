@@ -57,7 +57,7 @@ const CardCouponList = ({ item }) => (
           <View style={styles.couponTitleNbContainer}>
             <Text style={styles.couponTitle}>{item.title}</Text>
             <Space width={6} />
-            <Text style={styles.couponNb}>{item.nb}</Text>
+            {item.nb ? <Text style={styles.couponNb}>{item.nb}</Text> : <></>}
           </View>
           <Text style={styles.couponExpired}>{item.expired}</Text>
         </View>
@@ -175,10 +175,10 @@ const styles = StyleSheet.create({
     marginRight: 7,
   },
   couponTitleNbContainer: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     // backgroundColor: 'red',
     justifyContent: 'flex-start',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   couponTitle: {
     lineHeight: 20,

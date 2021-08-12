@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   slideImage: {
     // width: 330,
     // height: 150,
-    height: Dimensions.get('screen').height / 5,
+    height: Dimensions.get('screen').height / 4.3,
     width: Dimensions.get('screen').width - 52,
 
     // resizeMode: "cover",
@@ -124,6 +124,7 @@ const Slide = memo(function Slide({ data }) {
                 {data.emoji}
               </Text>
               <Text
+                adjustsFontSizeToFit={true}
                 style={{
                   color: '#fff',
                   fontFamily: 'CircularStd-Black',

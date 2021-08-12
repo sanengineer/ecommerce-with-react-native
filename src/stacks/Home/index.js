@@ -225,11 +225,13 @@ const styles = StyleSheet.create({
 
   contentHeader: {
     // backgroundColor: 'aqua',
-    flex: 1,
-    justifyContent: 'center',
+    // flex: 1,
+    justifyContent: 'space-between',
     flexDirection: 'column',
     marginTop: 30,
-    marginBottom: 100,
+    height: Dimensions.get('screen').height / 3.3,
+    // paddingBottom: 100,
+    // marginBottom: 100,
     alignItems: 'flex-start',
   },
 
@@ -237,6 +239,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 2,
     top: 30,
+    // backgroundColor: 'red',
   },
 
   notifTouch: {
@@ -269,13 +272,14 @@ const styles = StyleSheet.create({
     // backgroundColor:"#2701ff",
     position: 'relative',
     resizeMode: 'cover',
+    // top: 20,
     paddingLeft: 20,
   },
 
   titleHeaderContainer: {
     position: 'relative',
     justifyContent: 'center',
-    marginTop: 20,
+    marginTop: 0,
     // top: -Dimensions.get("screen").height / 13,
     // backgroundColor: 'black',
   },
@@ -298,19 +302,19 @@ const styles = StyleSheet.create({
   },
 
   subTitleContainer: {
-    paddingBottom: 40,
+    // paddingBottom: 40,
   },
 
   subTitle: {
     // backgroundColor: "red",
     fontFamily: 'CircularStd-Book',
     fontSize: 14,
-    textAlign: 'center',
+    // textAlign: 'center',
     color: '#fff',
   },
 
   pointTitleContainer: {
-    // backgroundColor: "red",
+    // backgroundColor: 'red',
     // width: 90,
     // top: -Dimensions.get("screen").height / 6,
     // backgroundColor: 'green',
@@ -320,6 +324,8 @@ const styles = StyleSheet.create({
 
   pointContainer: {
     // top: -Dimensions.get("screen").height / 6
+    // backgroundColor: 'aqua',
+    // flexDirection: 'row',
   },
 
   textPoint: {
@@ -327,12 +333,12 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     fontFamily: 'CircularStd-Bold',
     color: '#fff',
-    // backgroundColor: 'red',
+    // backgroundColor: 'orange',
   },
 
   homeBannerContainer: {
     backgroundColor: '#fff',
-    height: Dimensions.get('screen').height / 5,
+    height: Dimensions.get('screen').height / 4.3,
     position: 'absolute',
     width: Dimensions.get('screen').width - 36,
     top: Dimensions.get('screen').height / 2.6,
@@ -507,14 +513,20 @@ const Home = ({ navigation, route }) => {
                 <View style={styles.iconTitleUserContainer}>
                   <Text style={styles.iconTitle}>👋</Text>
                   <Space width={4} />
-                  <Text style={styles.textTitle}>Hai, San!</Text>
+                  <Text style={styles.textTitle} adjustsFontSizeToFit={true}>
+                    Hai, San!
+                  </Text>
+                </View>
+                <Space height={3} />
+                <View style={styles.subTitleContainer}>
+                  <Text style={styles.subTitle}>Let's, drink again!</Text>
                 </View>
               </View>
-              <Space height={3} />
-              <View style={styles.subTitleContainer}>
-                <Text style={styles.subTitle}>Let's, drink again!</Text>
-              </View>
-              <View>
+              <View
+                style={{
+                  // backgroundColor: 'aqua',
+                  alignItems: 'flex-start',
+                }}>
                 <TouchableOpacity
                   style={styles.pointTitleContainer}
                   activeOpacity={0.6}
@@ -529,11 +541,11 @@ const Home = ({ navigation, route }) => {
                   />
                 </TouchableOpacity>
                 <Space height={2} />
+                <View style={styles.pointContainer}>
+                  <Text style={styles.textPoint}>200.000</Text>
+                </View>
               </View>
-              <View style={styles.pointContainer}>
-                <Text style={styles.textPoint}>200.000</Text>
-              </View>
-              <Space height={30} />
+              {/* <Space height={30} /> */}
               <View
                 style={{
                   // backgroundColor: 'red',
@@ -561,6 +573,7 @@ const Home = ({ navigation, route }) => {
                 </TouchableOpacity>
               </View>
             </View>
+            {/* <Space height={20} /> */}
             <View style={styles.homeBannerContainer}>
               <BannerHome />
             </View>
