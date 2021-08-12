@@ -10,7 +10,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IconCrossBig, IconCrossSmall } from '../../assets';
 import {
   Button,
@@ -24,9 +24,13 @@ import {
 import { authRegisterAction } from '../../redux/actions/auth';
 import TouchableScale from 'react-native-touchable-scale';
 import { KeyboardScrollUpForms, useForm } from '../../utils';
+import FlashMessage from 'react-native-flash-message';
 
 const Register = ({ navigation }) => {
   const dispatch = useDispatch();
+  // const select_auth_register = useSelector(
+  //   state => state.auth_register_reducer,
+  // );
 
   const [form, setForm] = useForm({
     name: '',
@@ -39,6 +43,9 @@ const Register = ({ navigation }) => {
     dispatch(authRegisterAction(form, navigation));
     console.log(form);
   };
+
+  //debug
+  // console.log('SELECTOR:', select_auth_register);
 
   return (
     <SafeAreaView style={styles.page}>
@@ -53,18 +60,21 @@ const Register = ({ navigation }) => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           showsVerticalScrollIndicator={false}>
+          <Space height={20} />
           <Header title="Register" showDesc={false} />
           <Space height={8} />
           <View style={styles.mainContainer}>
-            <View style={styles.avaForm}>
+            {/* <View style={styles.avaForm}>
               <View style={styles.avaBorder}>
-                <TouchableScale tension={100}>
+                <TouchableScale
+                  tension={100}
+                  onPress={() => console.log('register')}>
                   <View style={styles.addAvaTextContainer}>
                     <Text style={styles.addAvaText}>Add Avatar</Text>
                   </View>
                 </TouchableScale>
               </View>
-            </View>
+            </View> */}
             <TextInput
               label="Name"
               placeholder="name"
@@ -111,6 +121,13 @@ const Register = ({ navigation }) => {
           </View>
         </ScrollView>
       </KeyboardScrollUpForms>
+      <FlashMessage
+        // ref={showMessage}
+        hideOnPress={true}
+        duration={4000}
+        style={{ backgroundColor: 'red' }}
+        textStyle={{ fontFamily: 'CircularStd-Bold' }}
+      />
     </SafeAreaView>
   );
 };
@@ -138,26 +155,26 @@ const styles = StyleSheet.compose({
     marginBottom: 30,
   },
   avaBorder: {
-    borderRadius: 110,
-    height: 110,
-    width: 110,
+    borderRadius: 120,
+    height: 120,
+    width: 120,
     borderStyle: 'solid',
-    borderColor: '#dedede',
+    borderColor: '#0030FF',
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
   addAvaTextContainer: {
     borderRadius: 90,
-    height: 90,
-    width: 90,
-    backgroundColor: '#dedede',
+    height: 100,
+    width: 100,
+    backgroundColor: '#0030FF',
     padding: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
   addAvaText: {
-    fontSize: 16,
+    fontSize: 14,
     fontFamily: 'CircularStd-Bold',
     color: '#fff',
     textAlign: 'center',

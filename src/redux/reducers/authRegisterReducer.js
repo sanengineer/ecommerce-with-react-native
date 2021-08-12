@@ -28,7 +28,7 @@ export default function authRegisterReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        error: action.payload.auth_register_fail,
+        error: action.payload,
       };
 
     default: {

@@ -1,6 +1,7 @@
 import * as actionTypes from './actionTypes';
 import { UserServices } from '../../services';
 import { storeData } from '../../utils';
+import { showMessage } from 'react-native-flash-message';
 
 export const authRegisterAction =
   (auth_data_register, navigation) => dispatch => {
@@ -20,7 +21,12 @@ export const authRegisterAction =
         //
         //debug
         console.log('err:', err.message);
-        dispatch(authRegisterActionFail(err));
+        // console.log('fail:', fail);
+        showMessage({
+          message: '🚨',
+          description: err.message,
+        }),
+          dispatch(authRegisterActionFail(err));
       });
   };
 
@@ -53,8 +59,11 @@ export const authLoginAction = (auth_data_login, navigation) => dispatch => {
     .catch(err => {
       //debug
       console.log('err', err);
-
-      dispatch(authLoginActionFail(err));
+      showMessage({
+        message: '🚨',
+        description: err.message,
+      }),
+        dispatch(authLoginActionFail(err));
     });
 };
 

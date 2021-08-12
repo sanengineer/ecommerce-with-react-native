@@ -24,6 +24,7 @@ import { authLoginAction } from '../../redux/actions/auth';
 import { DismissKeyboard, KeyboardScrollUpForms, useForm } from '../../utils';
 
 import base64 from 'base-64';
+import FlashMessage from 'react-native-flash-message';
 
 const LogIn = ({ navigation, route }) => {
   const dispatch = useDispatch();
@@ -70,6 +71,7 @@ const LogIn = ({ navigation, route }) => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           showsVerticalScrollIndicator={false}>
+          <Space height={20} />
           <Header
             title="Login"
             desc="For buying drinks and beverages, login first. 🤝"
@@ -114,6 +116,13 @@ const LogIn = ({ navigation, route }) => {
           </View>
         </ScrollView>
       </KeyboardScrollUpForms>
+      <FlashMessage
+        // ref={showMessage}
+        style={{ backgroundColor: 'red' }}
+        textStyle={{ fontFamily: 'CircularStd-Bold' }}
+        hideOnPress={true}
+        duration={4000}
+      />
     </SafeAreaView>
   );
 };

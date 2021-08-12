@@ -24,6 +24,7 @@
     "react-native-dotenv": "^3.1.1",
     "react-native-elements": "^3.4.2",
     "react-native-extra-dimensions-android": "^1.2.5",
+    "react-native-flash-message": "^0.1.23",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-modal": "^12.0.3",
