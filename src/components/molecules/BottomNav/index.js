@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
+import TouchableScale from 'react-native-touchable-scale';
 import {
   IconHome,
   IconHomeActive,
@@ -24,6 +25,7 @@ import {
   IconMenuRounded,
   IconMenuRoundedActive,
 } from '../../../assets';
+import { IconContainer, SafeAreaViewCustom } from '../../atoms';
 
 const Icon = ({ label, focus }) => {
   switch (label) {
@@ -93,7 +95,7 @@ const BottomNav = ({ state, descriptors, navigation }) => {
           };
 
           return (
-            <TouchableOpacity
+            <TouchableScale
               key={route.key}
               accessibilityRole="button"
               accessibilityState={isFocused ? { selected: true } : {}}
@@ -101,8 +103,25 @@ const BottomNav = ({ state, descriptors, navigation }) => {
               testID={options.tabBarTestID}
               onPress={onPress}
               onLongPress={onLongPress}
-              style={{ textAlign: 'center', alignItems: 'center' }}>
-              <Icon label={label} focus={isFocused} />
+              style={{
+                alignItems: 'center',
+                // backgroundColor: 'aqua',
+                // justifyContent: 'center',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                paddingHorizontal: 8,
+              }}>
+              <View
+                style={
+                  {
+                    // backgroundColor: 'red',
+                    // alignItems: 'center',
+                    // justifyContent: 'center',
+                  }
+                }>
+                <Icon label={label} focus={isFocused} />
+              </View>
+
               <Text
                 style={{
                   color: '#000',
@@ -110,10 +129,11 @@ const BottomNav = ({ state, descriptors, navigation }) => {
                     ? 'CircularStd-Bold'
                     : 'CircularStd-Book',
                   fontSize: 10,
+                  textAlign: 'center',
                 }}>
                 {label}
               </Text>
-            </TouchableOpacity>
+            </TouchableScale>
           );
         })}
       </View>

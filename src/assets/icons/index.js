@@ -28,6 +28,7 @@ import IconMenuRoundedActive from './icon_menu_rounded_active.svg';
 import IconChevronDown from './icon_chevron_down.svg';
 import IconInfoCircle from './icon_info-circle.svg';
 import IconCrossBig from './icon_cross_big.svg';
+import IconCrossSmall from './icon_cross_small.svg';
 import IconChevronUp from './icon_chevron_up.svg';
 
 import IconPercentBig from './icon_percent_big_blue.svg';
@@ -60,6 +61,7 @@ export {
   IconChevronDown,
   IconInfoCircle,
   IconCrossBig,
+  IconCrossSmall,
   IconChevronUp,
   IconPercentBig,
   IconCheckCircle,

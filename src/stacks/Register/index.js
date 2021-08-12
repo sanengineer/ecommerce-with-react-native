@@ -6,9 +6,12 @@ import {
   ScrollView,
   Platform,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  SafeAreaView,
 } from 'react-native';
+
 import { useDispatch } from 'react-redux';
-import { IconCrossBig } from '../../assets';
+import { IconCrossBig, IconCrossSmall } from '../../assets';
 import {
   Button,
   Header,
@@ -19,8 +22,8 @@ import {
 } from '../../components';
 
 import { authRegisterAction } from '../../redux/actions/auth';
-
-import { useForm } from '../../utils';
+import TouchableScale from 'react-native-touchable-scale';
+import { KeyboardScrollUpForms, useForm } from '../../utils';
 
 const Register = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -38,70 +41,77 @@ const Register = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.page}>
-      <Space height={40} />
+    <SafeAreaView style={styles.page}>
       <NavHeader title="" navGoBack={false} borderWidth={0}>
         <TouchableOpacity onPress={() => navigation.navigate('Start Screen')}>
-          <IconCrossBig />
+          <IconCrossSmall />
         </TouchableOpacity>
       </NavHeader>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        showsVerticalScrollIndicator={false}>
-        <Header title="Register" showDesc={false} />
-        <View style={styles.mainContainer}>
-          <View style={styles.avaForm}>
-            <View style={styles.avaBorder}>
-              <View style={styles.addAvaTextContainer}>
-                <Text style={styles.addAvaText}>Add Avatar</Text>
+      <KeyboardScrollUpForms
+        enabled
+        behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
+        <ScrollView
+          contentInsetAdjustmentBehavior="automatic"
+          showsVerticalScrollIndicator={false}>
+          <Header title="Register" showDesc={false} />
+          <Space height={8} />
+          <View style={styles.mainContainer}>
+            <View style={styles.avaForm}>
+              <View style={styles.avaBorder}>
+                <TouchableScale tension={100}>
+                  <View style={styles.addAvaTextContainer}>
+                    <Text style={styles.addAvaText}>Add Avatar</Text>
+                  </View>
+                </TouchableScale>
               </View>
             </View>
+            <TextInput
+              label="Name"
+              placeholder="name"
+              value={form.name}
+              onChangeText={e => setForm('name', e)}
+            />
+            <Space height={30} />
+            <TextInput
+              label="Username"
+              placeholder="yourusername"
+              value={form.username}
+              onChangeText={e => setForm('username', e)}
+            />
+            <Space height={30} />
+            <TextInput
+              label="Email"
+              placeholder="yourcoffee@email.com"
+              value={form.email}
+              onChangeText={e => setForm('email', e)}
+            />
+            <Space height={30} />
+
+            <TextInput
+              label="Password"
+              placeholder="********"
+              value={form.password}
+              onChangeText={e => setForm('password', e)}
+              secureTextEntry
+            />
+            <Space height={50} />
+
+            <Button
+              label="Register"
+              radius={6}
+              txtSize={14}
+              bgColor="#0030FF"
+              padSizeX={20}
+              borderWidth={0}
+              fontFam="CircularStd-Bold"
+              txtDecorationLine="none"
+              onPress={onSubmit}
+            />
+            <Space height={50} />
           </View>
-          <TextInput
-            label="Name"
-            placeholder="name"
-            value={form.name}
-            onChangeText={e => setForm('name', e)}
-          />
-          <Space height={30} />
-          <TextInput
-            label="Username"
-            placeholder="yourusername"
-            value={form.username}
-            onChangeText={e => setForm('username', e)}
-          />
-          <Space height={30} />
-          <TextInput
-            label="Email"
-            placeholder="yourcoffee@email.com"
-            value={form.email}
-            onChangeText={e => setForm('email', e)}
-          />
-          <Space height={30} />
-          <TextInput
-            label="Password"
-            placeholder="********"
-            value={form.password}
-            onChangeText={e => setForm('password', e)}
-            secureTextEntry
-          />
-          <Space height={50} />
-          <Button
-            label="Register"
-            radius={6}
-            txtSize={14}
-            bgColor="#0030FF"
-            padSizeX={20}
-            borderWidth={0}
-            fontFam="CircularStd-Bold"
-            txtDecorationLine="none"
-            onPress={onSubmit}
-          />
-          <Space height={50} />
-        </View>
-      </ScrollView>
-      <Text></Text>
-    </View>
+        </ScrollView>
+      </KeyboardScrollUpForms>
+    </SafeAreaView>
   );
 };
 
@@ -111,9 +121,11 @@ const styles = StyleSheet.compose({
   page: {
     flex: 1,
     backgroundColor: '#fff',
+    // backgroundColor: 'red',
   },
   mainContainer: {
     backgroundColor: '#fff',
+    // backgroundColor: 'red',
     paddingHorizontal: 24,
     paddingBottom: 24,
     paddingTop: 24,
@@ -140,14 +152,15 @@ const styles = StyleSheet.compose({
     height: 90,
     width: 90,
     backgroundColor: '#dedede',
-    padding: 10,
-    justofyContent: 'center',
+    padding: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   addAvaText: {
     fontSize: 16,
     fontFamily: 'CircularStd-Bold',
     color: '#fff',
     textAlign: 'center',
-    top: 12,
+    // backgroundColor: 'red',
   },
 });

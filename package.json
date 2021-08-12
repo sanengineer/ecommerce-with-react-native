@@ -6,6 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "iphone-mini": "react-native run-ios --simulator=\"iPhone 12 mini\"",
+    "iphone-5": "react-native run-ios --simulator=\"iPhone SE (1st generation)\"",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint ."
@@ -19,6 +20,7 @@
     "base-64": "^1.0.0",
     "react": "17.0.1",
     "react-native": "0.64.2",
+    "react-native-device-info": "^8.1.7",
     "react-native-dotenv": "^3.1.1",
     "react-native-elements": "^3.4.2",
     "react-native-extra-dimensions-android": "^1.2.5",
@@ -31,6 +33,7 @@
     "react-native-simple-radio-button": "^2.7.4",
     "react-native-svg": "^12.1.1",
     "react-native-tab-view": "^3.1.1",
+    "react-native-touchable-scale": "^2.1.2",
     "react-redux": "^7.2.4",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0"

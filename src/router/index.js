@@ -33,6 +33,7 @@ import {
   SplashScreen,
 } from '../stacks';
 import { BottomNav } from '../components';
+import { Platform, StatusBar } from 'react-native';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();

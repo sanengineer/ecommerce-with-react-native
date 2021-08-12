@@ -7,6 +7,7 @@ import Row from './Row';
 import Dot from './Dot';
 import Border from './Border';
 import LogoCoffeeCustom from './LogoCoffeeCustom';
+import SafeAreaViewCustom from './SafeAreaViewCustom';
 
 export {
   Space,
@@ -18,4 +19,5 @@ export {
   Dot,
   Border,
   LogoCoffeeCustom,
+  SafeAreaViewCustom,
 };

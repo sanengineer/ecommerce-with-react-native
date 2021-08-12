@@ -34,6 +34,7 @@ import {
   LogoGojek,
   LogoGrab,
 } from '../../assets';
+import TouchableScale from 'react-native-touchable-scale';
 
 const data_address = [
   {
@@ -193,7 +194,7 @@ const NavHeaderOrder = ({
           paddingVertical: expandableOption ? 10 : 0,
           height: expandableOption ? null : 0,
         }}>
-        <TouchableOpacity onPress={selectPickup}>
+        <TouchableScale onPress={selectPickup}>
           <Text
             style={{
               fontFamily: 'CircularStd-Bold',
@@ -206,7 +207,7 @@ const NavHeaderOrder = ({
             }}>
             {pickup ? 'Shipment' : 'Pickup'}
           </Text>
-        </TouchableOpacity>
+        </TouchableScale>
       </View>
     </View>
   );

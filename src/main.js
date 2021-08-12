@@ -4,6 +4,9 @@ import Router from './router';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import { getData } from './utils';
+import DeviceInfo from 'react-native-device-info';
+import { Platform, StatusBar, View } from 'react-native';
+import { Space } from './components';
 
 function App(props) {
   const [data, setData] = useState();
@@ -20,6 +23,12 @@ function App(props) {
   //debug
   console.log('PROPS:', props);
   console.log('DATA:', data);
+  console.log(
+    'DEVICE_INFO:',
+    DeviceInfo.getMacAddress().then(e => {
+      console.log(e);
+    }),
+  );
 
   return (
     <Provider store={store}>

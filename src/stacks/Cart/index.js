@@ -8,6 +8,7 @@ import {
   FlatList,
   ImageBackground,
   Touchable,
+  Platform,
 } from 'react-native';
 
 import {
@@ -26,8 +27,10 @@ import {
   NavHeader,
   Space,
   TextButtonRow,
+  SafeAreaViewCustom,
 } from '../../components';
 import { useScrollToTop } from '@react-navigation/native';
+import TouchableScale from 'react-native-touchable-scale';
 
 const data = [
   {
@@ -205,25 +208,25 @@ const Cart = ({ navigation }) => {
       <Space height={20} />
 
       <View style={styles.secondRowContainer}>
-        <TouchableOpacity onPress={toggleModal}>
+        <TouchableScale onPress={toggleModal} tension={0}>
           <View style={styles.iconTrash}>
             <IconTrashGrey />
           </View>
-        </TouchableOpacity>
+        </TouchableScale>
         <View style={{ flexDirection: 'row' }}>
-          <TouchableOpacity>
+          <TouchableScale>
             <View style={styles.iconMinusCircle}>
               <IconMinusCircle />
             </View>
-          </TouchableOpacity>
+          </TouchableScale>
           <View style={styles.numberOrderContainer}>
             <Text style={styles.numberOrder}>2</Text>
           </View>
-          <TouchableOpacity>
+          <TouchableScale>
             <View style={styles.iconPlusCircle}>
               <IconPlusCircle />
             </View>
-          </TouchableOpacity>
+          </TouchableScale>
         </View>
       </View>
     </View>
@@ -233,11 +236,11 @@ const Cart = ({ navigation }) => {
     <SafeAreaView style={styles.safeAreaContainer}>
       <View style={styles.stackContainer}>
         <NavHeader navGoBack={false} title="Cart" showSpaceLeft={false}>
-          <TouchableOpacity onPress={() => navigation.navigate('Wishlist')}>
+          <TouchableScale onPress={() => navigation.navigate('Wishlist')}>
             <IconContainer>
               <IconHeartDisable />
             </IconContainer>
-          </TouchableOpacity>
+          </TouchableScale>
         </NavHeader>
         <FlatList
           ref={ref}

@@ -7,6 +7,7 @@ import {
   Image,
   Pressable,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 
 import {

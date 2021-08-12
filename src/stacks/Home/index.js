@@ -8,8 +8,10 @@ import {
   FlatList,
   Dimensions,
   ImageBackground,
+  StatusBar,
+  Platform,
 } from 'react-native';
-
+import TouchableScale from 'react-native-touchable-scale';
 import { useNavigation, useScrollToTop } from '@react-navigation/native';
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -473,6 +475,8 @@ const Home = ({ navigation, route }) => {
 
   const FlatListHeaderHome = () => (
     <View style={styles.container}>
+      {Platform.OS === 'android' && <StatusBar backgroundColor="#000000" />}
+
       <ScrollView
         style={styles.foodListsContainer}
         showsVerticalScrollIndicator={false}>
@@ -638,7 +642,6 @@ const Home = ({ navigation, route }) => {
           zIndex: -4,
         }}
       />
-
       <FlatList
         ref={ref}
         data={data}

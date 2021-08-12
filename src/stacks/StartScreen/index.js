@@ -1,11 +1,19 @@
 import React from 'react';
-import { StyleSheet, View, Dimensions, ImageBackground } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  ImageBackground,
+  StatusBar,
+  Platform,
+} from 'react-native';
 import { ImageHeaderBgBlue, LogoCoffeeShop } from '../../assets';
 import { Button, Space } from '../../components';
 
 const StartScreen = ({ navigation }) => {
   return (
     <View style={styles.safeContainer}>
+      {Platform.OS === 'android' && <StatusBar backgroundColor="#000000" />}
       <ImageBackground
         style={styles.mainContainer}
         source={ImageHeaderBgBlue}

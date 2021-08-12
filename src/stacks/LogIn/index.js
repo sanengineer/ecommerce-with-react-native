@@ -5,9 +5,11 @@ import {
   ScrollView,
   Platform,
   TouchableOpacity,
+  SafeAreaView,
+  StatusBar,
 } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { IconCrossBig } from '../../assets';
+import { IconCrossBig, IconCrossSmall } from '../../assets';
 import {
   Space,
   Header,
@@ -46,11 +48,11 @@ const LogIn = ({ navigation, route }) => {
   //debug
   console.log('ROUTE:', route);
   return (
-    <View style={styles.page}>
+    <SafeAreaView style={styles.page}>
       <KeyboardScrollUpForms
         enabled
         behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
-        <Space height={30} />
+        {Platform.OS === 'android' && <StatusBar backgroundColor="#000000" />}
         <NavHeader
           borderWidth={0}
           showSpaceLeft={true}
@@ -61,7 +63,7 @@ const LogIn = ({ navigation, route }) => {
           ) : (
             <TouchableOpacity
               onPress={() => navigation.navigate('Start Screen')}>
-              <IconCrossBig />
+              <IconCrossSmall />
             </TouchableOpacity>
           )}
         </NavHeader>
@@ -112,7 +114,7 @@ const LogIn = ({ navigation, route }) => {
           </View>
         </ScrollView>
       </KeyboardScrollUpForms>
-    </View>
+    </SafeAreaView>
   );
 };
 

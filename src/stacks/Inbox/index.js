@@ -235,6 +235,7 @@ const renderScene = SceneMap({
 const renderTabBar = props => (
   <TabBar
     {...props}
+    pressColor="transparent"
     indicatorStyle={{ backgroundColor: '#000' }}
     style={{ backgroundColor: 'transparent' }}
     renderLabel={({ route, focused, color }) => (

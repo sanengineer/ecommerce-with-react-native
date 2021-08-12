@@ -15,6 +15,7 @@ import {
   TextPlainNav,
   IconText,
   Space,
+  SafeAreaViewCustom,
 } from '../../components';
 import { ImageProfileSan } from '../../assets';
 

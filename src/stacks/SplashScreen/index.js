@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, View, ImageBackground } from 'react-native';
+import { StyleSheet, View, ImageBackground, StatusBar } from 'react-native';
 import { ImageHeaderBgBlue } from '../../assets';
 import { getData } from '../../utils';
 
@@ -21,6 +21,7 @@ const SplashScreen = ({ navigation }) => {
 
   return (
     <View style={styles.mainContainer}>
+      {Platform.OS === 'android' && <StatusBar backgroundColor="#000000" />}
       <ImageBackground
         source={ImageHeaderBgBlue}
         style={styles.bg}
