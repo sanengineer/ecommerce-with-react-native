@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   SafeAreaView,
+  Dimensions,
 } from 'react-native';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -44,6 +45,8 @@ const Register = ({ navigation }) => {
     console.log(form);
   };
 
+  const space_height = Dimensions.get('screen').height / 28;
+
   //debug
   // console.log('SELECTOR:', select_auth_register);
 
@@ -60,7 +63,7 @@ const Register = ({ navigation }) => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           showsVerticalScrollIndicator={false}>
-          <Space height={20} />
+          <Space height={space_height} />
           <Header title="Register" showDesc={false} />
           <Space height={8} />
           <View style={styles.mainContainer}>

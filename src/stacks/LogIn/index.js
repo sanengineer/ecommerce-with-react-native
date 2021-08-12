@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   StatusBar,
+  Dimensions,
 } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { IconCrossBig, IconCrossSmall } from '../../assets';
@@ -46,6 +47,8 @@ const LogIn = ({ navigation, route }) => {
     console.log('encoded', encodedToken);
   };
 
+  const space = Dimensions.get('screen').height / 28;
+
   //debug
   console.log('ROUTE:', route);
   return (
@@ -71,7 +74,7 @@ const LogIn = ({ navigation, route }) => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           showsVerticalScrollIndicator={false}>
-          <Space height={20} />
+          <Space height={space} />
           <Header
             title="Login"
             desc="For buying drinks and beverages, login first. 🤝"
