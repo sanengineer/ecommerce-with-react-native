@@ -21,6 +21,12 @@ class UserServices {
       auth_register_data,
     );
   };
+
+  getUserProfile = (user_id, token) => {
+    return api.get(`/${envConfig.LOCAL_API_PATH_USER}/${user_id}`, {
+      authorization: `${token}`,
+    });
+  };
 }
 
 export default new UserServices();

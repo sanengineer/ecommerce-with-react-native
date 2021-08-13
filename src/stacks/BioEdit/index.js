@@ -6,7 +6,8 @@ const BioEdit = ({ navigation, route }) => {
   console.log(route.params);
   console.log(route);
 
-  const replaced = route.params[0].replace(/_/g, ' ');
+  // const replaced = route.params[0].replace(/_/g, ' ');
+  const data = route.params;
 
   return (
     <SafeAreaView style={styles.safeContainer}>
@@ -14,9 +15,9 @@ const BioEdit = ({ navigation, route }) => {
       <View style={styles.textSubtextContainer}>
         <Space height={20} />
         <TextSubtext
-          text={replaced}
+          text={data.key}
           textSize={14}
-          subtext={route.params[1]}
+          subtext={data.value}
           bottomHeight={5}
         />
       </View>

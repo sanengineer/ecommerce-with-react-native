@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   loading: false,
-  auth_form: {},
+  data: {},
   error: null,
 };
 
@@ -22,12 +22,12 @@ export default function authLoginReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        auth_form: action.payload.auth_login_success,
+        data: action.payload.auth_login_success,
       };
     case AUTH_LOGIN_FAIL:
       return {
         ...state,
-        loading,
+        loading: true,
         error: action.payload.auth_login_fail,
       };
     default:

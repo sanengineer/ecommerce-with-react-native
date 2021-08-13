@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { get } from 'react-native-extra-dimensions-android';
+import { useSelector } from 'react-redux';
 import { Button, NavHeader, Space, TextPlainNav } from '../../components';
 
 const data = {
@@ -33,6 +35,9 @@ const Bio = ({ navigation, route }) => {
   //debug
   console.log(navigation);
 
+  const get_user_profile = useSelector(state => state.get_user_profile.data);
+  const data = get_user_profile;
+
   return (
     <SafeAreaView style={styles.safeContainer}>
       <NavHeader navigation={navigation} title={route.name} navGoBack={true} />
@@ -41,30 +46,50 @@ const Bio = ({ navigation, route }) => {
 
         <ListForm
           title="Fullname"
-          subtitle={data.fullname}
+          subtitle={data.name}
           label="Edit"
-          onPress={() => navigation.navigate('Bio Edit', data_to_array[0])}
+          onPress={() =>
+            navigation.navigate('Bio Edit', {
+              key: 'Fullname',
+              value: data.name,
+            })
+          }
         />
 
         <ListForm
           title="Gender"
           subtitle={data.gender}
           label="Edit"
-          onPress={() => navigation.navigate('Bio Edit', data_to_array[1])}
+          onPress={() =>
+            navigation.navigate('Bio Edit', {
+              key: 'Gender',
+              value: data.gender,
+            })
+          }
         />
 
         <ListForm
           title="Date Of Birth"
           subtitle={data.date_of_birth}
           label="Edit"
-          onPress={() => navigation.navigate('Bio Edit', data_to_array[2])}
+          onPress={() =>
+            navigation.navigate('Bio Edit', {
+              key: 'Date Of Birth',
+              value: data.date_of_birth,
+            })
+          }
         />
 
         <ListForm
           title="Jobs"
           subtitle={data.jobs}
           label="Edit"
-          onPress={() => navigation.navigate('Bio Edit', data_to_array[3])}
+          onPress={() =>
+            navigation.navigate('Bio Edit', {
+              key: 'Jobs',
+              value: data.jobs,
+            })
+          }
         />
       </View>
     </SafeAreaView>

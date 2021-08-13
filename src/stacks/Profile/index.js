@@ -21,14 +21,17 @@ import { IconArrowRight, ImageProfileSan } from '../../assets';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Touchable } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useSelector } from 'react-redux';
 
 const Profile = ({ navigation }) => {
   const [isModalVisible, setModalVisible] = useState(false);
+  const get_user_profile = useSelector(state => state.get_user_profile.data);
+
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
   const logout = () => {
-    AsyncStorage.multiRemove(['user'])
+    AsyncStorage.multiRemove(['user_token', 'user_profile', 'user'])
       .then(() => {
         toggleModal();
       })
@@ -50,11 +53,11 @@ const Profile = ({ navigation }) => {
               </View>
               <Space height={10} />
               <View style={styles.nameContainer}>
-                <Text style={styles.name}>San Engineer</Text>
+                <Text style={styles.name}>{get_user_profile.name}</Text>
               </View>
               <Space height={6} />
               <View style={styles.emailContainer}>
-                <Text style={styles.email}>san@email.com</Text>
+                <Text style={styles.email}>{get_user_profile.email}</Text>
               </View>
             </View>
           </TouchableOpacity>

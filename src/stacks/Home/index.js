@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -23,6 +23,10 @@ import {
   ModalBottom,
   Space,
 } from '../../components';
+import { useDispatch, useSelector } from 'react-redux';
+import getUserProfileReducer from '../../redux/reducers/getUserProfile';
+import { getUserProfileAction } from '../../redux/actions/getUserProfile';
+import { getData } from '../../utils';
 
 const window = Dimensions.get('window');
 const screen = Dimensions.get('screen');
@@ -466,10 +470,41 @@ const styles = StyleSheet.create({
 
 const Home = ({ navigation, route }) => {
   const [isModalVisible, setModalVisible] = useState(false);
+  const [dataLocal, setDataLocal] = useState({});
   const ref = useRef();
+  const dispatch = useDispatch();
+  const data_login_success = useSelector(state => state.auth_login_res_data);
+  const get_user_profile = useSelector(state => state.get_user_profile.data);
+  const name = get_user_profile.name;
+  const firstname = name.split(' ')[0];
+
+  console.log('NAME:', firstname);
+
+  // const data_local_storage = getData('user').then(user => {
+  //   setDataLocal(user);
+  // });
+
+  // const token = dataLocal.tokenString;
+  // const user_id = dataLocal.userId;
+
+  // const token = data_login_success;
+  // const user_id = data_login_success;
+
+  useEffect(() => {
+    getData('user_profile').then(user => {
+      setDataLocal(user);
+      dispatch(getUserProfileAction(user));
+    });
+    // dispatch(getUserProfileAction(user_id, token));
+  }, []);
 
   //debug
-  console.log(route);
+  // console.log(route);
+  // console.log('\n', 'TOKEN-home.js:', token);
+  // console.log('\n', 'USERID-home.js:', user_id);
+  console.log('\n', 'GET_USER_PROFILE-home.js:', get_user_profile);
+  console.log('\n', 'AUTH_LOGIN_RES_DATA-home.js:', data_login_success);
+  console.log('\n', 'DATA_LOCAL_STORAGE-home.js:', dataLocal);
 
   // const navigation = useNavigation();
 
@@ -514,7 +549,7 @@ const Home = ({ navigation, route }) => {
                   <Text style={styles.iconTitle}>👋</Text>
                   <Space width={4} />
                   <Text style={styles.textTitle} adjustsFontSizeToFit={true}>
-                    Hai, San!
+                    Hai, {firstname}!
                   </Text>
                 </View>
                 <Space height={3} />

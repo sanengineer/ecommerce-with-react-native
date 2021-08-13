@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 import { UserServices } from '../../services';
-import { storeData } from '../../utils';
+import { getData, storeData } from '../../utils';
 import { showMessage } from 'react-native-flash-message';
 
 export const authRegisterAction =
@@ -49,21 +49,42 @@ export const authLoginAction = (auth_data_login, navigation) => dispatch => {
   console.log('auth_data_login:', auth_data_login);
   console.log('navigation:', navigation);
 
+  // const [loginDataRes, setLoginDataRes] = useState({});
+
   UserServices.authLogin(auth_data_login)
     .then(res => {
       //debug
       console.log('res', res.data);
-      storeData('user', res.data);
-      navigation.reset({ index: 0, routes: [{ name: 'MainApp' }] });
+
+      storeData('user_token', res.data);
+
+      const user_id = res.data.userId;
+      const token = res.data.tokenString;
+
+      UserServices.getUserProfile(user_id, token)
+        .then(res => {
+          //debug
+          console.log('RESSSSS', res.data);
+          storeData('user_profile', res.data);
+        })
+        .then(() => {
+          navigation.reset({ index: 0, routes: [{ name: 'MainApp' }] });
+        })
+        .catch(err => {
+          //debug
+          console.log('ERRR', err.data);
+        });
+
+      dispatch(authLoginActionSuccess(res.data));
     })
     .catch(err => {
       //debug
       console.log('err', err);
+      dispatch(authLoginActionFail(err));
       showMessage({
         message: '🚨',
         description: err.message,
-      }),
-        dispatch(authLoginActionFail(err));
+      });
     });
 };
 

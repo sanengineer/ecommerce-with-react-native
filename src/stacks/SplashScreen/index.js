@@ -1,13 +1,17 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, View, ImageBackground, StatusBar } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { ImageHeaderBgBlue } from '../../assets';
+import { authLoginActionSuccess } from '../../redux/actions/auth';
 import { getData } from '../../utils';
 
 const SplashScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    getData('user').then(user => {
+    getData('user_token').then(user => {
       //debug
-      console.log('token_home_stack:', user);
+      console.log('TOKEN_SPLASH_SCREEN:', user);
 
       setTimeout(() => {
         if (user) {
