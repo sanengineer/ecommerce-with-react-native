@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
   container: {
     // backgroundColor: 'transparent',
     // backgroundColor: 'red',
-    paddingTop: 20,
+    paddingTop: Dimensions.get('screen').height / 200,
     flex: 1,
   },
 
@@ -477,7 +477,7 @@ const Home = ({ navigation, route }) => {
   const data_login_success = useSelector(state => state.auth_login_res_data);
   const get_user_profile = useSelector(state => state.get_user_profile.data);
   const name = get_user_profile.name;
-  const firstname = name.split(' ')[0];
+  const firstname = name == undefined ? '' : name.split(' ')[0];
 
   // console.log('NAME:', firstname);
 

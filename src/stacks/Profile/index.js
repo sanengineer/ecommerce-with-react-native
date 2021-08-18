@@ -31,7 +31,13 @@ const Profile = ({ navigation }) => {
     setModalVisible(!isModalVisible);
   };
   const logout = () => {
-    AsyncStorage.multiRemove(['user_token', 'user_profile', 'user'])
+    AsyncStorage.multiRemove([
+      'user_token',
+      'user_profile',
+      'user',
+      'user_register',
+      'user_login',
+    ])
       .then(() => {
         toggleModal();
       })
