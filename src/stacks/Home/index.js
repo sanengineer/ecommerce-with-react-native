@@ -191,6 +191,7 @@ const styles = StyleSheet.create({
   container: {
     // backgroundColor: 'transparent',
     // backgroundColor: 'red',
+    paddingTop: 20,
     flex: 1,
   },
 
@@ -478,7 +479,7 @@ const Home = ({ navigation, route }) => {
   const name = get_user_profile.name;
   const firstname = name.split(' ')[0];
 
-  console.log('NAME:', firstname);
+  // console.log('NAME:', firstname);
 
   // const data_local_storage = getData('user').then(user => {
   //   setDataLocal(user);
@@ -491,9 +492,11 @@ const Home = ({ navigation, route }) => {
   // const user_id = data_login_success;
 
   useEffect(() => {
-    getData('user_profile').then(user => {
+    getData('user_login').then(user => {
+      //debug
+      console.log('\nUSERRR:', user, '\n');
       setDataLocal(user);
-      dispatch(getUserProfileAction(user));
+      dispatch(getUserProfileAction(user.userId, user.tokenString));
     });
     // dispatch(getUserProfileAction(user_id, token));
   }, []);
@@ -549,7 +552,7 @@ const Home = ({ navigation, route }) => {
                   <Text style={styles.iconTitle}>👋</Text>
                   <Space width={4} />
                   <Text style={styles.textTitle} adjustsFontSizeToFit={true}>
-                    Hai, {firstname}!
+                    Hai, {firstname == undefined ? 'No Name' : firstname}!
                   </Text>
                 </View>
                 <Space height={3} />
@@ -602,8 +605,13 @@ const Home = ({ navigation, route }) => {
                   </Text>
                   <Space width={4} />
                   <Text
-                    style={{ color: '#fff', fontFamily: 'CircularStd-Black' }}>
-                    Home Address 1
+                    style={{
+                      color: '#fff',
+                      fontFamily: 'CircularStd-Black',
+                    }}>
+                    {get_user_profile.shipping_address_default == undefined
+                      ? 'Not Address'
+                      : get_user_profile.shipping_address_default}
                   </Text>
                 </TouchableOpacity>
               </View>

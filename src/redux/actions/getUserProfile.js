@@ -2,21 +2,21 @@ import * as actionTypes from './actionTypes';
 import { UserServices } from '../../services';
 import { getData } from '../../utils';
 
-export const getUserProfileAction = data => dispatch => {
+export const getUserProfileAction = (user_id, token) => dispatch => {
   //debug
-  //   console.log('\n', 'USER_ID-action_get_user.js:', user_id);
-  //   console.log('\n', 'TOKEN-action_get_user.js:', token);
-  console.log('\n', 'DATA-action_get_user.js:', data);
+  console.log('\n', 'USER_ID-action_get_user.js:', user_id);
+  console.log('\n', 'TOKEN-action_get_user.js:', token);
 
-  //   const data = () => {
-  //     getData('user_profile').then(user_profile => {
-  //       console.log(user_profile);
-  //     });
-  //   };
-
-  console.log('DDDAATA:', data);
-
-  dispatch(getUserProfileActionSuccess(data));
+  UserServices.getUserProfile(user_id, token)
+    .then(res => {
+      //debug
+      console.log('RESSSSS', res.data);
+      dispatch(getUserProfileActionSuccess(res.data));
+    })
+    .catch(err => {
+      //debug
+      console.log('ERRR', err.data);
+    });
 };
 
 export const getUserProfileActionStart = () => ({

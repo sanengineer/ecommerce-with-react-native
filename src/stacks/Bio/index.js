@@ -79,18 +79,6 @@ const Bio = ({ navigation, route }) => {
             })
           }
         />
-
-        <ListForm
-          title="Jobs"
-          subtitle={data.jobs}
-          label="Edit"
-          onPress={() =>
-            navigation.navigate('Bio Edit', {
-              key: 'Jobs',
-              value: data.jobs,
-            })
-          }
-        />
       </View>
     </SafeAreaView>
   );

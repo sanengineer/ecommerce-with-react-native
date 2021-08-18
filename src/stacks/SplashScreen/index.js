@@ -9,7 +9,7 @@ const SplashScreen = ({ navigation }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getData('user_token').then(user => {
+    getData('user_login').then(user => {
       //debug
       console.log('TOKEN_SPLASH_SCREEN:', user);
 

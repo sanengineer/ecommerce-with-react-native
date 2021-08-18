@@ -15,7 +15,27 @@ export const authRegisterAction =
         //
         //debug
         console.log('res', res.data);
-        navigation.replace('Success Register');
+
+        storeData('user_register', res.data);
+
+        const user_id = res.data.id;
+        const token = res.data.registrationToken;
+
+        UserServices.getUserProfile(user_id, token)
+          .then(res => {
+            //debug
+            console.log('RESSSSS', res.data);
+            storeData('user_register', res.data);
+          })
+          .then(() => {
+            navigation.reset({ index: 0, routes: [{ name: 'MainApp' }] });
+          })
+          .catch(err => {
+            //debug
+            console.log('ERRR', err.data);
+          });
+        // navigation.replace('Success Register');
+        dispatch(authRegisterActionSuccess(res.data));
       })
       .catch(err => {
         //
@@ -56,7 +76,7 @@ export const authLoginAction = (auth_data_login, navigation) => dispatch => {
       //debug
       console.log('res', res.data);
 
-      storeData('user_token', res.data);
+      storeData('user_login', res.data);
 
       const user_id = res.data.userId;
       const token = res.data.tokenString;
@@ -65,7 +85,7 @@ export const authLoginAction = (auth_data_login, navigation) => dispatch => {
         .then(res => {
           //debug
           console.log('RESSSSS', res.data);
-          storeData('user_profile', res.data);
+          storeData('token', res.data.tokenString);
         })
         .then(() => {
           navigation.reset({ index: 0, routes: [{ name: 'MainApp' }] });

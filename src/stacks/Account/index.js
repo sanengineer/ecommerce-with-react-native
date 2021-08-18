@@ -18,6 +18,7 @@ import {
   SafeAreaViewCustom,
 } from '../../components';
 import { ImageProfileSan } from '../../assets';
+import { useSelector } from 'react-redux';
 
 const data = {
   username: 'sanengineer',
@@ -30,6 +31,9 @@ const Account = ({ navigation, route }) => {
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
+
+  const get_user_profile = useSelector(state => state.get_user_profile.data);
+  const data = get_user_profile;
 
   return (
     <>

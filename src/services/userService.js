@@ -16,6 +16,9 @@ class UserServices {
   };
 
   authRegister = auth_register_data => {
+    //debug
+    console.log('AUTH_REGISTER_DATA', auth_register_data);
+
     return api.post(
       `/${envConfig.LOCAL_API_PATH_REGISTER}`,
       auth_register_data,
@@ -23,8 +26,11 @@ class UserServices {
   };
 
   getUserProfile = (user_id, token) => {
+    //debug
+    console.log('TOKEEENNN', token);
+
     return api.get(`/${envConfig.LOCAL_API_PATH_USER}/${user_id}`, {
-      authorization: `${token}`,
+      headers: { authorization: `Bearer ${token}` },
     });
   };
 }

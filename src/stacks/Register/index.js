@@ -36,8 +36,9 @@ const Register = ({ navigation }) => {
   const [form, setForm] = useForm({
     name: '',
     username: '',
-    email: '',
     password: '',
+    email: '',
+    role_id: 0,
   });
 
   const onSubmit = () => {
