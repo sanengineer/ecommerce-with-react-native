@@ -14,28 +14,51 @@ export const authRegisterAction =
       .then(res => {
         //
         //debug
-        console.log('res', res.data);
+        console.log('\n', 'AUTH_REGISTER_RESPONDATA', res.data, '\n');
 
-        storeData('user_register', res.data);
+        storeData('user', res.data);
 
         const user_id = res.data.id;
         const token = res.data.registrationToken;
 
         UserServices.getUserProfile(user_id, token)
-          .then(res => {
+          .then(res_profile => {
             //debug
-            console.log('RESSSSS', res.data);
-            storeData('user_register', res.data);
+            console.log(
+              '\n',
+              'GET_USERPROFILE_RESPONDATA',
+              res_profile.data,
+              '\n',
+            );
+            storeData('user_profile', res_profile.data);
+            // dispatch(getUserProfileActionSuccess(res_profile.data));
           })
           .then(() => {
-            navigation.reset({ index: 0, routes: [{ name: 'MainApp' }] });
+            UserServices.createCartId(user_id, token)
+              .then(res_cart_id => {
+                //debug
+                console.log(
+                  '\n',
+                  'CREATE_CARTID_RESPONDATA',
+                  res_cart_id.data,
+                  '\n',
+                );
+                storeData('cart_id', res_cart_id.data);
+              })
+              .catch(err_cart_id => {
+                //debug
+                console.log('ERRR', err_cart_id.data);
+              });
           })
-          .catch(err => {
+          .catch(err_profile_id => {
             //debug
-            console.log('ERRR', err.data);
+            console.log('ERRR', err_profile_id.data);
           });
         // navigation.replace('Success Register');
         dispatch(authRegisterActionSuccess(res.data));
+      })
+      .then(() => {
+        navigation.reset({ index: 0, routes: [{ name: 'MainApp' }] });
       })
       .catch(err => {
         //
@@ -76,7 +99,7 @@ export const authLoginAction = (auth_data_login, navigation) => dispatch => {
       //debug
       console.log('res', res.data);
 
-      storeData('user_login', res.data);
+      storeData('user', res.data);
 
       const user_id = res.data.userId;
       const token = res.data.tokenString;
@@ -85,7 +108,7 @@ export const authLoginAction = (auth_data_login, navigation) => dispatch => {
         .then(res => {
           //debug
           console.log('RESSSSS', res.data);
-          storeData('token', res.data.tokenString);
+          storeData('user_profile', res.data.tokenString);
         })
         .then(() => {
           navigation.reset({ index: 0, routes: [{ name: 'MainApp' }] });

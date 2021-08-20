@@ -37,6 +37,8 @@ const Profile = ({ navigation }) => {
       'user',
       'user_register',
       'user_login',
+      'cart_id',
+      'token',
     ])
       .then(() => {
         toggleModal();

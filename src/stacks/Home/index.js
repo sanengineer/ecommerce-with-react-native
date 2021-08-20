@@ -25,167 +25,19 @@ import {
 } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import getUserProfileReducer from '../../redux/reducers/getUserProfile';
-import { getUserProfileAction } from '../../redux/actions/getUserProfile';
+import {
+  getUserProfileAction,
+  getUserProfileActionSuccess,
+} from '../../redux/actions/getUserProfile';
+import { getProductsAction } from '../../redux/actions/getProducts';
 import { getData } from '../../utils';
+import { getCategoriesAction } from '../../redux/actions/getCategory';
+import ContentLoader, { Rect, Circle, Path } from 'react-content-loader/native';
+import { get } from 'react-native-extra-dimensions-android';
 
 const window = Dimensions.get('window');
 const screen = Dimensions.get('screen');
 const numColumns = 2;
-
-const data = [
-  {
-    product_id: 1,
-    name: 'Double Shoot Iced Shaken Espresso',
-    desc: 'Espresso based with 80% milk and 20% espresso coffee',
-    weight: {
-      value: 250,
-      unit: 'ml',
-    },
-    size: 'medium',
-    price: 30000,
-    stock: 20,
-    image: CoffeeCup,
-    category: 'Coffee',
-    promo: true,
-    // num_rate: 10,
-  },
-  {
-    product_id: 2,
-    name: 'Carramel Machiato - 250ml',
-    desc: 'Espresso based with 80% milk and 20% espresso coffee',
-    weight: {
-      value: 250,
-      unit: 'ml',
-    },
-    size: 'short',
-    price: 12000,
-    stock: 10,
-    image: CoffeeCup,
-    category: 'Coffee',
-    promo: false,
-
-    // num_rate: 30,
-  },
-  {
-    product_id: 3,
-    name: 'Caffe Americano - 250ml',
-    desc: 'Espresso based with 80% milk and 20% espresso coffee',
-    weight: {
-      value: 250,
-      unit: 'ml',
-    },
-    size: 'medium',
-    price: 12000,
-    stock: 40,
-    image: CoffeeCup,
-    category: 'Coffee',
-    promo: false,
-    // num_rate: 20,
-  },
-  {
-    product_id: 4,
-    name: 'Arabica Whole Beans Light Roast - 100gr',
-    desc: 'Espresso based with 80% milk and 20% espresso coffee',
-    weight: {
-      value: 250,
-      unit: 'ml',
-    },
-    size: 'short',
-    price: 12000,
-    stock: 22,
-    image: CoffeeCup,
-    category: 'Coffee',
-    promo: false,
-    // num_rate: 12,
-  },
-  {
-    product_id: 5,
-    name: 'Cold Brew - 250ml',
-    desc: 'Espresso based with 80% milk and 20% espresso coffee',
-    weight: {
-      value: 250,
-      unit: 'ml',
-    },
-    size: 'medium',
-    price: 12000,
-    stock: 16,
-    image: CoffeeCup,
-    category: 'Coffee',
-    promo: false,
-    // num_rate: 12,
-  },
-  {
-    product_id: 6,
-    name: 'Caffe Americano - 1L',
-    desc: 'Espresso based with 80% milk and 20% espresso coffee',
-    weight: {
-      value: 250,
-      unit: 'ml',
-    },
-    size: 'tall',
-    price: 12000,
-    stock: 18,
-    image: CoffeeCup,
-    category: 'Coffee',
-    promo: false,
-    // num_rate: 14,
-  },
-  {
-    product_id: 7,
-    name: 'Palm Sugar Coffee Milk - 1L',
-    desc: 'Espresso based with 80% milk and 20% espresso coffee',
-    weight: {
-      value: 250,
-      unit: 'ml',
-    },
-    size: 'short',
-    price: 12000,
-    stock: 18,
-    image: CoffeeCup,
-    category: 'Coffee',
-    promo: false,
-    // num_rate: 16,
-  },
-  {
-    product_id: 8,
-    name: 'Palm Sugar Coffee Milk - 1L',
-    desc: 'Espresso based with 80% milk and 20% espresso coffee',
-    weight: {
-      value: 250,
-      unit: 'ml',
-    },
-    size: 'short',
-    price: 12000,
-    stock: 18,
-    image: CoffeeCup,
-    category: 'Tea',
-    promo: true,
-    // num_rate: 16,
-  },
-];
-
-const categories = [
-  {
-    category_id: 1,
-    category_name: '☕️  Coffee',
-    featured_image: CoffeeCup,
-  },
-  {
-    category_id: 2,
-    category_name: '🥃  Tea',
-    featured_image: CoffeeCup,
-  },
-  {
-    category_id: 3,
-    category_name: '🍵  Matcha',
-    featured_image: CoffeeCup,
-  },
-  {
-    category_id: 4,
-    category_name: '🥐  Pastry',
-    featured_image: CoffeeCup,
-  },
-];
 
 const styles = StyleSheet.create({
   container: {
@@ -447,7 +299,7 @@ const styles = StyleSheet.create({
 
   itemImage: {
     height: 120,
-    width: Dimensions.get('window').width / numColumns,
+    width: Dimensions.get('screen').width / numColumns,
   },
   itemRateContainer: {
     flexDirection: 'row',
@@ -469,15 +321,72 @@ const styles = StyleSheet.create({
   },
 });
 
+const CategoryLoader = props => (
+  <ContentLoader
+    speed={2}
+    width={120}
+    height={60}
+    viewBox="0 0 150 60"
+    backgroundColor="#f3f3f3"
+    foregroundColor="#ecebeb"
+    {...props}>
+    <Rect x="0" y="0" rx="6" ry="6" width="120" height="60" />
+  </ContentLoader>
+);
+
+const ProductLoader = props => (
+  <View style={styles.itemContainer}>
+    <ContentLoader
+      speed={2}
+      width="200"
+      height="150"
+      viewBox="0 0 200 150"
+      backgroundColor="#f3f3f3"
+      foregroundColor="#ecebeb"
+      {...props}>
+      <Rect x="0" y="0" rx="0" ry="0" width="200" height="70" />
+      {/* <Rect x="0" y="0" rx="0" ry="0" width="200" height="70" /> */}
+      <Rect
+        x="10"
+        y="80"
+        rx="4"
+        ry="4"
+        width={Dimensions.get('window').width / 3}
+        height="16"
+      />
+      <Rect
+        x="10"
+        y="105"
+        rx="4"
+        ry="4"
+        width={Dimensions.get('window').width / 4}
+        height="16"
+      />
+    </ContentLoader>
+  </View>
+);
+
 const Home = ({ navigation, route }) => {
   const [isModalVisible, setModalVisible] = useState(false);
-  const [dataLocal, setDataLocal] = useState({});
   const ref = useRef();
   const dispatch = useDispatch();
+  const [dataLocal, setDataLocal] = useState({});
   const data_login_success = useSelector(state => state.auth_login_res_data);
+  const data_products = useSelector(state => state.get_products);
   const get_user_profile = useSelector(state => state.get_user_profile.data);
+  const get_categories = useSelector(state => state.get_categories);
   const name = get_user_profile.name;
   const firstname = name == undefined ? '' : name.split(' ')[0];
+  const data = [
+    { id: 1 },
+    { id: 2 },
+    { id: 3 },
+    { id: 4 },
+    { id: 5 },
+    { id: 6 },
+    { id: 7 },
+    { id: 8 },
+  ];
 
   // console.log('NAME:', firstname);
 
@@ -492,11 +401,15 @@ const Home = ({ navigation, route }) => {
   // const user_id = data_login_success;
 
   useEffect(() => {
-    getData('user_login').then(user => {
+    getData('user').then(user => {
       //debug
       console.log('\nUSERRR:', user, '\n');
+
       setDataLocal(user);
+      dispatch(getProductsAction(user.tokenString));
       dispatch(getUserProfileAction(user.userId, user.tokenString));
+      dispatch(getUserProfileActionSuccess(user));
+      dispatch(getCategoriesAction(user.tokenString));
     });
     // dispatch(getUserProfileAction(user_id, token));
   }, []);
@@ -507,7 +420,8 @@ const Home = ({ navigation, route }) => {
   // console.log('\n', 'USERID-home.js:', user_id);
   console.log('\n', 'GET_USER_PROFILE-home.js:', get_user_profile);
   console.log('\n', 'AUTH_LOGIN_RES_DATA-home.js:', data_login_success);
-  console.log('\n', 'DATA_LOCAL_STORAGE-home.js:', dataLocal);
+  console.log('\n', 'PRODUCTS_DATA-home.js:', data_products);
+  console.log('\n', 'CATEGORIES_DATA-home.js:', get_categories);
 
   // const navigation = useNavigation();
 
@@ -552,7 +466,7 @@ const Home = ({ navigation, route }) => {
                   <Text style={styles.iconTitle}>👋</Text>
                   <Space width={4} />
                   <Text style={styles.textTitle} adjustsFontSizeToFit={true}>
-                    Hai, {firstname == undefined ? 'No Name' : firstname}!
+                    Hai, {firstname}!
                   </Text>
                 </View>
                 <Space height={3} />
@@ -629,20 +543,31 @@ const Home = ({ navigation, route }) => {
             showsHorizontalScrollIndicator={false}
             style={{ marginTop: Dimensions.get('screen').height / 10 }}>
             <View style={styles.categoriesGroupName}>
-              {categories.map(item => (
-                <View style={styles.categoriesContainer} key={item.category_id}>
-                  <TouchableOpacity
-                    style={styles.categoriesTouchable}
-                    onPress={() => navigation.navigate('Category', item)}>
-                    <View style={styles.categoriesNameContainer}>
-                      <ListText
-                        text={`${item.category_name}`}
-                        style={styles.categoriesName}
-                      />
+              {get_categories.loading ? (
+                <>
+                  <CategoryLoader />
+                  <CategoryLoader />
+                  <CategoryLoader />
+                  <CategoryLoader />
+                </>
+              ) : (
+                <>
+                  {get_categories.data.map(item => (
+                    <View style={styles.categoriesContainer} key={item.id}>
+                      <TouchableOpacity
+                        style={styles.categoriesTouchable}
+                        onPress={() => navigation.navigate('Category', item)}>
+                        <View style={styles.categoriesNameContainer}>
+                          <ListText
+                            text={`${item.icon}  ${item.title}`}
+                            style={styles.categoriesName}
+                          />
+                        </View>
+                      </TouchableOpacity>
                     </View>
-                  </TouchableOpacity>
-                </View>
-              ))}
+                  ))}
+                </>
+              )}
             </View>
           </ScrollView>
           <Space height={10} />
@@ -651,29 +576,37 @@ const Home = ({ navigation, route }) => {
     </View>
   );
 
-  const renderItem = ({ item }) => (
-    <View style={styles.itemContainer}>
-      <TouchableOpacity
-        activeOpacity={0.7}
-        onPress={() => navigation.navigate('Product Detail', item)}>
-        <Image source={item.image} style={styles.itemImage} />
+  const renderItem = ({ item }) => {
+    //debug
+    console.log('\n', 'ITEM_FLATLIST-home.js', item, '\n');
 
-        {item.promo ? (
-          <View style={styles.promoStickerProductContainer}>
-            <Text style={styles.promoText}>promo</Text>
+    return (
+      <View style={styles.itemContainer}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => navigation.navigate('Product Detail', item)}>
+          <Image
+            source={{ uri: item.image_featured }}
+            style={styles.itemImage}
+          />
+
+          {item.promo ? (
+            <View style={styles.promoStickerProductContainer}>
+              <Text style={styles.promoText}>promo</Text>
+            </View>
+          ) : (
+            <></>
+          )}
+
+          <View style={styles.titlePriceContainer}>
+            <Text style={styles.itemText}>{item.name}</Text>
+            <Space height={12} />
+            <Text style={styles.itemTextPrice}>Rp. {item.price}</Text>
           </View>
-        ) : (
-          <></>
-        )}
-
-        <View style={styles.titlePriceContainer}>
-          <Text style={styles.itemText}>{item.name}</Text>
-          <Space height={12} />
-          <Text style={styles.itemTextPrice}>Rp. {item.price}</Text>
-        </View>
-      </TouchableOpacity>
-    </View>
-  );
+        </TouchableOpacity>
+      </View>
+    );
+  };
 
   return (
     <>
@@ -700,10 +633,10 @@ const Home = ({ navigation, route }) => {
       />
       <FlatList
         ref={ref}
-        data={data}
-        renderItem={renderItem}
+        data={data_products.loading ? data : data_products.data}
+        renderItem={data_products.loading ? ProductLoader : renderItem}
         numColumns={numColumns}
-        keyExtractor={(item, index) => item.product_id}
+        keyExtractor={(item, index) => item.id}
         ListHeaderComponent={FlatListHeaderHome}
         ListFooterComponent={() => <Space height={20} />}
         columnWrapperStyle={styles.containerFlatlist}

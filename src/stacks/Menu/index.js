@@ -13,6 +13,7 @@ import { useNavigation, useScrollToTop } from '@react-navigation/native';
 
 import { Space } from '../../components';
 import { CoffeeCup, ImagePastry } from '../../assets';
+import { useSelector } from 'react-redux';
 
 const data = [
   { query_id: 0, query: 'tea' },
@@ -27,13 +28,13 @@ const data = [
   { query_id: 9, query: 'black tea' },
 ];
 
-const categories = [
-  { category_id: 1, category_name: 'Favorite', featured_image: CoffeeCup },
-  { category_id: 2, category_name: 'Coffee', featured_image: CoffeeCup },
-  { category_id: 3, category_name: 'Tea', featured_image: CoffeeCup },
-  { category_id: 4, category_name: 'Matcha', featured_image: CoffeeCup },
-  { category_id: 5, category_name: 'Pastry', featured_image: ImagePastry },
-];
+// const categories = [
+//   { category_id: 1, category_name: 'Favorite', featured_image: CoffeeCup },
+//   { category_id: 2, category_name: 'Coffee', featured_image: CoffeeCup },
+//   { category_id: 3, category_name: 'Tea', featured_image: CoffeeCup },
+//   { category_id: 4, category_name: 'Matcha', featured_image: CoffeeCup },
+//   { category_id: 5, category_name: 'Pastry', featured_image: ImagePastry },
+// ];
 
 const numColumns = 2;
 
@@ -100,6 +101,7 @@ const Menu = () => {
   const navigation = useNavigation();
   const ref = useRef();
   useScrollToTop(ref);
+  const get_categories = useSelector(state => state.get_categories.data);
 
   const ProductList = ({ item }) => (
     <>
@@ -107,13 +109,13 @@ const Menu = () => {
         <TouchableOpacity onPress={() => console.log('menu')}>
           <View style={styles.featImageContainer}>
             <ImageBackground
-              source={item.featured_image}
+              source={{ uri: item.image_featured }}
               style={styles.featImage}
             />
           </View>
           <Space height={6} />
           <View style={styles.item}>
-            <Text style={styles.itemTitle}>{item.category_name}</Text>
+            <Text style={styles.itemTitle}>{item.title}</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -137,11 +139,11 @@ const Menu = () => {
       <FlatList
         ref={ref}
         numColumns={numColumns}
-        data={categories}
+        data={get_categories}
         ListHeaderComponent={FlatListHeaderMenu}
         ListFooterComponent={FlatListFooterMenu}
         renderItem={ProductList}
-        keyExtractor={item => item.category_id}
+        keyExtractor={item => item.id}
         columnWrapperStyle={styles.containerFlatList}
         showsVerticalScrollIndicator={false}
         style={{

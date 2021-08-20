@@ -1,27 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, ImageBackground, StatusBar } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { ImageHeaderBgBlue } from '../../assets';
 import { authLoginActionSuccess } from '../../redux/actions/auth';
+import { getProductsAction } from '../../redux/actions/getProducts';
 import { getData } from '../../utils';
 
 const SplashScreen = ({ navigation }) => {
   const dispatch = useDispatch();
+  const [dataLocal, setDataLocal] = useState({});
 
   useEffect(() => {
-    getData('user_login').then(user => {
-      //debug
-      console.log('TOKEN_SPLASH_SCREEN:', user);
+    getData('user')
+      .then(user => {
+        //debug
+        console.log('TOKEN_SPLASH_SCREEN:', user);
 
-      setTimeout(() => {
-        if (user) {
-          navigation.reset({ index: 0, routes: [{ name: 'MainApp' }] });
-        } else {
-          navigation.reset({ index: 0, routes: [{ name: 'Start Screen' }] });
-        }
-      }, 2000);
-    });
+        setTimeout(() => {
+          if (user) {
+            navigation.reset({ index: 0, routes: [{ name: 'MainApp' }] });
+          } else {
+            navigation.reset({ index: 0, routes: [{ name: 'Start Screen' }] });
+          }
+        }, 2000);
+      })
+      .then(() => {});
   }, []);
+
+  //debug
+  console.log('\n', 'DATA_LOCAL_STORAGE-home.js:', dataLocal);
 
   return (
     <View style={styles.mainContainer}>

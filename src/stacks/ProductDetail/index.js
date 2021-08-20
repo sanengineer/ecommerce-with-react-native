@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -9,6 +9,7 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   IconHeartDisable,
   IconMinusCircle,
@@ -24,6 +25,8 @@ import {
   Button,
   IconTextNav,
 } from '../../components';
+import { getCategoryByIdAction } from '../../redux/actions/getCategory';
+import { getData } from '../../utils';
 
 var radio_props = [
   { label: 'less', value: 0 },
@@ -50,13 +53,33 @@ const NavBottomBetween = () => (
 
 const ProductDetail = ({ navigation, route }) => {
   const product = route.params;
+  const dispatch = useDispatch({});
+  const get_categories = useSelector(state => state.get_categories.data);
+
+  let category_id = get_categories.find(
+    o => o.id === `${product.categories_id}`,
+  );
+
+  useEffect(() => {
+    getData('user').then(user => {
+      //debug
+      console.log('\nUSERRR:', user, '\n');
+
+      dispatch(getCategoryByIdAction(product.categories_id, user.tokenString));
+    });
+    // dispatch(getUserProfileAction(user_id, token));
+  }, []);
   //debug
   console.log(route);
+  console.log('\n', 'CATEGORIES_BY_ID', category_id, '\n');
   return (
     <SafeAreaView style={styles.safeContainer}>
-      <NavHeader navigation={navigation} title={product.category} />
+      <NavHeader navigation={navigation} title={category_id.title} />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <ImageBackground style={styles.featImage} source={product.image} />
+        <ImageBackground
+          style={styles.featImage}
+          source={{ uri: product.image_featured }}
+        />
         {product.promo ? (
           <View style={styles.promoStickerProductContainer}>
             <Text style={styles.promoText}>🎉 promo</Text>
@@ -70,7 +93,8 @@ const ProductDetail = ({ navigation, route }) => {
               <Text style={styles.price}>Rp. {product.price}</Text>
               <Dot />
               <Text style={styles.weight}>
-                {product.weight.value} {product.weight.unit}
+                {/* {product.weight.value} {product.weight.unit} */}
+                develop
               </Text>
             </View>
             <TouchableOpacity>
@@ -82,7 +106,7 @@ const ProductDetail = ({ navigation, route }) => {
 
           <Text style={styles.name}>{product.name}</Text>
           <Space height={10} />
-          <Text style={styles.desc}>{product.desc}</Text>
+          <Text style={styles.desc}>{product.descriptions}</Text>
         </Row>
         <Row>
           <Text style={styles.rowTitle}>Custom Request</Text>
