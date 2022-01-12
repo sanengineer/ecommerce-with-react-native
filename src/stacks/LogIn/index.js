@@ -42,7 +42,7 @@ const LogIn = ({ navigation, route }) => {
     dispatch(authLoginAction(encodedToken, navigation));
 
     //debug
-    console.log('form:', form);
+    // console.log('form:', form);
     console.log('token:', token);
     console.log('encoded', encodedToken);
   };

@@ -7,6 +7,7 @@
     "ios": "react-native run-ios",
     "iphone-mini": "react-native run-ios --simulator=\"iPhone 12 mini\"",
     "iphone-5": "react-native run-ios --simulator=\"iPhone SE (1st generation)\"",
+    "iphone-12-pro": "react-native run-ios --simulator=\"iPhone 12 Pro\"",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint ."
