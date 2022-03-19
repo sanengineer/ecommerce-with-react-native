@@ -5,7 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "build:ios": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/main.jsbundle --assets-dest ios",
+    "build:ios": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/main.jsbundle",
     "iphone-mini": "react-native run-ios --simulator=\"iPhone 12 mini\"",
     "iphone-5": "react-native run-ios --simulator=\"iPhone SE (1st generation)\"",
     "iphone-12-pro": "react-native run-ios --simulator=\"iPhone 12 Pro\"",
