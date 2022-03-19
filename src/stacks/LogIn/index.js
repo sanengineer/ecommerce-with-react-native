@@ -9,7 +9,8 @@ import {
   StatusBar,
   Dimensions,
 } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { ActivityIndicator, Colors } from 'react-native-paper';
 import { IconCrossBig, IconCrossSmall } from '../../assets';
 import {
   Space,
@@ -18,6 +19,7 @@ import {
   TextField,
   TextInput,
   NavHeader,
+  Buttons,
 } from '../../components';
 
 import { authLoginAction } from '../../redux/actions/auth';
@@ -25,7 +27,7 @@ import { authLoginAction } from '../../redux/actions/auth';
 import { DismissKeyboard, KeyboardScrollUpForms, useForm } from '../../utils';
 
 import base64 from 'base-64';
-import FlashMessage from 'react-native-flash-message';
+import FlashMessage, { showMessage } from 'react-native-flash-message';
 
 const LogIn = ({ navigation, route }) => {
   const dispatch = useDispatch();
@@ -37,20 +39,41 @@ const LogIn = ({ navigation, route }) => {
 
   const token = `${form.username}:${form.password}`;
   const encodedToken = base64.encode(token);
+  const auth = useSelector(state => state.auth_login);
 
   const onSubmit = () => {
-    dispatch(authLoginAction(encodedToken, navigation));
+    if (form.username.length != 0 && form.password.length != 0) {
+      dispatch(authLoginAction(encodedToken, navigation));
+    } else {
+      return showMessage({
+        message: '⚠️',
+        description: "Username and Password can't be empty",
+        style: { backgroundColor: 'orange' },
+      });
+    }
 
     //debug
     // console.log('form:', form);
     console.log('token:', token);
     console.log('encoded', encodedToken);
+    console.log('FORM_USERNAME:', form.username.length);
+    console.log('FORM_PASSWORD:', form.password.length);
+  };
+
+  const onForgotPassword = () => {
+    showMessage({
+      message: '⚙️',
+      description: 'Feature coming soon',
+      style: { backgroundColor: '#000' },
+    });
   };
 
   const space = Dimensions.get('screen').height / 28;
 
-  //debug
+  //debug_all
   console.log('ROUTE:', route);
+  console.log('AUTH: ', auth);
+
   return (
     <SafeAreaView style={styles.page}>
       <KeyboardScrollUpForms
@@ -65,10 +88,16 @@ const LogIn = ({ navigation, route }) => {
           {route.params === 'success_register' ? (
             <></>
           ) : (
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Start Screen')}>
-              <IconCrossSmall />
-            </TouchableOpacity>
+            <>
+              {auth.loading ? (
+                <></>
+              ) : (
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Start Screen')}>
+                  <IconCrossSmall />
+                </TouchableOpacity>
+              )}
+            </>
           )}
         </NavHeader>
         <ScrollView
@@ -93,29 +122,24 @@ const LogIn = ({ navigation, route }) => {
               secureTextEntry
             />
             <Space height={50} />
-            <Button
-              label="Log In"
-              radius={6}
-              txtSize={14}
-              bgColor="#0030FF"
-              padSizeX={20}
-              borderWidth={0}
-              fontFam="CircularStd-Bold"
-              txtDecorationLine="none"
+            <Buttons.LG
               onPress={onSubmit}
-              // onPress={() => navigation.replace('MainApp')}
+              label={`Login`}
+              isLoading={auth.loading}
             />
             <Space height={40} />
-            <Button
-              label="Forgot Password"
-              txtSize={12}
-              radius={0}
-              borderWidth={0}
-              bgColor="#fff"
-              textColor="#0030FF"
-              fontFam="CircularStd-Bold"
-              onPress={() => navigation.navigate('Register')}
-            />
+            {!auth.loading && (
+              <Button
+                label="Forgot Password"
+                txtSize={12}
+                radius={0}
+                borderWidth={0}
+                bgColor="#fff"
+                textColor="#0030FF"
+                fontFam="CircularStd-Bold"
+                onPress={onForgotPassword}
+              />
+            )}
           </View>
         </ScrollView>
       </KeyboardScrollUpForms>

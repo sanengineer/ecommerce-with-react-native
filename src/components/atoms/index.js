@@ -1,5 +1,5 @@
 import Space from './Space';
-import Button from './Button';
+import Button, { Buttons } from './Button';
 import TextField from './TextField';
 import TextInput from './TextInput';
 import IconContainer from './IconContainer';
@@ -12,6 +12,7 @@ import SafeAreaViewCustom from './SafeAreaViewCustom';
 export {
   Space,
   Button,
+  Buttons,
   TextField,
   TextInput,
   IconContainer,

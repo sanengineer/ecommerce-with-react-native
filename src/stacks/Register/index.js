@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IconCrossBig, IconCrossSmall } from '../../assets';
 import {
   Button,
+  Buttons,
   Header,
   NavHeader,
   Space,
@@ -25,31 +26,44 @@ import {
 import { authRegisterAction } from '../../redux/actions/auth';
 import TouchableScale from 'react-native-touchable-scale';
 import { KeyboardScrollUpForms, useForm } from '../../utils';
-import FlashMessage from 'react-native-flash-message';
+import FlashMessage, { showMessage } from 'react-native-flash-message';
 
 const Register = ({ navigation }) => {
   const dispatch = useDispatch();
-  // const select_auth_register = useSelector(
-  //   state => state.auth_register_reducer,
-  // );
+  const register = useSelector(state => state.register);
 
   const [form, setForm] = useForm({
     name: '',
     username: '',
     password: '',
     email: '',
-    role_id: 0,
+    role_id: 3,
   });
 
   const onSubmit = () => {
-    dispatch(authRegisterAction(form, navigation));
-    console.log(form);
+    if (
+      form.name.length != 0 &&
+      form.username.length != 0 &&
+      form.password.length != 0 &&
+      form.email.length != 0
+    ) {
+      dispatch(authRegisterAction(form, navigation));
+    } else {
+      return showMessage({
+        message: '⚠️',
+        description: "Form can't be empty",
+        style: { backgroundColor: 'orange' },
+      });
+    }
+
+    //debug
+    console.log('FORM_REGISTER:', form);
   };
 
   const space_height = Dimensions.get('screen').height / 28;
 
-  //debug
-  // console.log('SELECTOR:', select_auth_register);
+  //debug_all
+  console.log('REGISTER:', register);
 
   return (
     <SafeAreaView style={styles.page}>
@@ -109,7 +123,7 @@ const Register = ({ navigation }) => {
               secureTextEntry
             />
             <Space height={50} />
-
+            {/* 
             <Button
               label="Register"
               radius={6}
@@ -120,6 +134,11 @@ const Register = ({ navigation }) => {
               fontFam="CircularStd-Bold"
               txtDecorationLine="none"
               onPress={onSubmit}
+            /> */}
+            <Buttons.LG
+              isLoading={register.loading}
+              onPress={onSubmit}
+              label={`Register`}
             />
             <Space height={50} />
           </View>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Button } from '../../atoms';
+import { Button, Buttons, Space } from '../../atoms';
 import ModalCenter from '../ModalCenter';
 
 const ModalCenterTwoButton = ({
@@ -25,7 +25,9 @@ const ModalCenterTwoButton = ({
           borderColor="#000"
           borderWidth={1}
           label="Yes"
+          height={40}
         />
+        <Space width={20} />
         <Button
           onPress={onPressNo}
           padSizeY={38}
@@ -38,6 +40,7 @@ const ModalCenterTwoButton = ({
           borderColor="red"
           borderWidth={1}
           label="No"
+          height={40}
         />
       </View>
     </View>

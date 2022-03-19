@@ -371,7 +371,7 @@ const Home = ({ navigation, route }) => {
   const ref = useRef();
   const dispatch = useDispatch();
   const [dataLocal, setDataLocal] = useState({});
-  const data_login_success = useSelector(state => state.auth_login_res_data);
+  const data_login_success = useSelector(state => state.auth_login);
   const data_products = useSelector(state => state.get_products);
   const get_user_profile = useSelector(state => state.get_user_profile.data);
   const get_categories = useSelector(state => state.get_categories);
@@ -419,9 +419,9 @@ const Home = ({ navigation, route }) => {
   // console.log('\n', 'TOKEN-home.js:', token);
   // console.log('\n', 'USERID-home.js:', user_id);
   console.log('\n', 'GET_USER_PROFILE-home.js:', get_user_profile);
-  console.log('\n', 'AUTH_LOGIN_RES_DATA-home.js:', data_login_success);
-  console.log('\n', 'PRODUCTS_DATA-home.js:', data_products);
-  console.log('\n', 'CATEGORIES_DATA-home.js:', get_categories);
+  // console.log('\n', 'AUTH_LOGIN_RES_DATA-home.js:', data_login_success);
+  // console.log('\n', 'PRODUCTS_DATA-home.js:', data_products);
+  // console.log('\n', 'CATEGORIES_DATA-home.js:', get_categories);
 
   // const navigation = useNavigation();
 
@@ -578,7 +578,7 @@ const Home = ({ navigation, route }) => {
 
   const renderItem = ({ item }) => {
     //debug
-    console.log('\n', 'ITEM_FLATLIST-home.js', item, '\n');
+    // console.log('\n', 'ITEM_FLATLIST-home.js', item, '\n');
 
     return (
       <View style={styles.itemContainer}>

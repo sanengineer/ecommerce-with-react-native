@@ -9,8 +9,8 @@ import getProdutsReducer from './getProducts';
 import getUserProfileReducer from './getUserProfile';
 
 export default combineReducers({
-  auth_register_data: authRegisterReducer,
-  auth_login_res_data: authLoginReducer,
+  register: authRegisterReducer,
+  auth_login: authLoginReducer,
   get_user_profile: getUserProfileReducer,
   get_products: getProdutsReducer,
   get_category_by_id: getCategoryByIdReducer,
